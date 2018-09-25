@@ -1,29 +1,32 @@
+const uuidv4 = require('uuid/v4');
+const validator = require('express-validator')
+const { matchedData } = require('express-validator/filter')
+const { check, validationResult } = require('express-validator/check')
+var global_file;
+var  global_submit_result_data;
+var global_resumeID = '';
+var global_formData;
+var global_file_put = false;
+var global_resume_filename = '';
+var global_file_extension = '';
+var global_linkedIn_parse = false;
+const fs = require('fs');
 
-   const uuidv4 = require('uuid/v4');
-    const validator = require('express-validator')
-    const { matchedData } = require('express-validator/filter')
-    const { check, validationResult } = require('express-validator/check')
-    var global_file;
-    var  global_submit_result_data;
-    var global_resumeID = '';
-    var global_formData;
-    var global_file_put = false;
-    var global_resume_filename = '';
-    var global_file_extension = '';
-    var global_linkedIn_parse = false;
-    const fs = require('fs');
 module.exports = (app) => {
-    const multer = require('multer');
-    var request = require('request-promise');
-    var getRequestUrl = 'http://18.206.187.45:8080/presignedurl/';
-    var getFormRequestUrlMatt = ' http://18.219.52.10:5000/';
-    var getFormRequestUrlYev = ' http://18.206.187.45:8080/rawdata/';
+    
+  const multer = require('multer');
+  var request = require('request-promise');
+  var getRequestUrl = 'http://18.206.187.45:8080/presignedurl/';
+  var getFormRequestUrlMatt = ' http://18.219.52.10:5000/';
+  var getFormRequestUrlYev = ' http://18.206.187.45:8080/rawdata/';
+  const storage = multer.memoryStorage();
+  const upload = multer({storage: storage});
 
     
  
-function auto_email(res,email){
+  function auto_email(res,email){
 
- var options = {
+    var options = {
       method: 'GET',
       uri:  'http://18.206.187.45:8080/confirmationemailuser/' + email
                   
@@ -55,51 +58,51 @@ function auto_email(res,email){
 }
 
 
-function formData_POST(formData,resumeID,res){
+  function formData_POST(formData,resumeID,res){
 
-console.log("checking got to form POST function : ",formData, "checking resumeid: ", global_resumeID);
-global_resumeID = resumeID;
+    console.log("checking got to form POST function : ",formData, "checking resumeid: ", global_resumeID);
+    global_resumeID = resumeID;
 
 
-var POST_FORM = {}
+    var POST_FORM = {}
 
-POST_FORM["ResumeID"] = global_resumeID;
-POST_FORM["Name"] = formData["formData"]["Name"];
-POST_FORM["Email"] = formData["formData"]["Email"];
-POST_FORM["Mobile"] = formData["formData"]["Mobile"];
-POST_FORM["Salary"] = formData["formData"]["salary"];
-POST_FORM["Status"] = formData["formData"]["currentStatus"];
-POST_FORM["Location"] = formData["formData"]["Location"];
-POST_FORM["Relocation"] = formData["formData"]["relocationChecked"];
-POST_FORM["Travel"] = formData["formData"]["travelChecked"];
+    POST_FORM["ResumeID"] = global_resumeID;
+    POST_FORM["Name"] = formData["formData"]["Name"];
+    POST_FORM["Email"] = formData["formData"]["Email"];
+    POST_FORM["Mobile"] = formData["formData"]["Mobile"];
+    POST_FORM["Salary"] = formData["formData"]["salary"];
+    POST_FORM["Status"] = formData["formData"]["currentStatus"];
+    POST_FORM["Location"] = formData["formData"]["Location"];
+    POST_FORM["Relocation"] = formData["formData"]["relocationChecked"];
+    POST_FORM["Travel"] = formData["formData"]["travelChecked"];
 
-console.log("checking POST_FORM", POST_FORM);
- var options= {
-                method: 'POST',
-                url: 'http://18.206.187.45:8080/submitbasicinfo',
-                body: JSON.stringify(POST_FORM),
-               
-              }
+    console.log("checking POST_FORM", POST_FORM);
+     var options= {
+                    method: 'POST',
+                    url: 'http://18.206.187.45:8080/submitbasicinfo',
+                    body: JSON.stringify(POST_FORM),
+                   
+                  }
 
-              
+                  
 
-                request(options)
-                  .then(function(body){
+                    request(options)
+                      .then(function(body){
 
-                    console.log("recieved ok from POST of form data", body);
-                    global_linkedIn_parse = false;
-                     res.send("got back to front client from /contact");
-                  })
-                    .catch(function(err){
-                      console.log("no POST success for FORM Data ", err);
-                    }).finally(function () {
-                     
-                      console.log("done with form POST request");
-                       });
+                        console.log("recieved ok from POST of form data", body);
+                        global_linkedIn_parse = false;
+                         res.send("got back to front client from /contact");
+                      })
+                        .catch(function(err){
+                          console.log("no POST success for FORM Data ", err);
+                        }).finally(function () {
+                         
+                          console.log("done with form POST request");
+                           });
   }
 
 
-    function callParsers(res){
+function callParsers(res){
        var options = {
               method: 'GET',
               uri: getFormRequestUrlMatt,
@@ -112,9 +115,6 @@ console.log("checking POST_FORM", POST_FORM);
               .then(function (body) {
                       
                        
-                      
-
-                      //if(body[Code] == 200){
                          console.log("recieved ok from Mustafa parser for RESUME ID", body);
 
                             var options2 = {
@@ -128,7 +128,6 @@ console.log("checking POST_FORM", POST_FORM);
                             request(options2)
                               .then(function(body){
 
-                                      // if(body[Code] == 200){
 
                                       console.log("recieved ok from Yevs parser FOR RESUME ID", body);
                                       global_resumeID = JSON.parse(body).Data;
@@ -136,8 +135,6 @@ console.log("checking POST_FORM", POST_FORM);
                                       
                                      
 
-                                    // }
-                                     // else console.log("didnt get 200 from Yevs parser, got", body);
 
                               })
                               .catch(function(err){
@@ -159,18 +156,15 @@ console.log("checking POST_FORM", POST_FORM);
               }).finally(function () {
                               console.log("done with GET request for Mustafas parser FOR RESUME ID");
                                });
-    }
+    } //end function call_parsers
 
 
-    const storage = multer.memoryStorage();
-
-
-    const upload = multer({storage: storage});
+   
 
 
 
-
-    app.post('/analyze',(req,res) => {
+//POST request made from client side.  This sends a resume ID to backend server, recieves the parsed resume result, and sends it to client side.
+  app.post('/analyze',(req,res) => {
       var url = 'http://18.206.187.45:8080/parsedresult/'+global_resumeID;
       console.log("checking analyze url",url);
 
@@ -198,7 +192,9 @@ console.log("checking POST_FORM", POST_FORM);
               });
 })
 
-    app.post('/submitJD',(req,res) => {
+  //POST request that recieves job description from client side, and sends it to /jobposting backend endpoint.
+
+  app.post('/submitJD',(req,res) => {
       var url = 'http://18.206.187.45:8080/jobposting';
       console.log("checking jobpost url",url);
 
@@ -227,7 +223,8 @@ console.log("checking POST_FORM", POST_FORM);
               });
 })
 
-
+ // THIS POST endpoint recieves the reusume File from client side, stores it in virtual memory, creates a UUID for it, 
+  // and makes the PUT call to send the resume to backend server.
        
    app.post('/uploadHandler', upload.single('file'), function (req, res, next) {
     if (req.file && req.file.originalname) {
@@ -264,22 +261,8 @@ console.log("checking POST_FORM", POST_FORM);
                     console.log("PUT resume file success",body);
                     console.log(`Received file ${req.file.originalname}`);
                     global_file_put = true;
-
                     
-              
-
-
-                    
-                  console.log("checking global_resume_filename", global_resume_filename);
-                  
-
-                 
-
-                    
-                    
-                    
-                 
-                    
+                  console.log("checking global_resume_filename", global_resume_filename); 
                    
                     
                 })
@@ -311,6 +294,8 @@ console.log("checking POST_FORM", POST_FORM);
        
     });
 
+
+// this POST request recieves the basic contact details from the user and then calls the function formData_post which then sends it to the backend.
   app.post('/contact', (req, res) => {
 
     console.log("checking req body", req.body);
@@ -318,17 +303,13 @@ console.log("checking POST_FORM", POST_FORM);
 
          
     if (req.body) {
-
-
-
      
         formData_POST(global_formData,global_resumeID,res);
        
-    
     }
   });
 
-
+//this post request recieves the modified/analyzed resume data and sends it to the backend 
   app.post('/submitResult', (req, res) => {
 
 
@@ -417,16 +398,10 @@ app.get('/getResumeId', (req, res) => {
 
 
          
-       //getFormRequestUrlYev = getFormRequestUrlYev.concat('"'+global_resume_filename+'"');
-
-    //     var getFormRequestUrlMatt = ' http://18.219.52.10:5000/';
-    // var getFormRequestUrlYev = ' http://18.206.187.45:8080/rawdata/';
-
+ 
           res.status(200).send( global_resumeID);
 
-          // }
 
-          // else console.log("didnt get 200 for LinkedIN post, got ", body);
         })
          .catch(function (err) {
                 // Delete failed...

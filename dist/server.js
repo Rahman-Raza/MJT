@@ -19,7 +19,7 @@ app.set('port', 8082);
 app.enable('trust proxy');
 
 
-// Call the multerImpl and pass in app state to it
+
 const middleware = [
  helmet(),
 layout(),
@@ -55,5 +55,5 @@ app.get('*', function(req, res) {
 
 module.exports = app.listen(app.get('port'), () => {
   console.log('Express server listening on port ' + app.get('port'))
-  console.log('Visit http://localhost:' + app.get('port') + '/example/ to check out the upload example')
+  console.log('Visit http://localhost:' + app.get('port'))
 })
