@@ -1,0 +1,43 @@
+{
+  "name": "myJobTank-React",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js --content-base  . | node server.js",
+    "run": "react-scripts start",
+    "build": "webpack --config webpack.prod.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "circular-json": "^0.5.5",
+    "clean-webpack-plugin": "^0.1.19",
+    "connect": "^3.6.6",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
+    "enhanced-resolve": "^4.0.0",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "express-flash": "0.0.2",
+    "express-layout": "^0.1.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.2.0",
+    "fs": "0.0.1-security",
+    "helmet": "^3.12.1",
+    "history": "^4.6.3",
+    "inflight": "^1.0.6",
+    "ipware": "^1.0.0",
+    "material-icons-css": "^1.0.1",
+    "material-ui": "^0.20.0",
+    "multer": "^1.1.0",
+    "public-ip": "^2.4.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "serve-static": "^1.13.2"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  }
+}

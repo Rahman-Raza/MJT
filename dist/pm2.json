@@ -1,0 +1,9 @@
+{
+  "name": "upload-analyze-submit",
+  "script": "server.js",
+  "instances": "0",
+  "env": {
+    "NODE_ENV": "production"
+  }
+  
+}
