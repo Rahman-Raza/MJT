@@ -3,18 +3,18 @@ import React, { Component } from "react";
 const containerStyle = {
   maxWidth: "100%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 const containerStyle2 = {
   maxWidth: "75%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 
 const headingStyle = {
   fontSize: "20px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "30px"
 };
 

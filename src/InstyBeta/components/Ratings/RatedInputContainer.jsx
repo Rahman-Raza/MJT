@@ -15,7 +15,7 @@ const flattenedArraySkills = [].concat(...Skills.JSONData);
 const flattenedArrayLanguages = [].concat(...Languages.JSONData);
 
 const toggleStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   margin: "10px 0 10px 30px"
 };

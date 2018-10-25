@@ -17,14 +17,14 @@ const containerStyle2 = {
 const headingStyle = {
   fontSize: "20px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "30px"
 };
 const subHeadingStyle = {
   marginLeft:"10px",
   fontSize: "14px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "30px"
 };
 

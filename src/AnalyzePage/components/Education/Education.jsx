@@ -7,7 +7,7 @@ import InputField from "../InputField";
 
 const dottedContainer = {
   position: "relative",
-  border: "1px solid #72C4CC",
+  border: "1px solid #ffb81b",
   borderRadius: "25px",
   padding: "40px 10px 30px",
   margin: "10px 0",

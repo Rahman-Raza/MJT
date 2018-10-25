@@ -39,7 +39,7 @@ import IconButton from 'material-ui/IconButton';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: "#72C4CC",
+    primary1Color: "#009dd6",
     primary2Color: orange700,
     accent1Color: orange700
   },
@@ -73,42 +73,59 @@ const styles = {
     color: orange500
   },
   textFieldRootStyle: {
-    backgroundColor: "rgba(255,255,255,0.2)",
+    backgroundColor: "white",
     height: "50px",
     margin: "25px 0"
   },
   textFieldInputStyle: {
-    backgroundColor: "#F3F3F3",
-    color: "black",
-    padding: "0 10px 0",
-    borderRadius: "25px"
+     width: "100%",
+    background: "transparent",
+    border:"1px solid #ffb81b",
+    borderRadius: "10px",
+    left: "10px",
+   
+    color: "#666666",
+    fontSize: "13px",
+   
+    transition: "all 0.4",
   },
   textFieldUnderlineStyle: { display: "none" },
   floatingLabelStyle: {
-    top: "30px",
-    left: "10px"
+    top: "10px",
+    left: "20px",
+   fontSize: "16px",
+    maxWidth: "100%",
+    marginTop: "20px",
+    fontWeight: 500,
+    fontFamily: "Open Sans",
+    borderRadius: 25,
+
   },
   floatingLabelFocusStyle: {
-    color: blue500
+    color: blue500,
+    marginTop: "50px",
+
+
   },
   selectFloatingLabelStyle: {
     top: "33px",
-    left: "10px",
-    fontSize: 21,
+    left: "20px",
+    fontSize: "20px",
     maxWidth: "100%",
     marginTop: "20px",
-    fontWeight: 700,
+    fontWeight: 500,
+    fontFamily: "Open Sans",
     borderRadius: 25
   },
   selectIconStyle: {
     top: 0
   },
   form1Style: {
-    marginTop: "5%"
+   
   },
   form2Style: {
-    marginTop: "5%",
-    marginLeft: "95px"
+    marginLeft: "100px",
+  
   },
 
   formInputStyle: {
@@ -133,11 +150,11 @@ const styles = {
     position: "relative",
     top: "3px",
     fontSize: "16px",
-    fontWeight: "300",
-    color: "#72C4CC"
+    fontWeight: "500",
+    color: "#666666"
   },
   checkboxIconStyle: {
-    color: "#287784",
+    color: "#ffb81b",
     fontSize: "30px"
   },
   dividerRow: {
@@ -146,7 +163,7 @@ const styles = {
   dropZone: {
     width: "100%",
     height: "00%",
-    border: "1px solid orange",
+    border: "1px solid #ffb81b",
     borderRadius: "5px",
     backgroundColor: "white"
   },
@@ -154,10 +171,11 @@ const styles = {
     marginRight: 24
   },
   holder: {
-    border: "none",
-    borderRadius: "20px",
-    backgroundColor: "#F6F6F6",
-    minHeight: "160px",
+    border: "1px solid #ffb81b",
+    
+    borderRadius: "10px",
+    backgroundColor: "white",
+    minHeight: "183px",
     padding: "5px",
     textAlign: "center"
   },
@@ -202,16 +220,49 @@ const styles = {
     display: "inline-block"
   },
   analyzeButton: {
-    margin: "0 auto",
-    minWidth: "150px",
+    
+     margin: "0 auto",
+     color: "white",
+   
     position: "relative",
-    left: "-20px",
-    borderRadius: "25px"
+    height: "100%",
+    bordeRadius: "10px",
+    padding: "10px 50px",
+    boxShadow: "0px",
+    backgroundColor: "#79C239",
+    
+  },
+   buttonDiv:{
+   marginLeft: "25px",
   },
   analyzeButtonOverlay: {
-    borderRadius: "25px"
+
   },
-  singleField: {}
+  singleField: {},
+  menuItemStyle:{
+    fontFamily: "Open Sans",
+    color: "#666666",
+    fontWeight: "400",
+    fontSize: "15px",
+
+
+  },
+  selectedMenuItemStyle: {
+    fontFamily: "Open Sans",
+    color: "#666666",
+    fontWeight: "400",
+    fontSize: "13px",
+  },
+  selectLabelStyle:{
+     fontFamily: "Open Sans",
+    color: "#666666",
+    fontWeight: "400",
+    fontSize: "13px",
+    top: "0px !important",
+    left: "10px",
+
+
+  }
 };
 
 class HomePage extends React.Component {
@@ -666,7 +717,7 @@ class HomePage extends React.Component {
     const contentStyle = { margin: "0 16px" };
 
     return (
-      <div style={{}}>
+      <div className="responsive-container-uas">
       <Loadable
         active={this.state.loading}
         spinner
@@ -690,10 +741,13 @@ class HomePage extends React.Component {
 
             <Paper style={styles.paperStyle} zDepth={5}>
               <Section containerSize={1}>
-                <h3 style={{ marginTop: "30px", color: "#72C4CC" }}>
+              <div className="row" style={{ marginLeft: "5px" }}>
+                <h3 style={{ marginTop: "30px", color: "#7ac143", marginLeft: "20px",marginBottom: "20px" }}>
                   {" "}
-                  Please fill in the following{" "}
+                  Please complete the following:{" "}
                 </h3>
+
+                </div>
               </Section>
 
               <ValidatorForm
@@ -763,27 +817,13 @@ class HomePage extends React.Component {
                             "email is not valid"
                           ]}
                         />
-                        <Checkbox
-                          checkedIcon={
-                            <i
-                              style={styles.checkboxIconStyle}
-                              className="material-icons"
-                            >
-                              done
-                            </i>
-                          }
-                          name="relocationChecked"
-                          label="Accept relocation"
-                          checked={formData.relocationChecked}
-                          onCheck={this.relocationUpdateCheck.bind(this)}
-                          style={styles.checkbox1}
-                          labelStyle={styles.checkboxLabelStyle}
-                        />
+                        
                       </div>
 
                       <div
-                        className="col-md-5 col-md-offset-1"
+                        className="col-md-5 col-md-offset-1 form2"
                         style={styles.form2Style}
+                        
                       >
                         <SelectValidator
                           name="salaryselect"
@@ -792,13 +832,16 @@ class HomePage extends React.Component {
                           onChange={this.handleSalarySelect}
                           floatingLabelStyle={styles.selectFloatingLabelStyle}
                           style={styles.textFieldRootStyle}
+                          menuItemStyle={styles.menuItemStyle}
+                          selectedMenuItemStyle={styles.selectedMenuItemStyle}
+                          labelStyle={styles.selectLabelStyle}
                           inputStyle={styles.textFieldInputStyle}
                           underlineStyle={styles.textFieldUnderlineStyle}
                           iconStyle={styles.selectIconStyle}
                           fullWidth={true}
                           validators={["minNumber:1"]}
                           errorMessages={["this field is required"]}
-                          SelectProps={{ native: true }}
+                          
                         >
                           <MenuItem value={0} primaryText="Salary Range" />
                           <MenuItem value={1} primaryText="$0-$50,000" />
@@ -818,8 +861,11 @@ class HomePage extends React.Component {
                           floatingLabelText={this.state.currentStatusFloating}
                           value={this.state.currentStatus}
                           onChange={this.handleCurrentStatusSelect}
-                          floatingLabelStyle={styles.selectFloatingLabelStyle}
+                             floatingLabelStyle={styles.selectFloatingLabelStyle}
                           style={styles.textFieldRootStyle}
+                          menuItemStyle={styles.menuItemStyle}
+                          selectedMenuItemStyle={styles.selectedMenuItemStyle}
+                          labelStyle={styles.selectLabelStyle}
                           inputStyle={styles.textFieldInputStyle}
                           underlineStyle={styles.textFieldUnderlineStyle}
                           iconStyle={styles.selectIconStyle}
@@ -839,8 +885,11 @@ class HomePage extends React.Component {
                           floatingLabelText={this.state.locationFloating}
                           value={this.state.preferredLocation}
                           onChange={this.handleLocationSelect}
-                          floatingLabelStyle={styles.selectFloatingLabelStyle}
+                             floatingLabelStyle={styles.selectFloatingLabelStyle}
                           style={styles.textFieldRootStyle}
+                          menuItemStyle={styles.menuItemStyle}
+                          selectedMenuItemStyle={styles.selectedMenuItemStyle}
+                          labelStyle={styles.selectLabelStyle}
                           inputStyle={styles.textFieldInputStyle}
                           underlineStyle={styles.textFieldUnderlineStyle}
                           iconStyle={styles.selectIconStyle}
@@ -858,6 +907,35 @@ class HomePage extends React.Component {
                           <MenuItem value={4} primaryText="Seattle" />
                         </SelectValidator>
 
+                        
+                      </div>
+                    </div>
+
+                    <div className="row" style={{ marginLeft: "5px" }}>
+                      <div className="col-md-5" style={styles.form1Style}>
+
+                        <Checkbox
+                            checkedIcon={
+                              <i
+                                style={styles.checkboxIconStyle}
+                                className="material-icons"
+                              >
+                                done
+                              </i>
+                            }
+
+                            name="relocationChecked"
+                            label="Willing to relocate"
+                            checked={formData.relocationChecked}
+                            onCheck={this.relocationUpdateCheck.bind(this)}
+                            style={styles.checkbox1}
+                            labelStyle={styles.checkboxLabelStyle}
+                          />
+                      </div>
+
+                      <div className="col-md-5 col-md-offset-1 form2"
+                        style={styles.form2Style}>
+
                         <Checkbox
                           checkedIcon={
                             <i
@@ -874,7 +952,9 @@ class HomePage extends React.Component {
                           style={styles.checkbox2}
                           labelStyle={styles.checkboxLabelStyle}
                         />
+
                       </div>
+
                     </div>
                   </MuiThemeProvider>
                 </Section>
@@ -916,17 +996,19 @@ class HomePage extends React.Component {
                 </Section>
 
                 <Section style={{ marginBottom: "5%" }} containerSize={1}>
-                  <div className="col-md-1 col-md-offset-5">
+                  <div className="col-md-1 col-md-offset-4 analyze-button-container">
                     <MuiThemeProvider muiTheme={muiTheme}>
                       <RaisedButton
-                        className="rounded-button"
+                        
                         label="Analyze"
+                        labelColor="white"
                         type="submit"
                         disabled={this.state.analyzeButtonDisabled}
                         Rounded={true}
-                        style={styles.analyzeButton}
+                        style={styles.buttonDiv}
+                        buttonStyle={styles.analyzeButton}
                         overlayStyle={styles.analyzeButtonOverlay}
-                        primary={true}
+                       
                       />
                     </MuiThemeProvider>
                   </div>

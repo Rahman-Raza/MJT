@@ -8,7 +8,7 @@ import Checkbox from "material-ui/Checkbox";
 
 const checkboxContainerStyle = {
   display: "inline-block",
-  border: "1px solid #72C4CC",
+  border: "1px solid #ffb81b",
   borderRadius: "35px",
   margin: "10px",
   paddingRight: "20px"
@@ -22,7 +22,7 @@ const checkBoxStyles = {
 
 const checkboxLableStyles = {
   whiteSpace: "nowrap",
-  color: "#72C4CC",
+  color: "#666666",
   top: "4px"
 };
 
@@ -32,7 +32,7 @@ const iconStyle = {
 };
 
 const closeIconStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   display: "inline-block",
   fontSize: "18px",
@@ -46,7 +46,7 @@ const colStyle = {
 };
 
 const toggleStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   margin: "10px 0 10px 30px"
 };

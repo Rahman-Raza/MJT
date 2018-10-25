@@ -9,7 +9,7 @@ div.filepicker {
     background-color: white !important;
     border-radius: 5px;
     min-height: 160px !important;
-    border: 2px dashed orange !important;
+    border: 2px solid orange !important;
 }
 
 /* Icon */

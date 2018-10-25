@@ -12,8 +12,8 @@ const colStyle = {
 const labelStyle = {
   fontSize: "12px",
   height: "40px",
-  fontWeight: "700",
-  color: "#72C4CC",
+  fontWeight: "3 00",
+  color: "#009dd6",
   position: "absolute",
   top: "-8px",
   left: "15px",
@@ -109,8 +109,8 @@ class Info extends Component {
               labelText="Current Location"
             />
           </div>
-          <div style={colStyle} className="col-md-4">
-            <label style={labelStyle}>Current Status</label>
+          <div style={colStyle} className="col-md-4 last-row-margin">
+            <label className="label-no-largin" style={labelStyle}>Current Status</label>
             <Dropdown
               onRef={ref => (this.CurrentStatus = ref)}
               startValue={formData.Status}

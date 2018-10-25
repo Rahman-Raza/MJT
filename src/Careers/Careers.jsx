@@ -31,7 +31,7 @@ const legendStyle = {
   };
 const dottedContainer = {
   position: "relative",
-  border: "1px solid #72C4CC",
+  border: "1px solid #009dd6",
   borderRadius: "25px",
   padding: "40px 10px 30px",
   margin: "10px 0",
@@ -39,7 +39,7 @@ const dottedContainer = {
 
 };
 const labelStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   position: "absolute",
   top: "-30px",
   fontSize: "18px",
@@ -70,7 +70,7 @@ const iconStyle = {
   position: "absolute",
   top: "17px",
   right: "10px",
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
 };
 
@@ -124,7 +124,14 @@ const styles = {
     marginBottom: "20px",
   },
   paragraphStyle: {
-     fontFamily: "Open Sans",
+     fontFamily: "sans-serif",
+     color:"#777474",
+    fontSize: "12px",
+    fontWeight: "300",
+  },
+  listStyle: {
+    marginTop: "25px",
+     fontFamily: "sans-serif",
      color:"#777474",
     fontSize: "12px",
     fontWeight: "300",
@@ -137,29 +144,37 @@ class Careers extends React.Component {
     super(props);
 
 
-    this.state = {
-}
+    this.state = { width: 0, height: 0 };
+  this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 
   }
+
+  componentDidMount() {
+  this.updateWindowDimensions();
+  window.addEventListener('resize', this.updateWindowDimensions);
+}
+
+componentWillUnmount() {
+  window.removeEventListener('resize', this.updateWindowDimensions);
+}
+
+updateWindowDimensions() {
+  this.setState({ width: window.innerWidth, height: window.innerHeight });
+}
 
 
 
 
   render() {
-   
+   console.log("VIEW : ",this.state);
+
+   if(this.state.width >= 480){
     
     return (
-      <div style={{}}>
+      <div className="careers-container" style={{}}>
         <MuiThemeProvider muiTheme={muiTheme}>
        
-          <Section
-                containerSize={1}
-                heading="Open Positions"
-                subHeading=" "
-                style={{marginBottom: "10px", marginTop: "10px", }}
-                >
-
-           </Section>
+       
            <Section
             containerSize={1}
             style={{
@@ -186,8 +201,8 @@ class Careers extends React.Component {
 
                      
 
-                       <div className="col-md-4" style={{ background: "url(" + Background2 + ") ",
-              backgroundSize: "fixed", height: "950px"}}>
+                       <div className="col-md-4 careers-hidden-section" style={{ background: "url(" + Background2 + ") ",
+              backgroundSize: "fixed", }}>
                 
                          <Section
                           containerSize={'a'}>
@@ -195,35 +210,30 @@ class Careers extends React.Component {
 
                             <div style={{padding: "20px"}}>
 
-                              <h4 style={styles.headingStyle}> Diversity and Inclusion </h4>
+                              <h4 style={styles.headingStyle}> MJT: Your Destination Employer and Partner</h4>
 
-                              <p style={styles.paragraphStyle}> We seek attract and retain top talent and strive to create an inclusive atmosphere, free from unlawful discrimination and harassment. We aim to provide all employees with equal opportunity without regard to race, gender, color, national origin, citizenship status, creed, religion, sex, age, marital status, physical or mental disability, sexual orientation and/or gender identity, union membership, veteran status, or any other basis protected by law.
+                              <p style={styles.paragraphStyle}> Whether you are looking for a new, challenging gig, or to land a killer long-term career opportunity, MJT is your go-to partner. Join our team of savvy, talented professionals - We want to understand your talents and goals so we can match you with your next great move.
 
                               </p>
 
                               <div style={{marginTop: "20px"}}>
                                 <h4 style={styles.headingStyle}> Reasons to join us</h4>
 
-                                <ul style={styles.paragraphStyle}>
+                                <p style={styles.paragraphStyle}> The well-being of every one of our team members is important to us. We care about having an inclusive, motivating and well-balanced environment with a global outlook and equal opportunity.
+
+
+                              </p>
+
+                                <ul style={styles.listStyle}>
                                   <li>- Medical, Dental, Vision </li>
-                                  <li>- Health Savings Account </li>
-                                  <li>- Flexible Spending Accounts, including </li>
+                                  <li>- Commuter </li>
+                                  <li>- SIMPLE IRA With Company Match Up To 3% </li>
                                    <li>-Dependent and Commuter</li>
-                                  <li>- Short & Long Term Disability</li>
-                                  <li>- Life Insurance</li>
-                                  <li>- 401k with company match of 50% of 
-                                     contributions up to the first 6%</li>
-                                  <li>- 15 days of PTO your first five years; 20 days of 
-                                     PTO from year five to ten; 25 days of PTO after 
-                                     that</li>
-                                  <li>- 5 days of Floating Holidays for your first five   
-                                     years, and 7 Floating Holidays after that</li>
-                                  <li>- 8 Company Holidays</li>
-                                  <li>- Employee Assistance Program</li>
+                                  <li>- 15 days of PTO Your First Five Years</li>
+                                  <li>- Nine Company Holidays</li>
                                   <li>- Referral Bonus Program</li>
                                   <li>- Employee Recognition</li>
-                                  <li>- Work Life Balance</li>
-                                  <li>- Waterfront View (Kirkland)</li>
+                                  <li>-  Work Life Balance</li>
                                   <li>- Fun Social Events</li>
 
 
@@ -240,7 +250,7 @@ class Careers extends React.Component {
 
                        <div className="col-md-8">
                 
-                        <iframe src="./bullhorn/index.html" width="100%" height="950px" scrolling="yes"> </iframe>
+                        <iframe src="./bullhorn/index.html" width="100%" height="780px" styscrolling="yes"> </iframe>
 
                       </div>
 
@@ -253,7 +263,16 @@ class Careers extends React.Component {
            
         </MuiThemeProvider>
       </div>
-    );
+    )
+    }
+    else return (
+
+      <div className="col-md-8">
+                
+                        <iframe src="./bullhorn/index.html" width="100%" height="780px" styscrolling="yes"> </iframe>
+
+                      </div>
+      )
   }
 }
 

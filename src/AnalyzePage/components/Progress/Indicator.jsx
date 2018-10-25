@@ -10,7 +10,7 @@ const indicatorStyle = {
 };
 
 const iconStyle = {
-  backgroundColor: "#287784",
+  backgroundColor: "#FFAA3B",
   borderRadius: "50%",
   color: "#FFF",
   display: "block",
@@ -33,7 +33,9 @@ const labelStyle = {
   padding: "2px",
   marginRight: "10px",
   width: "auto",
-  whiteSpace: "nowrap"
+  whiteSpace: "nowrap",
+  fontFamily: 'Open Sans',
+  fontSize: "12px",
 };
 
 const dottedIcon = {

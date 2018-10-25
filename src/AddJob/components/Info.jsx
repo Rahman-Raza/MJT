@@ -16,26 +16,29 @@ const textFieldRootStyle = {
   backgroundColor: "rgba(255,255,255,0.2)",
   height: "50px",
   margin: "25px 0",
-  width: "80%"
+  width: "100%"
 };
 const textFieldInputStyle = {
-  backgroundColor: "#F3F3F3",
+  backgroundColor: "transparent",
   color: "black",
   padding: "0 10px 0",
-  borderRadius: "25px"
+  borderRadius: "10px",
+  border:"1px solid #ffb81b",
+    
 };
 const textFieldUnderlineStyle = { display: "none" };
 const floatingLabelStyle = {
-  color: "#72C4CC",
+  color: "#666666",
   fontSize: "18px",
   top: "0"
 };
 
 const labelStyle = {
-  fontSize: "12px",
+ font: "300 16px/1.7 'Open Sans', sans-serif",
+ fontSize: "18px",
   height: "40px",
-  fontWeight: "700",
-  color: "#72C4CC",
+  
+  color: "#666666",
   position: "absolute",
   top: "-8px"
 };
@@ -58,8 +61,11 @@ const textAreaStyle = {
 };
 
 const textAreaLabelStyle = {
-  ...floatingLabelStyle,
-  top: "0"
+   color: "#009dd6",
+  fontSize: "20px",
+  fontWeight: "400",
+  top: "0",
+
 };
 
 const selectIconStyle = {
@@ -250,11 +256,12 @@ class Info extends Component {
       <div>
         <div
           className="row"
-          style={{ marginBottom: "10px",  padding: "40px 0" }}
+          style={{ marginBottom: "10px",  padding: "10px 0" }}
         >
           <div style={colStyle} className="col-md-6">
             <Section containerSize={"100%"}>
               <TextValidator
+                className="text-field-input"
                 floatingLabelText="First Name"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
@@ -273,6 +280,7 @@ class Info extends Component {
               />
 
               <TextValidator
+              className="text-field-input"
                 floatingLabelText="Last Name"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
@@ -290,6 +298,7 @@ class Info extends Component {
                 ]}
               />
               <TextValidator
+              className="text-field-input"
                 floatingLabelText="Phone Number"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
@@ -314,6 +323,7 @@ class Info extends Component {
                 ]}
               />
               <TextValidator
+              className="text-field-input"
                 floatingLabelText="Email"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
@@ -327,10 +337,97 @@ class Info extends Component {
                 validators={["required", "isEmail"]}
                 errorMessages={["this field is required", "email is not valid"]}
               />
+              </Section>
+              </div>
+              <div style={colStyle} className="col-md-6">
+            <Section containerSize={"100%"}>
+              <TextValidator
+              className="text-field-input"
+                floatingLabelText="Company Name"
+                floatingLabelFixed={true}
+                floatingLabelStyle={floatingLabelStyle}
+                onChange={this.handleChange}
+                style={textFieldRootStyle}
+                inputStyle={textFieldInputStyle}
+                underlineStyle={textFieldUnderlineStyle}
+                fullWidth={true}
+                name="CompanyName"
+                value={formData.CompanyName}
+                validators={["required", "isString"]}
+                errorMessages={[
+                  "this field is required",
+                  "please enter a valid company name"
+                ]}
+              />
 
-              <div style={{ position: "relative", margin: "10px 0" }}>
+              <TextValidator
+              className="text-field-input"
+                floatingLabelText="Company Size"
+                floatingLabelFixed={true}
+                floatingLabelStyle={floatingLabelStyle}
+                onChange={this.handleChange}
+                style={textFieldRootStyle}
+                inputStyle={textFieldInputStyle}
+                underlineStyle={textFieldUnderlineStyle}
+                fullWidth={true}
+                name="CompanySize"
+                value={formData.CompanySize}
+                validators={["required", "isNumber", "minNumber:1"]}
+                errorMessages={[
+                  "this field is required",
+                  "Please enter a number",
+                  "Please enter a number greater than zero"
+                ]}
+              />
+              <TextValidator
+              className="text-field-input"
+                floatingLabelText="Job Position"
+                floatingLabelFixed={true}
+                floatingLabelStyle={floatingLabelStyle}
+                onChange={this.handleChange}
+                style={textFieldRootStyle}
+                inputStyle={textFieldInputStyle}
+                underlineStyle={textFieldUnderlineStyle}
+                fullWidth={true}
+                name="JobPosition"
+                value={formData.JobPosition}
+                validators={["required", "isString"]}
+                errorMessages={[
+                  "this field is required",
+                  "please enter a valid job position"
+                ]}
+              />
+
+              <TextValidator
+              className="text-field-input"
+                floatingLabelText="Company Location"
+                floatingLabelFixed={true}
+                floatingLabelStyle={floatingLabelStyle}
+                onChange={this.handleChange}
+                style={textFieldRootStyle}
+                inputStyle={textFieldInputStyle}
+                underlineStyle={textFieldUnderlineStyle}
+                fullWidth={true}
+                name="CompanyLocation"
+                value={formData.CompanyLocation}
+                validators={["required", "isString"]}
+                errorMessages={[
+                  "this field is required",
+                  "please enter a valid location"
+                ]}
+              />
+              </Section>
+                </div>
+              </div>
+             
+              <div style={colStyle} className="col-md-12">
+                <Section containerSize={"100%"} heading="Ideal Requirements:">
+
+              <div style={colStyle} className="col-md-6">
+                <div style={{ position: "relative", margin: "10px 0" }}>
                 <label style={labelStyle}>Work Experience Needed</label>
                 <SelectValidator
+                className="text-field-input"
                   name="WorkExperience"
                   floatingLabelFixed={true}
                   floatingLabelStyle={floatingLabelStyle}
@@ -359,6 +456,7 @@ class Info extends Component {
               <div style={{ position: "relative", margin: "10px 0" }}>
                 <label style={labelStyle}>Highest Education Completed</label>
                 <SelectValidator
+                className="text-field-input"
                   name="Education"
                   floatingLabelFixed={true}
                   floatingLabelStyle={floatingLabelStyle}
@@ -387,85 +485,15 @@ class Info extends Component {
                   <MenuItem value={5} primaryText="PHD" />
                 </SelectValidator>
               </div>
-            </Section>
-          </div>
+            </div>
+         
+           
 
-          <div style={colStyle} className="col-md-6">
-            <Section containerSize={"100%"}>
-              <TextValidator
-                floatingLabelText="Company Name"
-                floatingLabelFixed={true}
-                floatingLabelStyle={floatingLabelStyle}
-                onChange={this.handleChange}
-                style={textFieldRootStyle}
-                inputStyle={textFieldInputStyle}
-                underlineStyle={textFieldUnderlineStyle}
-                fullWidth={true}
-                name="CompanyName"
-                value={formData.CompanyName}
-                validators={["required", "isString"]}
-                errorMessages={[
-                  "this field is required",
-                  "please enter a valid company name"
-                ]}
-              />
-
-              <TextValidator
-                floatingLabelText="Company Size"
-                floatingLabelFixed={true}
-                floatingLabelStyle={floatingLabelStyle}
-                onChange={this.handleChange}
-                style={textFieldRootStyle}
-                inputStyle={textFieldInputStyle}
-                underlineStyle={textFieldUnderlineStyle}
-                fullWidth={true}
-                name="CompanySize"
-                value={formData.CompanySize}
-                validators={["required", "isNumber", "minNumber:1"]}
-                errorMessages={[
-                  "this field is required",
-                  "Please enter a number",
-                  "Please enter a number greater than zero"
-                ]}
-              />
-              <TextValidator
-                floatingLabelText="Job Position"
-                floatingLabelFixed={true}
-                floatingLabelStyle={floatingLabelStyle}
-                onChange={this.handleChange}
-                style={textFieldRootStyle}
-                inputStyle={textFieldInputStyle}
-                underlineStyle={textFieldUnderlineStyle}
-                fullWidth={true}
-                name="JobPosition"
-                value={formData.JobPosition}
-                validators={["required", "isString"]}
-                errorMessages={[
-                  "this field is required",
-                  "please enter a valid job position"
-                ]}
-              />
-
-              <TextValidator
-                floatingLabelText="Company Location"
-                floatingLabelFixed={true}
-                floatingLabelStyle={floatingLabelStyle}
-                onChange={this.handleChange}
-                style={textFieldRootStyle}
-                inputStyle={textFieldInputStyle}
-                underlineStyle={textFieldUnderlineStyle}
-                fullWidth={true}
-                name="CompanyLocation"
-                value={formData.CompanyLocation}
-                validators={["required", "isString"]}
-                errorMessages={[
-                  "this field is required",
-                  "please enter a valid location"
-                ]}
-              />
+            <div style={colStyle} className="col-md-6">
               <div style={{ position: "relative", margin: "10px 0" }}>
                 <label style={labelStyle}>Employment Type</label>
                 <SelectValidator
+                className="text-field-input"
                   name="EmploymentType"
                   floatingLabelFixed={true}
                   floatingLabelStyle={floatingLabelStyle}
@@ -495,6 +523,7 @@ class Info extends Component {
               <div style={{ position: "relative", margin: "10px 0" }}>
                 <label style={labelStyle}>Employment Type</label>
                 <SelectValidator
+                className="text-field-input"
                   name="BaseSalary"
                   floatingLabelFixed={true}
                   floatingLabelStyle={floatingLabelStyle}
@@ -519,15 +548,18 @@ class Info extends Component {
                   <MenuItem value={4} primaryText="$250k+" />
                 </SelectValidator>
               </div>
-            </Section>
-          </div>
-        </div>
 
-        <div className="row" style={{ marginBottom: "20px" }}>
+            </div>
+            </Section>
+            
+          </div>
+        
+
+        
           <div style={colStyle} className="col-md-12">
-            <Section containerSize={"100%"}>
+            <Section containerSize={"100%"} heading="Summary">
               <TextValidator
-                floatingLabelText="Summary"
+              
                 floatingLabelFixed={true}
                 floatingLabelStyle={textAreaLabelStyle}
                 onChange={this.handleChange}
@@ -549,13 +581,13 @@ class Info extends Component {
               />
             </Section>
           </div>
-        </div>
+       
 
-        <div className="row" style={{ marginBottom: "20px" }}>
+       
           <div style={colStyle} className="col-md-12">
-            <Section containerSize={"100%"}>
+            <Section containerSize={"100%"}  heading="Key Responsibilities">
               <TextValidator
-                floatingLabelText="Key Responsibilities"
+               
                 floatingLabelFixed={true}
                 floatingLabelStyle={textAreaLabelStyle}
                 onChange={this.handleChange}
@@ -576,7 +608,7 @@ class Info extends Component {
               />
             </Section>
           </div>
-        </div>
+        
       </div>
     );
   }

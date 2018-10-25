@@ -21,6 +21,7 @@ module.exports = (app) => {
   var getFormRequestUrlYev = ' http://18.206.187.45:8080/rawdata/';
   const storage = multer.memoryStorage();
   const upload = multer({storage: storage});
+  var FormData = require('form-data');
 
     
  
@@ -226,56 +227,43 @@ function callParsers(res){
  // THIS POST endpoint recieves the reusume File from client side, stores it in virtual memory, creates a UUID for it, 
   // and makes the PUT call to send the resume to backend server.
        
-   app.post('/uploadHandler', upload.single('file'), function (req, res, next) {
-    if (req.file && req.file.originalname) {
+   app.post('/uploadHandler', upload.any() , function (req, res, next) {
+    if (req.files ) {
 
-      global_resume_filename = uuidv4();
+      var resumefile= {
        
-       global_file_extension = req.file.originalname.substr(req.file.originalname.lastIndexOf('.') + 1);
-       global_resume_filename = global_resume_filename.concat("."+global_file_extension);
-      getFormRequestUrlMatt = 'http://18.219.52.10:5000/'.concat(global_resume_filename);
-       getFormRequestUrlYev = 'http://18.206.187.45:8080/rawdata/'.concat('"'+global_resume_filename+'"');
+      };
+
+        var resfile = {
+          value: req.files[0].buffer,
+          options: {
+            filename: req.files[0].originalname,
+          }
+        }
+
+        resumefile["resumefile"] = resfile;
+        console.log("checking resuemfile", resumefile);
 
 
         var options = {
-              method: 'GET',
-              uri: getRequestUrl.concat(global_resume_filename),
+              method: 'POST',
+              uri: 'http://18.206.187.45:8080/resumeupload',
+              
+              formData: resumefile,
+            
             };
            
         request(options)
         .then(function (body) {
-            console.log("GET with success", body);
+            console.log("POST to resumeupload with success", body);
            
 
-              var options2 = {
-                method: 'PUT',
-                url: JSON.parse(body).Message,
-                headers: {
-                  'ContentLength': req.file.size,
-                },
-                body: req.file.buffer,
-              };
-
-              request(options2).then(function (body) {
-                    // POST succeeded...
-                    console.log("PUT resume file success",body);
-                    console.log(`Received file ${req.file.originalname}`);
+                   
                     global_file_put = true;
+                    global_resumeID = JSON.parse(body)["Data"];
                     
-                  console.log("checking global_resume_filename", global_resume_filename); 
-                   
-                    
-                })
-                .catch(function (err) {
-                    // POST failed...
-                    console.log("PUT resume file NO success",err);
-                   res.status(500);
-                   
-                }).finally(function () {
-                      console.log("done with all requests2");
-                      callParsers(res);
-                     
-                       });
+                 res.send("Success");
+              
                 
                 
 
@@ -283,7 +271,7 @@ function callParsers(res){
 
         .catch(function (err) {
             // Delete failed...
-            console.log("GET no success for file URL ", err);
+            console.log("POST no success for /resumeupload ", err);
            
            
         }).finally(function () {

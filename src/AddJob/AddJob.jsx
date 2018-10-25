@@ -70,7 +70,27 @@ const styles = {
   },
   roundedButtonOverlay: {
     borderRadius: "25px"
-  }
+  },
+   headingStyle :{
+  fontSize: "20px",
+  fontWeight: "400",
+  color: "#009dd6",
+  marginTop: "50px",
+
+  },
+   analyzeButton: {
+    
+     margin: "0 auto",
+     color: "white",
+   
+    position: "relative",
+    height: "100%",
+    bordeRadius: "10px",
+    padding: "10px 50px",
+    boxShadow: "0px",
+    backgroundColor: "#79C239",
+    
+  },
 };
 
 // Theme
@@ -200,20 +220,20 @@ class AddJob extends React.Component {
               
                 <Section
                 containerSize={"80%"}
-                heading="Job Order"
+                heading="Job Description"
                 subHeading=" "
-                style={{ marginTop: "30px",marginBottom: "30px",
+                style={{ marginTop: "30px",marginBottom: "10px",
                  }}
                 >
-                <h3 style={{marginTop: "10px",marginBottom: "10px", }}> Please fill the following requirements.</h3>
+                <h3 style={{marginTop: "10px", }}> Please fill the following:</h3>
                      
                    
                 </Section> 
              
                 <Section
-                  style={{ marginLeft: "5%" }}
-                  containerSize={"85%"}
-                  heading=""
+                  
+                  containerSize={"80%"}
+                  heading=" Your Details"
                 >
                   <Info onRef={ref => (this.InfoContainer = ref)} />
                 </Section>
@@ -251,14 +271,15 @@ class AddJob extends React.Component {
                     
 
                     <RaisedButton
-                      className="rounded-button"
+                      className="submit-button-addjob"
+                      labelColor="white"
                       disabled={this.state.submitButtonDisabled}
                       label="Submit"
                       type="submit"
                       Rounded={true}
-                      style={styles.roundedButton}
-                      overlayStyle={styles.roundedButtonOverlay}
-                      primary={true}
+                      buttonStyle={styles.analyzeButton}
+                      
+                     
                     />
                   </div>
                 </Section>

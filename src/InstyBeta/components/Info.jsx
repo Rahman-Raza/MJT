@@ -13,7 +13,7 @@ const labelStyle = {
   fontSize: "12px",
   height: "40px",
   fontWeight: "700",
-  color: "#72C4CC",
+  color: "#009dd6",
   position: "absolute",
   top: "-8px",
   left: "15px",

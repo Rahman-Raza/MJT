@@ -21,8 +21,11 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Paper from "material-ui/Paper";
 import { orange500, blue500, orange700 } from "material-ui/styles/colors";
 import Background from "../_constants/images/blacknav.png";
+
 import Section from "../AnalyzePage/components/Section";
 import logo from "../_constants/images/logo-mjt.png";
+import question from "../_constants/images/question-mark.png";
+
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -81,27 +84,78 @@ class App extends React.Component {
     const { alert } = this.props;
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Section
+
+       <div style={styles.container}>
+      <nav id="menu" class=" navi" style={{zIndex: "100"}}>
+   
+    <div class="wrapy">
+      
+        <a href="index#home" class="brand">
+          <img  src={logo} alt="Logo" class="site-logo" />
+         
+        </a>
+
+    
+            
+        <button id="mobile-btn" class="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
           
-          style={{
-            background: "url(" + Background + ") no-repeat",
-            backgroundSize: "cover",
-           height: "75px",
-          }}
-        >
-       <a href="http://www.myjobtank.com"> <img src={logo}  style={{marginLeft: "12%",marginTop: ".75%"}} alt="Logo" /> </a>
+        <ul class=" uppercase bold top-menu no-float" id="top-menu">
+
+          <li class="nav-item2"><a href="index#home" >Home</a></li>
+          <li class="nav-item2"><a href="index#services" >Services</a></li>
+          <li class="nav-item2"><a href="index#history" >Expertise</a></li>
+          
+          <li class="nav-item2"><a href="index#features" >Our Values</a></li>
+
+
+
+
+
+
+
+          <li class="nav-item2"><a href="index#talent" >Job Seekers</a></li>
+          <li class="nav-item2"><a href="index#Employers" >Employers</a></li>
+          <li class="nav-item2"><a href="index#contact" >Contact</a></li>
+          <li class="insty">
+            <a href="/instymatch" target="_blank" >
+           InstyMatch 
+           <img src={question} style={{paddingLeft: "10px",width: "25%",marginRight: "-20px",marginBottom: "5px"}}/>
+           </a>
+
+          </li>
+
+
+
+
+
+
+
+        </ul>
+      </div>
+
+  </nav>
+  </div>
+
+        <Section style={{padding: "40px"}}>
+  
+
+        
 
         </Section>
-        <div style={styles.container}>
+        <div style={styles.container} className="responsive-container">
           {alert.message && (
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           )}
           <Router history={history}>
-            <div>
+            <div >
               <Route exact path="/Resume" component={HomePage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/joborder" component={AddJob} />
-              <Route path="/insty-beta" component={InstyBeta} />
+              <Route path="/instymatch" component={InstyBeta} />
               <Route path="/careers" component={Careers} />
               <Route path="/cors-check" component={CorsCheck} />
               <Route path="/dashboard" component={DashBoard} />

@@ -5,8 +5,9 @@ import { deepOrange500, grey300, grey500 } from "material-ui/styles/colors";
 import RatingElement from "./RatingElement";
 
 const nameSectionStyle = {
-  backgroundColor: "#F3F3F3",
-  borderRadius: "25px",
+  backgroundColor: "transparent",
+  borderRadius: "10px",
+  border: "1px solid #ffb81b",
   padding: "10px 15px",
   position: "relative"
 };
@@ -17,7 +18,7 @@ const nameStyle = {
 };
 
 const closeIconStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   fontSize: "16px",
   position: "absolute",

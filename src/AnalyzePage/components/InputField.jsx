@@ -12,7 +12,7 @@ const root = {
 };
 
 const labelStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   position: "absolute",
   top: "-30px",
   fontSize: "12px"
@@ -41,7 +41,7 @@ const iconStyle = {
   position: "absolute",
   top: "17px",
   right: "10px",
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
 };
 

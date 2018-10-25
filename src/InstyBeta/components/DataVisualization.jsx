@@ -15,7 +15,7 @@ const linkedInIcon ={
 const chartHeadingStyle = {
   fontSize: "14px",
   fontWeight: "800",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "20px",
   marginTop: "10px",
 };
@@ -25,7 +25,7 @@ const chartLegendStyle = {
   marginTop: "12px",
   fontSize: "10px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
 
 };
 const chartLegendStaticStyle = {
@@ -47,7 +47,7 @@ const chartLegendDynamicStyle = {
 };
 const toolTipStyles = {
  marginLeft: "25px",
- color:  "#72C4CC",
+ color:  "#009dd6",
  fontWeight: "400",
 };
 
@@ -65,21 +65,21 @@ const containerStyle2 = {
 const headingStyle = {
   fontSize: "20px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "30px"
 };
 const subHeadingStyle = {
   marginLeft:"10px",
   fontSize: "14px",
   fontWeight: "400",
-  color: "#72C4CC",
+  color: "#009dd6",
   marginBottom: "30px"
 };
 
 const dottedContainer = {
   
-  border: "1px solid #72C4CC",
-  borderRadius: "25px",
+  border: "1px solid #009dd6",
+  borderRadius: "10px",
   padding: "10px 10px 30px",
   margin: "10px 0",
   overflow: "scroll",
@@ -457,7 +457,7 @@ class DataVisualization extends Component {
 
  
       
-      <div className="row" style={dottedContainer}>
+      <div className="data-visualize-container" style={dottedContainer}>
 
        <div className="row">
       
@@ -466,83 +466,14 @@ class DataVisualization extends Component {
           </div>
        
       </div>
-      <div className="row">
       
-        <div className="col-md-5"> 
-          <Section
-                  
-                  heading=" "
-                  
-                  style={{marginLeft: "25px"}}
-                  
-                  >
-                    <h4 style={chartHeadingStyle}> Distribution of Score </h4>
-            </Section>
-          </div>
-          <div className="col-md-1"></div>
-
-          <div className="col-md-2"> 
-          <Section
-                  heading=" "
-                  style={{marginLeft: "10px"}}
-                  >
-                    <h4 style={chartHeadingStyle}> Score Analysis </h4>
-            </Section>
-          </div>
-         
-
-          <div className="col-md-4"> 
-
-
-           
-                  <div className="col-md-2">
-                      <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
-                            <FaQuestionCircle
-                          style={linkedInIcon}
-                          color="#56A1FD"
-                          size={20}
-                        />
-                      </IconButton>
-                    </div>
-
-                    
-                  <div className="col-md-1" style={{marginLeft: "-3px"}}>
-                     <h4 style={chartLegendStaticStyle}> Static </h4>
-                  </div>
-
-                   <div className="col-md-2">
-                      <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
-                            <FaQuestionCircle
-                          style={linkedInIcon}
-                          color="#09D4C1"
-                          size={20}
-                        />
-                      </IconButton>
-                    </div>
-
-                  
-                  <div className="col-md-1" style={{marginLeft: "-3px"}}>
-                     <h4 style={chartLegendDynamicStyle}> Dynamic </h4>
-                  </div>
-             
-             
-             
-          </div>
-
-          
-        
-          
-
-         
-       
-      </div>
 
    
      <div className="row" style={{marginRight: "40px"}}>
 
      
 
-      <div className="col-md-4" style={{marginRight: "0px"}}>
+      <div className="col-md-4" style={{marginRight: "0px", minWidth: "300px"}}>
       <Section
                 
                 heading=" "
@@ -550,6 +481,13 @@ class DataVisualization extends Component {
                 style={{margin: "10px"}}
                 
                 >
+           <div className="row">
+      
+        
+                
+                    <h4 style={chartHeadingStyle} className="chart-graph-label">  Distribution of Score </h4>
+                 
+             </div>
 
                 
        <PieChart
@@ -583,7 +521,7 @@ class DataVisualization extends Component {
             </Section>
         </div>
 
-        <div className="col-md-2" style={{marginTop:"2.5%"}}> 
+        <div className="col-md-2" style={{marginTop:"2.5%", minWidth: "150px"}}> 
            <Legend
           
             data={this.state.data}
@@ -596,14 +534,62 @@ class DataVisualization extends Component {
    
          
    
-        <div className="col-md-6"  >
+        <div className="col-md-6 score-analysis-container"  >
          <Section
                 
                 heading=" "
                 
                 >
+           
+          <div className="row">
+           <div className="col-md-1"></div>
+          <div className="col-md-4">
+      
+        
+                
+                    <h4 style={chartHeadingStyle} className="chart-graph-label"> Score Analysis </h4>
+                 
+             </div>
+            <div className="col-md-7 score-analysis-tooltip"> 
 
+
+               
+                      <div className="col-md-2">
+                          <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
+                                <FaQuestionCircle
+                              style={linkedInIcon}
+                              color="#56A1FD"
+                              size={20}
+                            />
+                          </IconButton>
+                        </div>
+
+                        
+                      <div className="col-md-1" style={{marginLeft: "-3px"}}>
+                         <h4 style={chartLegendStaticStyle}> Static </h4>
+                      </div>
+
+                       <div className="col-md-2">
+                          <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
+                                <FaQuestionCircle
+                              style={linkedInIcon}
+                              color="#09D4C1"
+                              size={20}
+                            />
+                          </IconButton>
+                        </div>
+
+                      
+                      <div className="col-md-1" style={{marginLeft: "-3px"}}>
+                         <h4 style={chartLegendDynamicStyle}> Dynamic </h4>
+                      </div>
+                 
+                 
+                 
+              </div>
+         </div>
         <ResponsiveContainer width="95%" height={250}>
+
             <BarChart width={500} height={250} data={this.state.barData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" >

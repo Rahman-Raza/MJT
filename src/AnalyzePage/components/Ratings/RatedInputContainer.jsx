@@ -15,7 +15,7 @@ const flattenedArraySkills = [].concat(...Skills.JSONData);
 const flattenedArrayLanguages = [].concat(...Languages.JSONData);
 
 const toggleStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   margin: "10px 0 10px 30px"
 };
@@ -148,17 +148,25 @@ class RatedInputContainer extends Component {
             />
            <RaisedButton
               Rounded={true}
-              className="rounded-button"
-              style={roundedButton}
-                      overlayStyle={roundedButtonOverlay}
-                      primary={true}
+           
+             
+                      
+                   
                 label="Add"
                 
                 onClick={() => {
                   this.addSkill(this.state.currentAddition);
                 }}
                 buttonStyle={{
+                  margin: "0 auto",
+                   color: "white",
                  
+                  position: "relative",
+                  height: "100%",
+                  bordeRadius: "10px",
+                  padding: "10px 10px",
+                  boxShadow: "0px",
+                  backgroundColor: "#79C239",
                 }}
                 
                 labelStyle={{

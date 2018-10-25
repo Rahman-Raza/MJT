@@ -32,7 +32,8 @@ import Background from "../_constants/images/analyze.png";
 // Theme
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: deepOrange500
+    accent1Color: "#ffb81b",
+    primary: "#009dd6",
   }
 });
 
@@ -53,11 +54,28 @@ const styles = {
     minWidth: "150px",
     position: "relative",
     left: "-20px",
-    borderRadius: "25px"
+    borderRadius: "10px",
+    backgroundColor: "#7ac143",
   },
-  roundedButtonOverlay: {
-    borderRadius: "25px"
-  }
+  analyzeButton: {
+    
+     margin: "0 auto",
+     color: "white",
+   
+    position: "relative",
+    height: "100%",
+    bordeRadius: "10px",
+    padding: "10px 50px",
+    boxShadow: "0px",
+    backgroundColor: "#79C239",
+    
+  },
+   buttonDiv:{
+   marginLeft: "25px",
+  },
+  analyzeButtonOverlay: {
+
+  },
 };
 
 class AnalyzePage extends React.Component {
@@ -170,7 +188,7 @@ class AnalyzePage extends React.Component {
                 style={{
                   marginTop: "30px",
                   marginBottom: "30px",
-                  color: "#72C4CC"
+                  color: "#009dd6"
                 }}
               />
               <Section containerSize={100} heading="Personal Information">
@@ -277,14 +295,16 @@ class AnalyzePage extends React.Component {
                   
 
                   <RaisedButton
-                    className="rounded-button"
+                  
                     onClick={this.getInfo}
                     label="Submit"
+                    labelColor="white"
                     type="submit"
                     Rounded={true}
-                    style={styles.roundedButton}
-                    overlayStyle={styles.roundedButtonOverlay}
-                    primary={true}
+                    style={styles.buttonDiv}
+                        buttonStyle={styles.analyzeButton}
+                        overlayStyle={styles.analyzeButtonOverlay}
+                    
                   />
                 </div>
               </Section>

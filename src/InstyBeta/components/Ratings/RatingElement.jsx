@@ -13,7 +13,7 @@ const RatingElement = ({ active, ratingValue, ratingHandler }) => (
   <i
     style={
       active
-        ? { ...iconStyle, color: "#72C4CC" }
+        ? { ...iconStyle, color: "#009dd6" }
         : { ...iconStyle, color: grey300 }
     }
     className="material-icons"

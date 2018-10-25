@@ -51,6 +51,7 @@
     "react-motion": "^0.5.2",
     "react-progress-button": "^5.1.0",
     "react-redux": "^5.0.5",
+    "react-responsive": "^5.0.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "^1.1.4",
     "react-spinners": "^0.3.2",

@@ -18,7 +18,7 @@ const addButtonContainer = {
 
 const addButtonStyles = {
   cursor: "pointer",
-  color: "#72C4CC"
+  color: "#009dd6"
 };
 
 class AttributeContainer extends Component {

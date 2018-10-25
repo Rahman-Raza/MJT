@@ -23,14 +23,12 @@ tooltip._bottom tip tip-arrow,tooltip._top tip tip-arrow{border-left:6px solid t
 		url("Bullhorn-Glyphicons.ttf?a541fc3fbbf296956e1b9c7becf01609") format("truetype");
 	font-weight:normal;
 	font-style:normal;
-
 }
 
 
 /* Bootstrap Overrides */
 [class^="bhi-"]:before,
 [class*=" bhi-"]:before {
-	color: #FFF;
 	font-family:"Bullhorn-Glyphicons";
 	display:inline-block;
 	vertical-align:middle;

@@ -17,7 +17,7 @@ const nameStyle = {
 };
 
 const closeIconStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   fontSize: "16px",
   position: "absolute",
@@ -31,7 +31,7 @@ const ratingSectionStyle = {
 };
 
 const controlButtonStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   fontSize: "20px",
   float: "right",

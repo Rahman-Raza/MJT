@@ -5,7 +5,7 @@ import { Collapse} from 'reactstrap';
 // const si = require('systeminformation');
 
 import axios from "axios";
-
+import MediaQuery from 'react-responsive';
 
 // Custom Components
 import Header from "./components/Header";
@@ -67,7 +67,7 @@ const legendStyle = {
   };
 const dottedContainer = {
   position: "relative",
-  border: "1px solid #00ADF3",
+  border: "1px solid #FFAA3B",
   borderRadius: "25px",
   padding: "40px 40px 40px",
   margin: "10px 0",
@@ -77,7 +77,7 @@ const dottedContainer = {
 
 const dottedContainer2 = {
   position: "relative",
-  border: "1px solid #00ADF3",
+  border: "1px solid #FFAA3B",
   borderRadius: "25px",
   padding: "40px 40px 40px",
   marginTop: "10px",
@@ -117,7 +117,7 @@ const iconStyle = {
   position: "absolute",
   top: "17px",
   right: "10px",
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
 };
 
@@ -128,7 +128,6 @@ const styles = {
   paperStyle: {
     position: "relative",
     marginTop: "10%",
-    zIndex: "10",
     width: "100%",
     display: "inline-block",
     backgroundColor: "white",
@@ -137,13 +136,22 @@ const styles = {
     borderWidth: "2px"
   },
   roundedButton: {
-    margin: "0 auto",
-    border: "1px solid #00ADF3",
-    minWidth: "150px",
+   
+
+
+     margin: "0 auto",
+     color: "white",
+   
     position: "relative",
-    left: "-20px",
-    borderRadius: "25px",
-    backgroundColor: "transparent",
+    height: "100%",
+    bordeRadius: "10px",
+    padding: "10px 50px",
+    boxShadow: "0px",
+    backgroundColor: "#79C239",
+  },
+  buttonDiv:{
+    left: "-25px",
+    color: "white",
   },
   roundedButton2: {
     marginLeft: "35%",
@@ -151,7 +159,7 @@ const styles = {
     position: "relative",
   },
   roundedButtonOverlay: {
-    borderRadius: "25px"
+    
   },
   headingStyle: {
     fontSize: "24px",
@@ -163,6 +171,7 @@ const styles = {
    fontSize: "16px",
    marginTop: "10px",
     textAlign: "center",
+    color: "#666666",
   },
   linkStyle: {
     textDecoration: "underline",
@@ -672,7 +681,7 @@ this.setState({collapseArrays: collapseArrays});
                 style={{
                   marginTop: "30px",
                   marginBottom: "30px",
-                  color: "#72C4CC"
+                  color: "#009dd6"
                 }}
               />
               
@@ -682,19 +691,19 @@ this.setState({collapseArrays: collapseArrays});
                 style={{marginBottom: "10px"}}
                 >
 
-                 <div style={{width: "50%", marginLeft: "25%"}}>
+                 <div style={{width: "75%", marginLeft: "12.5%"}}>
 
-                <h6 style={styles.headingStyle}> Meet Insty Beta:  </h6>
+                <h6 style={styles.headingStyle}> Meet InstyMatch:  </h6>
 
 
 
                 <h6 style={styles.headingStyle}> Simple, impartial, and lightning-fast. </h6>
 
                
-                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px"}}> Insty-Beta is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJT's extensive candidate database. </p>
+                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJT's extensive candidate database. </p>
                 <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition in our talent lineup.  If you're a recruiter or employer, upload up to ten resumes to compare the candidates for a position you need to fill.</p>
           
-                <p style={styles.paragraphStyle}> Insty-Beta is limited to 10 scoring requests per day.</p>
+                <p style={styles.paragraphStyle}> InstyMatch is limited to 10 scoring requests per day.</p>
                  </div>  
               </Section> 
               <Section
@@ -703,7 +712,7 @@ this.setState({collapseArrays: collapseArrays});
                 subHeading="Copy and paste the job description to the following box."
                 >
                      
-                    <div style={dottedContainer} className="col-12">
+                    <div style={dottedContainer} className="col-12 scores-dotted-container">
                       <label style={labelStyle}>Job Description</label>
                       <TextValidator
                           multiLine={true}
@@ -740,9 +749,9 @@ this.setState({collapseArrays: collapseArrays});
                 heading="Step 2."
                 subHeading="Upload resume(s) (up to 10)."
                 >
-                <div  style={dottedContainer} className="col-md-12 ">
+                <div  style={dottedContainer} className="col-md-12 insty-step2-dotted-container">
 
-                    <div   className="col-md-12">
+                    <div   className="col-md-12 insty-step2-box">
                     <DropzoneComponent
                       config={this.componentConfig}
                       eventHandlers={this.eventHandlers}
@@ -755,20 +764,22 @@ this.setState({collapseArrays: collapseArrays});
               {
                   !this.state.analyzeButtonDisabled &&
 
-              <Section style={{ marginBottom: "5%", marginTop: "2.5%",  marginLeft: "50px"}}>
-                <div className="col-md-1 col-md-offset-5">
+              <Section style={{ marginBottom: "5%", marginTop: "2.5%", }} className="insty-submit-button-container">
+                <div className="col-md-1 col-md-offset-4 analyze-button-container">
                  
                 
 
                   <RaisedButton
                     disabledBackgroundColor="rgba(0,0,0,0);"
                   
-                    className="insty-button"
+                    
                     onClick={this.getInfo}
                     label="Submit"
                     type="submit"
                     Rounded={true}
-                    style={styles.roundedButton}
+                    buttonStyle={styles.roundedButton}
+                    labelColor="white"
+                    style={styles.buttonDiv}
                     overlayStyle={styles.roundedButtonOverlay}
                     disableTouchRipple={true}
                   />
@@ -784,7 +795,7 @@ this.setState({collapseArrays: collapseArrays});
                 subHeading="Here are the results of your resume's..."
                 score={true}
                 >
-                <div  style={dottedContainer} className="col-md-12 ">
+                <div  style={dottedContainer} className="col-md-12 data-visualize-container ">
                   { 
 
 
@@ -798,13 +809,13 @@ this.setState({collapseArrays: collapseArrays});
 
                     )
                    .map((item, index) => (
-                  <div className="row" style={{margin:"15px"}}>
+                  <div className="row" style={{margin:"15px"}} className="score-row">
                     
                       <div style={{marginBottom:"2%"}} className="col-md-11">
                        <label style={labelStyle}> {item[1]["total"]} / 100</label>
                      <Progress percent={item[1]["total"] } style={{overflowWrap: "break-word",}} status="success"  theme={{success: {symbol: item[0], color: this.getColor(item[1]["total"])}}}/>
                       </div>
-                      <div className="col-md-1" style={{marginBottom:"25px !important"}}>
+                      <div className="col-md-1 close-button-insty" style={{marginBottom:"25px !important"}}>
                       
                         <IconButton name={item[0]}   onClick={this.removedFileCallback}  >
                           <FaTimesCircle
@@ -821,11 +832,11 @@ this.setState({collapseArrays: collapseArrays});
                          </IconButton>
 
                        </div>
-                      <div style={{marginBottom:"1.5%"}} className="col-md-12">
+                      <div style={{marginBottom:"1.5%"}} className="col-md-12 view-score-breakdown">
                           
                              <a> <img id={index}
                             onClick={this.handleCollapse}
-                            style={styles.roundedButton2} src={this.state.collapseArrays[index]?viewButton:viewButtonClosed}/> </a>
+                            style={styles.roundedButton2} className="view-score-breakdown-button" src={this.state.collapseArrays[index]?viewButton:viewButtonClosed}/> </a>
                           
 
 
@@ -870,9 +881,9 @@ this.setState({collapseArrays: collapseArrays});
                 style={{marginBottom: "100px",}}
                 >
 
-                 <div style={{width: "60%", marginLeft: "20%"}}>
+                 <div className="insty-help-h6" style={{width: "60%", marginLeft: "20%"}}>
 
-                <h6 style={styles.headingStyle}> Want help sharpening your resume?  </h6>
+                <h6   style={styles.headingStyle}> Want help sharpening your resume?  </h6>
 
 
 
@@ -880,18 +891,18 @@ this.setState({collapseArrays: collapseArrays});
                   <RaisedButton
                       disabledBackgroundColor="rgba(0,0,0,0);"
                     
-                      className="insty-button"
+                      buttonStyle={styles.roundedButton}
                       href="mailto:info@myjobtank.com?Subject=Tried%20Insty%20Beta%20and%20would%20like%20some%20advice..."
                       label="Talk to us"
                       type="submit"
                       Rounded={true}
-                      style={styles.roundedButton}
+                       labelColor="white"
                       overlayStyle={styles.roundedButtonOverlay}
                       disableTouchRipple={true}
                     />
                 </div>
                
-                <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> If you've tried Insty Beta and want to finetune your resume, reach out to one of our recruitment specialists.   We'd be delighted to advise and help define your market value, with no obligation whatsoever. </p>
+                <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> If you've tried InstyMatch and want to finetune your resume, reach out to one of our recruitment specialists.   We'd be delighted to advise and help define your market value, with no obligation whatsoever. </p>
               
                  </div>  
               </Section> 

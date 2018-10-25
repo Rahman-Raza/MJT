@@ -202,7 +202,7 @@ class Expecation extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <div className="col-md-8">
+          <div className="col-md-8 ">
             <Dropdown onRef={ref => (this.SalaryRange = ref)} handleChange={this.handleInfoChange} startValue={getSalary(formData.SalaryStart,formData.SalaryEnd)}>
               <MenuItem value={undefined} primaryText="Salary Range" />
               <MenuItem value={"$0 - $50,000"} primaryText="$0 - $50,000" />
@@ -211,9 +211,10 @@ class Expecation extends Component {
                <MenuItem value={"$250k+"} primaryText="$250k+" />
             </Dropdown>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 expectation-checkbox">
             <Checkbox onRef={ref => (this.AcceptReloc = ref)}
             name="Relocation"
+           primary={true}
             onCheck={this.handleCheckChange}
             checked={this.state.formData.Relocation}
               label="Accept Relocation"
@@ -230,9 +231,10 @@ class Expecation extends Component {
               <MenuItem value={"Seattle"} primaryText="Seattle" />
             </Dropdown>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 expectation-checkbox">
             <Checkbox onRef={ref => (this.WillTrav = ref)}
              onCheck={this.handleCheckChange}
+            primary={true}
               name="Travel"
               checked={this.state.formData.Travel}
               label="Willing to Travel"

@@ -9,13 +9,13 @@ import Section from "../Section";
 import RatedInput from "./RatedInput";
 
 const col8Style = {
-  marginLeft: "0"
+  marginLeft: "-15px",
 };
 const flattenedArraySkills = [].concat(...Skills.JSONData);
 const flattenedArrayLanguages = [].concat(...Languages.JSONData);
 
 const toggleStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   cursor: "pointer",
   margin: "10px 0 10px 30px"
 };
@@ -107,7 +107,7 @@ class RatedInputContainer extends Component {
     return (
       <div>
         <div className="row">
-          <div style={col8Style} className="col-md-12">
+          <div style={col8Style} className="row no-negative-margin">
             {this.state.inputs.map((current, index) => (
               <div
                 style={{ marginBottom: "10px" }}
@@ -132,7 +132,7 @@ class RatedInputContainer extends Component {
         </div>
         {this.state.showInput && (
           <div className="row">
-            <Section containerSize={"90%"}>
+            <Section containerSize={"100%"}>
               <AutoComplete
                 name="Add"
                 dataSource={this.state.dataSource}
@@ -141,17 +141,25 @@ class RatedInputContainer extends Component {
               />
               <RaisedButton
               Rounded={true}
-              className="rounded-button"
-              style={roundedButton}
-                      overlayStyle={roundedButtonOverlay}
-                      primary={true}
+              
+              
+                      
+                     
                 label="Add"
                 
                 onClick={() => {
                   this.addSkill(this.state.currentAddition);
                 }}
                 buttonStyle={{
+                  margin: "0 auto",
+                   color: "white",
                  
+                  position: "relative",
+                  height: "100%",
+                  bordeRadius: "10px",
+                  padding: "10px 10px",
+                  boxShadow: "0px",
+                  backgroundColor: "#79C239",
                 }}
                 
                 labelStyle={{

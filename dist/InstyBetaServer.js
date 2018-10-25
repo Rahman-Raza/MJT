@@ -78,6 +78,8 @@ module.exports = (app) => {
          // POST succeeded...
         // console.log("GOOD POST to /instantmatcher", body);
         console.log("checking body[code] ", JSON.parse(body)["Code"]);
+        console.log("checking body ", JSON.parse(body));
+
        
         if (JSON.parse(body)["Code"] === 200){
           console.log("succesfull POST to /instantmatcher");

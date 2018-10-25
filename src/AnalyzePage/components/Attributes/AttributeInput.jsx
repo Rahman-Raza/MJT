@@ -7,7 +7,7 @@ import TextField from "material-ui/TextField";
 
 const dottedContainer = {
   position: "relative",
-  border: "1px solid #72C4CC",
+  border: "1px solid #ffb81b",
   borderRadius: "25px",
   padding: "40px 10px 30px",
   margin: "10px 0",
@@ -29,7 +29,7 @@ const root = {
 };
 
 const labelStyle = {
-  color: "#72C4CC",
+  color: "#009dd6",
   position: "absolute",
   top: "-30px",
   fontSize: "12px"
@@ -112,8 +112,8 @@ class AttributeInput extends Component {
 
         {this.props.labels.map(current => {
           return (
-            <div key={current.labelText} className="col-sm-6">
-              <label style={labelStyle}>{current.labelText}</label>
+            <div key={current.labelText} className="col-sm-6 attribute-container">
+              <label className="attribute-label" style={labelStyle}>{current.labelText}</label>
               <TextField
             
            

@@ -4,23 +4,23 @@ import scoreDistribution from "../../_constants/images/score-distribution.png";
 const containerStyle = {
   maxWidth: "100%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 const containerStyle2 = {
   maxWidth: "85%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 
 const containerStyle3 = {
   maxWidth: "85%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 const containerStyle4 = {
   maxWidth: "65%",
   position: "relative",
-  zIndex: "100"
+  zIndex: "20"
 };
 
 const headingStyle = {
@@ -71,7 +71,8 @@ class Section extends Component {
                        <img 
                       
                       style={{width: "450px",margin:"2.5%", height: "auto"}}
-                       src={scoreDistribution}/>
+                       src={scoreDistribution}
+                       className="score-range-image"/>
                     
 
                       ) : null
