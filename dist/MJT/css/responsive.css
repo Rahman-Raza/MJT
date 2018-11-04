@@ -385,6 +385,26 @@
 /* MAX 480px */
 
 @media only screen and (max-width: 480px){
+	#home{
+		background-attachment: scroll;
+	}
+	.feature-head{
+		font-size: 12px !important;
+	}
+	.col-xs-9 {
+    /* margin-left: 25px; */
+    -ms-flex: 50%;
+    /* flex: 40%; */
+    max-width: 100px;
+    min-height: 110px;
+    max-height: 10px;
+}
+	.mobile-dropzone{
+		margin-left: 10px;
+	}
+	.mobile-hide{
+		display:none;
+	}
 	.inner{
 		padding-bottom: 40px !important;
 	}
@@ -533,7 +553,7 @@ min-width: 100% !important;
 	}
 	.analyze-button-container{
 		margin-top:25px;
-		margin-left: 20% !important;
+		margin-left: 75px !important;
 	}
 	.insty-submit-button-container{
 		margin-top:25px;
@@ -1091,12 +1111,28 @@ min-width: 100% !important;
 }
 /*screen size for iphone 768*/
 @media only screen and (max-width: 375px) and (min-width:321px){
+	.mobile-question-button{
+		margin-left: 0px !important;
+		margin-top: 5px !important;
+		margin-bottom: 5px !important;
+	}
+	.feature-head{
+		font-size: 12px !important;
+	}
     .col-xs-3{
         margin-left: 25px;
         -ms-flex: 50%;
         flex: 40%;
         max-width: 41%;  
     }
+    .col-xs-9 {
+    /* margin-left: 25px; */
+    -ms-flex: 50%;
+    /* flex: 40%; */
+    max-width: 100px;
+    min-height: 110px;
+    max-height: 10px;
+}
     .needs-inner{
         padding:20px 0 20px 0;
     }
@@ -1109,6 +1145,7 @@ min-width: 100% !important;
     .subheader{
         margin-left: 25px;
         margin-bottom: 35px;
+        padding-top:5px !important;
     }
     .about-head{
     font-size: 16px;
@@ -1160,8 +1197,8 @@ min-width: 100% !important;
         margin-top: 25px;
     }
      .mobile-header{   
-    margin-left: 20px;
-    width: 280px;
+    margin-left: 80px;
+    width: 200px;
     }
     .subheader-3{
         font-size:12px;

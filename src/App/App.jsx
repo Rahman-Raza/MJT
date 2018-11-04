@@ -6,6 +6,7 @@ import { history } from "../_helpers";
 import { alertActions } from "../_actions";
 import { PrivateRoute } from "../_components";
 import { HomePage } from "../HomePage";
+import { Landing } from "../Landing";
 import { AddJob } from "../AddJob";
 import { LoginPage } from "../LoginPage";
 import { DashBoard } from "../DashBoard";
@@ -90,7 +91,7 @@ class App extends React.Component {
    
     <div class="wrapy">
       
-        <a href="index#home" class="brand">
+        <a href="Landing" class="brand">
           <img  src={logo} alt="Logo" class="site-logo" />
          
         </a>
@@ -105,11 +106,11 @@ class App extends React.Component {
           
         <ul class=" uppercase bold top-menu no-float" id="top-menu">
 
-          <li class="nav-item2"><a href="index#home" >Home</a></li>
-          <li class="nav-item2"><a href="index#services" >Services</a></li>
-          <li class="nav-item2"><a href="index#history" >Expertise</a></li>
+          <li class="nav-item2"><a href="Landing#home" >Home</a></li>
+          <li class="nav-item2"><a href="Landing#services" >Services</a></li>
           
-          <li class="nav-item2"><a href="index#features" >Our Values</a></li>
+          
+          <li class="nav-item2"><a href="Landing#values" >Our Values</a></li>
 
 
 
@@ -117,11 +118,11 @@ class App extends React.Component {
 
 
 
-          <li class="nav-item2"><a href="index#talent" >Job Seekers</a></li>
-          <li class="nav-item2"><a href="index#Employers" >Employers</a></li>
-          <li class="nav-item2"><a href="index#contact" >Contact</a></li>
+          <li class="nav-item2"><a href="Landing#talent" >Job Seekers</a></li>
+          <li class="nav-item2"><a href="Landing#Employers" >Employers</a></li>
+          <li class="nav-item2"><a href="Landing#contact" >Contact</a></li>
           <li class="insty">
-            <a href="/instymatch" target="_blank" >
+            <a href="/instymatch" >
            InstyMatch 
            <img src={question} style={{paddingLeft: "10px",width: "25%",marginRight: "-20px",marginBottom: "5px"}}/>
            </a>
@@ -140,19 +141,15 @@ class App extends React.Component {
   </nav>
   </div>
 
-        <Section style={{padding: "40px"}}>
-  
-
-        
-
-        </Section>
         <div style={styles.container} className="responsive-container">
           {alert.message && (
             <div className={`alert ${alert.type}`}>{alert.message}</div>
           )}
           <Router history={history}>
             <div >
+           
               <Route exact path="/Resume" component={HomePage} />
+               <Route path="/Landing" component={Landing} />
               <Route path="/login" component={LoginPage} />
               <Route path="/joborder" component={AddJob} />
               <Route path="/instymatch" component={InstyBeta} />

@@ -709,7 +709,7 @@ this.setState({collapseArrays: collapseArrays});
               <Section
                 containerSize={1}
                 heading="Step 1."
-                subHeading="Copy and paste the job description to the following box."
+                subHeading="Provide position or job description (at least 10 characters)."
                 >
                      
                     <div style={dottedContainer} className="col-12 scores-dotted-container">
@@ -765,7 +765,7 @@ this.setState({collapseArrays: collapseArrays});
                   !this.state.analyzeButtonDisabled &&
 
               <Section style={{ marginBottom: "5%", marginTop: "2.5%", }} className="insty-submit-button-container">
-                <div className="col-md-1 col-md-offset-4 analyze-button-container">
+                <div className="col-md-1 col-md-offset-5 analyze-button-container">
                  
                 
 

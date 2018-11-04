@@ -959,15 +959,16 @@ class HomePage extends React.Component {
                   </MuiThemeProvider>
                 </Section>
 
-               <Section style={{marginTop:"5px",marginLeft:"25px"}} containerSize={""}>
-            
-              <IconButton style={{marginTop:"5px"}} tooltipPosition="center-right" touch={true} tooltipStyles={{fontSize:"14px",marginBottom:"40px",marginLeft:"20px"}} tooltip="Submit your resume so that our candidate-recruiter pairing system can find you your next role!">
-                <FaQuestionCircle
-              style={styles.linkedInIcon}
-              color="#0077B5"
-              size={20}
-            />
-              </IconButton>
+               <Section containerSize={""}>
+              <div style={{marginTop:"5px",marginLeft:"25px"}} className="mobile-question-button">
+                <IconButton className="mobile-question-button" style={{marginTop:"5px"}} tooltipPosition="center-right" touch={true} tooltipStyles={{fontSize:"14px",marginBottom:"40px",marginLeft:"20px"}} tooltip="Submit your resume so that our candidate-recruiter pairing system can find you your next role!">
+                  <FaQuestionCircle
+                style={styles.linkedInIcon}
+                color="#0077B5"
+                size={20}
+              />
+                </IconButton>
+            </div>
             
           </Section>
                 <Section style={{ marginBottom: "5%" }} containerSize={1}>
@@ -980,17 +981,17 @@ class HomePage extends React.Component {
                   </div>
                 </Section>
                 <Section style={{ marginBottom: "5%" }} containerSize={1}>
-                  <div className="col-md-5 ">
+                  <div className="col-md-5 mobile-dropzone ">
                     <DropzoneComponent
                       config={this.componentConfig}
                       eventHandlers={this.eventHandlers}
                       djsConfig={this.djsConfig}
                     />
                   </div>
-                  <div className="col-md-1 " style={styles.orStyle}>
+                  <div className="col-md-1 mobile-hide "  style={styles.orStyle}>
                     OR
                   </div>
-                  <div className="col-md-5" style={{ marginLeft: "2.5%" }}>
+                  <div className="col-md-5 mobile-hide"  style={{ marginLeft: "2.5%" }}>
                     {linkedInApi}
                   </div>
                 </Section>

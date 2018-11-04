@@ -73,9 +73,9 @@
 
           <li class="nav-item"><a href="#home" >Home</a></li>
           <li class="nav-item"><a href="#services" >Services</a></li>
-          <li class="nav-item"><a href="#history" >Expertise</a></li>
           
-          <li class="nav-item"><a href="#features" >Our Values</a></li>
+          
+          <li class="nav-item"><a href="#values" >Our Values</a></li>
 
 
 
@@ -170,7 +170,7 @@
       <!-- Header -->
         <h1 class="header   blue mobile-header">We Deliver Results. Better. Faster.</h1>
       <!-- Description -->
-      <h3 class="grey subheader">My Job Tank offers AI-driven staffing solutions with extraordinary customer service.
+      <h3 class="grey subheader">My Job Tank offers AI-driven staffing solutions with extraordinary customer service coupled with our global network of elite talent with high-demand STEM skill sets.
 
 
 
@@ -379,7 +379,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
 
 
 <!-- History -->
-  <section id="history" class="container  industries ">
+  <section id="expertise" class="container  industries ">
     <div class="inner animated inner-bottom-margin"  >
     <!-- Header -->
         <h1 class="header blue Placingheader">Placing Specialty Talent Is Our Thing</h1>
@@ -774,7 +774,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
     </div>
 </section>
 
-<section  id="features" class="values-container  relative animated values-we-live-by  " data-animation="fadeInLeft" data-animation-delay="100">
+<section  id="values" class="values-container  relative animated values-we-live-by  " data-animation="fadeInLeft" data-animation-delay="100">
 
 
   <div class="inner">
@@ -932,48 +932,52 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
       <!-- Form Area -->
       <div class="contact-form">
         <!-- Form -->
-        <form id="contact-us" method="post" action="/">
+        <form id="contact-us" method="post" action="/contact_form">
+
+          <div class="row">
+            <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+              <input type="text" name="firstname" id="firstname" required="required" class="form " placeholder="First Name" />
+            </div>
+
+             <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+              <input type="text" name="lastname" id="lastname" required="required" class="form " placeholder="Last Name" />
+            </div>
+
+          </div>
           <!-- Left Inputs -->
-          <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-            <!-- Name -->
-            <input type="text" name="name" id="name" required="required" class="form " placeholder="Your Name" />
-            <!-- Email -->
-            <input type="email" name="mail" id="mail" required="required" class="form " placeholder="Email Address" />
-            <!-- Subject -->
-            <input type="text" name="subject" id="subject" required="required" class="form " placeholder="Job Position" />
-
-            <div class="row">
-                <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-                    <input type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked> <label class="grey" for="radio-one" style=" font-weight: 400">San Francisco</label>
-                </div>
-                <div class="col-xs-5 col-xs-offset-1 col-xs-5-1 animated" data-animation="fadeInLeft" data-animation-delay="300">
-                    <input  type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked> <label class="grey" style="margin-right:10px;  font-weight: 400" for="radio-one">Seattle</label>
-                </div>
-
+          <div class="row">
+            <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+              <input type="text" name="subject" id="subject" required="required" class="form " placeholder="Job Position" />
             </div>
 
-            <div class="row">
-                <div class="col-xs-6 animated col-xs-5-2" data-animation="fadeInLeft" data-animation-delay="300">
-                    <input type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked> <label class="grey" for="radio-one" style=" font-weight: 400" >New York City</label>
-                </div>
-                <div class="col-xs-5  col-xs-offset-1 col-cs-5-3 animated" data-animation="fadeInLeft" data-animation-delay="300">
-                    <input type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked> <label class="grey" for="radio-one" style=" font-weight: 400">Shanghai </label>
-                </div>
-
+             <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+              <input type="text" name="company" id="company" required="required" class="form " placeholder="Company" />
             </div>
 
-          </div><!-- End Left Inputs -->
-          <!-- Right Inputs -->
-          <div class="col-xs-6 animated" data-animation="fadeInRight" data-animation-delay="300">
+          </div>
+          <div class="row">
+            <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+                  <input type="email" name="email" id="email" required="required" class="form " placeholder="Email Address" />
+            </div>
 
-            <input type="text" name="phone" id="phone" required="required" class="form " placeholder="Phone Number" />
+             <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                <!-- Name -->
+              <input type="text" name="phone" id="phone" required="required" class="form " placeholder="Phone Number" />
+            </div>
 
-             <input type="text" name="company" id="company" required="required" class="form " placeholder="Company" />
-            <!-- Message -->
-            <textarea name="message" id="message" class="form textarea "  placeholder="Type your message here"></textarea>
-          </div><!-- End Right Inputs -->
+          </div>
+            
+
+          
+    
           <!-- Bottom Submit -->
           <div class="relative fullwidth col-xs-12">
+             <textarea name="message" id="message" class="form textarea "  placeholder="Type your message here"></textarea>
             <!-- Send Button -->
             <button type="submit" id="submit" name="submit" class="form-btn ">Send Message</button> 
           </div><!-- End Bottom Submit -->
@@ -985,7 +989,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
         <div class="mail-message-area">
           <!-- Message -->
           <div class="alert gray-bg mail-message not-visible-message">
-            <strong>Thank You !</strong> Your email has been delivered.
+            <strong>Thank You !</strong> Your message has been delivered.
           </div>
         </div>
 
@@ -1050,12 +1054,13 @@ technology initiatives with the right high-skilled talent.
                   <div class="row">
                   <span class="sameliny"> 
 
-                   <a style="margin-right: 20px;" href="mailto:sf@myjobtank.com">
+                   <a style="margin-right: 20px;" href="mailto:info@myjobtank.com">
                       <img src="MJT/images/icons/mail-black-envelope-symbol.png">
                     </a>
 
-                    <h4 class="lefttt member-name normal black">sf@myjobtank.com</h4> 
-
+                    <a href="mailto:info@myjobtank.com">
+                      <h4 class="lefttt member-name normal black">info@myjobtank.com</h4> 
+                    </a>
                   </span>
 
                     </div>
@@ -1085,7 +1090,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/linkedin-logo.png" >
                     </a>
 
+                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
                     <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    </a>
 
                   </span>
                 </div>
@@ -1097,8 +1104,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/location.png" >
                     </a>
 
+                    <a  href="https://goo.gl/maps/xn9fyKKQzHD2">
                     <h4 class="lefttt member-name normal black">600 California Street, 12th floor @WeWork San Francisco,CA 94018</h4>
-
+                  </a>
                   </span>
 
                 </div>
@@ -1141,12 +1149,13 @@ technology initiatives with the right high-skilled talent.
                   <div class="row">
                   <span class="sameliny"> 
 
-                   <a style="margin-right: 20px;" href="mailto:seattle@myjobtank.com">
+                   <a style="margin-right: 20px;" href="mailto:info@myjobtank.com">
                      <img src="MJT/images/icons/mail-black-envelope-symbol.png" >
                     </a>
 
-                    <h4 class="lefttt member-name normal black overflow">seattle@myjobtank.com</h4> 
-
+                    <a  href="mailto:info@myjobtank.com">
+                    <h4 class="lefttt member-name normal black overflow">info@myjobtank.com</h4> 
+                   </a>
                   </span>
 
                     </div>
@@ -1176,7 +1185,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/linkedin-logo.png" >
                     </a>
 
+                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
                     <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    </a>
 
                   </span>
                 </div>
@@ -1188,7 +1199,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/location.png" >
                     </a>
 
+                    <a  href="https://goo.gl/maps/8ojC3v2ozNp">
                     <h4 class="lefttt member-name normal black">10400 NE 4th Street Bellevue, WA 98004</h4>
+                    </a>
 
                   </span>
 
@@ -1228,11 +1241,13 @@ technology initiatives with the right high-skilled talent.
                   <div class="row">
                   <span class="sameliny"> 
 
-                    <a style=" margin-right: 20px;" href="mailto:NYC@myjobtank.com">
+                    <a style=" margin-right: 20px;" href="mailto:info@myjobtank.com">
                       <img src="MJT/images/icons/mail-black-envelope-symbol.png" >
                     </a>
 
-                    <h4 class="lefttt member-name normal black">NYC@myjobtank.com</h4> 
+                    <a href="mailto:info@myjobtank.com">
+                      <h4 class="lefttt member-name normal black">info@myjobtank.com</h4> 
+                    </a>
 
                   </span>
 
@@ -1264,7 +1279,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/linkedin-logo.png" >
                     </a>
 
-                    <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
+                      <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    </a>
 
                   </span>
                 </div>
@@ -1276,7 +1293,9 @@ technology initiatives with the right high-skilled talent.
                       <img src="MJT/images/icons/location.png" >
                     </a>
 
-                    <h4 class="lefttt member-name normal black">1460 Broadway, 5th floor, New York, NY 10036</h4>
+                    <a  href="https://goo.gl/maps/SQvVXTUPQK62">
+                      <h4 class="lefttt member-name normal black">1460 Broadway, 5th floor, New York, NY 10036</h4>
+                    </a>
 
                   </span>
 
@@ -1316,11 +1335,13 @@ technology initiatives with the right high-skilled talent.
                   <div class="row">
                   <span class="sameliny"> 
 
-                    <a style="margin-right: 20px;" href="mailto:careerservices@myjobtank.com.cn">
+                    <a style="margin-right: 20px;" href="mailto:info@myjobtank.com">
                       <img src="MJT/images/icons/mail-black-envelope-symbol.png" >
                     </a>
 
-                    <h4 class="lefttt member-name normal black overflow">careerservices@myjobtank.com.cn</h4> 
+                    <a  href="mailto:info@myjobtank.com">
+                      <h4 class="lefttt member-name normal black overflow">info@myjobtank.com</h4> 
+                    </a>
 
                   </span>
 
@@ -1351,7 +1372,9 @@ technology initiatives with the right high-skilled talent.
                        <img src="MJT/images/icons/linkedin-logo.png" >
                     </a>
 
-                    <h4 class=" lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
+                     <h4 class=" lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                    </a>
 
                   </span>
                 </div>
@@ -1363,8 +1386,10 @@ technology initiatives with the right high-skilled talent.
                      <img src="MJT/images/icons/location.png" >
                     </a>
 
-                    <h4 style=" margin-left:-7px;" class=" lefttt member-name normal black">No. 468 Nanjing West Road, Jing’an District, 
-Shanghai, People's Republic of China</h4>
+                    <a style="margin-right: 28px;" href="https://goo.gl/maps/qvCw4W9L9qT2">
+                      <h4 style=" margin-left:-7px;" class=" lefttt member-name normal black">No. 468 Nanjing West Road, Jing’an District, 
+                        Shanghai, People's Republic of China</h4>
+                    </a>
 
                   </span>
 

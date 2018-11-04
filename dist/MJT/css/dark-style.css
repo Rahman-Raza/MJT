@@ -619,6 +619,8 @@
 }
 
 .navi {
+	    background: #000 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
   padding-top: 10px;    
   position: fixed;
   z-index: 10;
@@ -736,7 +738,7 @@
   z-index: 1;
   height: 100vh;
   max-height: 1080px;
-  background-image: url('../images/backgrounds/landing-bg.png');
+  background-image: url('../images/backgrounds/landing-bg2.png');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -3602,7 +3604,7 @@ border-radius: 50%;
 		border:1px solid #ffb81b;
 		border-radius: 10px;
 		margin-bottom:25px;
-		color: #fff;
+		color: #666666;
 		font-size:13px;
 		-webkit-transition: all 0.4s;
 		-moz-transition: all 0.4s;

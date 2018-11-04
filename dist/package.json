@@ -32,9 +32,12 @@
     "material-icons-css": "^1.0.1",
     "material-ui": "^0.20.0",
     "multer": "^1.1.0",
+    "nodejs-nodemailer-outlook": "^1.0.8",
+    "nodemailer": "^4.6.8",
     "public-ip": "^2.4.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
+    "sendmail": "^1.4.1",
     "serve-static": "^1.13.2"
   },
   "optionalDependencies": {
