@@ -309,6 +309,7 @@ class InstyBeta extends React.Component {
      this.mouseMoveHandler = this.mouseMoveHandler.bind(this);
      this.mouseOutHandler = this.mouseOutHandler.bind(this);
      this.createTooltip = this.createTooltip.bind(this);
+     this.testFrontEndInstyBeta = this.testFrontEndInstyBeta.bind(this);
   }
 
  initCallback (dropzone) {
@@ -497,7 +498,7 @@ onFileDrop() {
    
 
 
-    axios.post("/contactJD", { formData }).then( res => {
+    axios.post("http://localhost:8080/contactJD", { formData }).then( res => {
       //console.log("checking req", req);
 
       //console.log("heres the response from server for JD: ", res.data);
@@ -513,6 +514,45 @@ onFileDrop() {
 
   }
 
+  testFrontEndInstyBeta(myfiles){
+
+    
+
+
+    var data = new FormData();
+
+   var fileArray = this.state.myDropZone.getQueuedFiles();
+
+
+   var myfiles = [];
+
+     
+
+          data.append("myfiles",fileArray);
+    data.append("JD",this.state.formData.JobDescription );
+
+     for (var value of data.values()) {
+            console.log("here is formData",value); 
+      }
+   var self=this;
+
+   axios({
+    method: 'post',
+    url: 'http://18.206.187.45:8080/instybeta',
+    data: data,
+    
+    })
+    .then(function (response) {
+        //handle success
+        console.log("here is front end insty response",response);
+    })
+    .catch(function (response) {
+        //handle error
+        console.log("error on front end insty response",response);
+    });
+
+  }
+
   handleFileSubmit(){
      console.log("got to handle file submit");
     if (this.state.myDropZone){
@@ -520,7 +560,21 @@ onFileDrop() {
      // console.log("mydropzone quueue", this.state.myDropZone.getQueuedFiles());
      
       if (this.state.myDropZone.getQueuedFiles().length > 0 )
-        this.state.myDropZone.processQueue()
+      {
+        
+
+        var fileArray =  this.state.myDropZone.getQueuedFiles();
+        console.log("looking at files",fileArray);
+
+        
+
+
+      
+        this.testFrontEndInstyBeta();
+
+
+        //this.state.myDropZone.processQueue()
+      }
       else this.setState({ loading: false });
 
     }
