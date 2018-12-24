@@ -498,7 +498,7 @@ onFileDrop() {
    
 
 
-    axios.post("http://localhost:8080/contactJD", { formData }).then( res => {
+    //axios.post("http://localhost:8080/contactJD", { formData }).then( res => {
       //console.log("checking req", req);
 
       //console.log("heres the response from server for JD: ", res.data);
@@ -508,7 +508,7 @@ onFileDrop() {
 
 
       this.handleFileSubmit();
-    });
+  //  });
 
     
 
@@ -523,23 +523,28 @@ onFileDrop() {
 
    var fileArray = this.state.myDropZone.getQueuedFiles();
 
-
-   var myfiles = [];
+   console.log("checking fileArray", fileArray);
 
      
 
-          data.append("myfiles",fileArray);
-    data.append("JD",this.state.formData.JobDescription );
+          data.append("resumefiles", fileArray);
+    data.append("JD",this.state.formData.JobDescription);
 
-     for (var value of data.values()) {
-            console.log("here is formData",value); 
+    for(var pair of data.entries()) {
+      console.log(pair[0]+ ', '+ pair[1]); 
       }
+
+    
    var self=this;
 
    axios({
     method: 'post',
     url: 'http://18.206.187.45:8080/instybeta',
     data: data,
+    headers: {
+      "Content-type": "multipart/form-data",
+    }
+    
     
     })
     .then(function (response) {
