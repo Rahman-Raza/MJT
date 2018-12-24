@@ -527,7 +527,10 @@ onFileDrop() {
 
      
 
-          data.append("resumefiles", fileArray);
+          
+    for (var i=0; i < fileArray.length; i++){
+      data.append("resumefiles[]", fileArray[i], fileArray[i]["name"]);
+    }
     data.append("JD",this.state.formData.JobDescription);
 
     for(var pair of data.entries()) {
