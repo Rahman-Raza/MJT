@@ -310,6 +310,7 @@ class InstyBeta extends React.Component {
      this.mouseOutHandler = this.mouseOutHandler.bind(this);
      this.createTooltip = this.createTooltip.bind(this);
      this.testFrontEndInstyBeta = this.testFrontEndInstyBeta.bind(this);
+     this.handlePostSuccess = this.handlePostSuccess.bind(this);
   }
 
  initCallback (dropzone) {
@@ -379,8 +380,8 @@ onFileDrop() {
     console.log("checking file", file);
     this.setState({ analyzeButtonDisabled: false });
   }
- fileUploadedSuccess(response,serverResponse) {
-    if (response.accepted && serverResponse) {
+ fileUploadedSuccess(serverResponse) {
+    
       //console.log("checking result from uploadhandler response from server", serverResponse);
 
       if (serverResponse === 'Limit Exceded'){
@@ -417,14 +418,8 @@ onFileDrop() {
       }
      
     }
-    else{
+   
 
-      console.log("checking result from uploadhandler due to error", serverResponse);
-
-      this.setState({loadingMessage: 'There was an error processing your resumes.  Please refresh the page and try again.'});
-
-    }
-  }
   fileUploadedComplete(response,serverResponse) {
    
 
@@ -523,19 +518,21 @@ onFileDrop() {
 
    var fileArray = this.state.myDropZone.getQueuedFiles();
 
-   console.log("checking fileArray", fileArray);
+   //console.log("checking fileArray", fileArray);
 
      
-
+     //data.append('myfiles',fileArray[0]);
           
     for (var i=0; i < fileArray.length; i++){
-      data.append("resumefiles[]", fileArray[i], fileArray[i]["name"]);
+      //console.log("appending resume",fileArray[i]["name"] );
+
+      data.append("myfiles", fileArray[i], fileArray[i]["name"]);
     }
     data.append("JD",this.state.formData.JobDescription);
 
-    for(var pair of data.entries()) {
-      console.log(pair[0]+ ', '+ pair[1]); 
-      }
+    // for(var pair of data.entries()) {
+    //   console.log(pair[0]+ ', '+ pair[1]); 
+    //   }
 
     
    var self=this;
@@ -553,12 +550,26 @@ onFileDrop() {
     .then(function (response) {
         //handle success
         console.log("here is front end insty response",response);
+        self.handlePostSuccess(response.data);
     })
     .catch(function (response) {
         //handle error
         console.log("error on front end insty response",response);
     });
 
+  }
+
+  handlePostSuccess(data){
+    if (data["Code"] == 429){
+      //Limit exceded from server
+      this.fileUploadedSuccess('Limit Exceded');
+    }
+    else if(data["Code"] == 200){
+      this.fileUploadedSuccess(data["Data"]);
+    }
+    else {
+      this.fileUploadedSuccess('Error');
+    }
   }
 
   handleFileSubmit(){
