@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const FOUNDATION_ADDRESS = 'TWiWt5SEDzaEqS6kE5gandWMNfxR2B5xzg';
 ////////////////////////////////////////////////////////////////////////////////////
-const contractAddress = 'TKD928iuZbHS85D8KG9t8CRpjP7QsZDcuZ';   /// Add your contract address here
+const contractAddress = 'TBtnwBBa8UBWbb1mLi9vPYm3gmCF29Cw7N';   /// Add your contract address here
 ////////////////////////////////////////////////////////////////////////////////////
 
 class Blockchain extends React.Component {
@@ -108,8 +108,8 @@ class Blockchain extends React.Component {
         await Utils.setTronWeb(window.tronWeb, contractAddress);
     }
   
-    onResumeProcess() {
-        Utils.contract.processResumes(this.resumeID.current.value, this.score.current.value*100, new Date().getTime()).send({
+    onResumeProcess(resumeID, score) {
+        Utils.contract.processResumes(resumeID, score*100, new Date().getTime()).send({
             shouldPollResponse: true,
             callValue: 0
         }).then(res => Swal({
@@ -146,41 +146,8 @@ class Blockchain extends React.Component {
                       </div>
                   <hr style={{color: 'white', backgroundColor: 'white', height: 0.5}}/>
 
-                  <h1 className="topnav" style={{color : 'red' }}>MJT Dapp</h1>
-                  <hr style={{color: 'white', backgroundColor: 'white', height: 0.5}}/>
-                  <br/>
-                  <br/>
-
-                  <label>
-                    ResumeID:
-                    <br/>
-                     <input type="number" ref={this.resumeID}  />
-                  </label>
-                  <br/>
-
-                   <label>
-                    Resume Total Score:
-                    <br/>
-                    <input type="number" ref={this.score}  />
-                  </label>
-                 
-                  <br/>
-                  <br/>
-
-      <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
-                                                        this.onResumeProcess()}  }>Process Resume </button>
-
       <br/>
       <br/>
-                <label>
-                    ResumeID:
-                    <br/>
-                     <input type="number" ref={this.resumeIDStored} />
-                  </label>
-                  <br/>
-                  <br/>
-                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
-                                                        this.onGetResume()}  }>Get Resume </button>
 
                 </div>
                 

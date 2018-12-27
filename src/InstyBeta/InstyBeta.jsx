@@ -1,50 +1,38 @@
-import React, { Component, Image} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { connect } from "react-redux";
 import { Collapse} from 'reactstrap';
+import Swal from 'sweetalert2';
+
 // const si = require('systeminformation');
+import 'babel-polyfill';
 
 import axios from "axios";
-import MediaQuery from 'react-responsive';
-
 // Custom Components
-import Header from "./components/Header";
-
+import Utils from '../utils'
 import Section from "./components/Section";
+import Blockchain from "./components/Blockchain";
+
 import DataVisualization from "./components/DataVisualization";
-import Info from "./components/Info";
-import EducationContainer from "./components/Education/EducationContainer";
-import EmploymentInput from "./components/Employment/EmploymentInput";
-import RatedInputContainer from "./components/Ratings/RatedInputContainer";
-import Expectation from "./components/Expectation";
-import AttributeContainer from "./components/Attributes/AttributeContainer";
 import DropzoneComponent from "react-dropzone-component";
+
 // Material-UI
 import { deepOrange500 } from "material-ui/styles/colors";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 
-import { BounceLoader } from "react-spinners";
-import ProgressButton from 'react-progress-button'
 // Font
 import Paper from "material-ui/Paper";
-import { history } from "../_helpers";
 import Background from "../_constants/images/insty.png";
 import viewButton from "../_constants/images/viewButton.png";
 import viewButtonClosed from "../_constants/images/viewButtonClosed.png";
-import { Line, Circle } from 'rc-progress';
 import Loadable from 'react-loading-overlay';
 import {
   TextValidator,
   ValidatorForm,
-  SelectValidator
 } from "react-material-ui-form-validator";
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
-import FlatButton from 'material-ui/FlatButton';
-import {PieChart} from 'react-easy-chart';
-import {Legend} from 'react-easy-chart';
 import IconButton from 'material-ui/IconButton';
 import FaTimesCircle from "react-icons/lib/fa/times-circle";
 
@@ -55,16 +43,6 @@ const muiTheme = getMuiTheme({
   }
 });
 
-const legendStyle = {
-    
-      backgroundColor: '#f9f9f9',
-      border: '1px solid #e5e5e5',
-      borderRadius: '12px',
-      fontSize: '0.8em',
-      maxWidth: '300px',
-      padding: '12px'
-    
-  };
 const dottedContainer = {
   position: "relative",
   border: "1px solid #FFAA3B",
@@ -75,16 +53,6 @@ const dottedContainer = {
 
 };
 
-const dottedContainer2 = {
-  position: "relative",
-  border: "1px solid #FFAA3B",
-  borderRadius: "25px",
-  padding: "40px 40px 40px",
-  marginTop: "10px",
-  marginBottom: "50px",
-  overflow: "hidden",
-
-};
 const labelStyle = {
   color: "#00ADF3",
   position: "absolute",
@@ -121,9 +89,6 @@ const iconStyle = {
   cursor: "pointer",
 };
 
-
-
-
 const styles = {
   paperStyle: {
     position: "relative",
@@ -136,9 +101,6 @@ const styles = {
     borderWidth: "2px"
   },
   roundedButton: {
-   
-
-
      margin: "0 auto",
      color: "white",
    
@@ -192,7 +154,6 @@ class InstyBeta extends React.Component {
    
     super(props);
 
-
     this.state = {
      showToolTip: false,
       analyzeButtonDisabled: true,
@@ -209,9 +170,6 @@ class InstyBeta extends React.Component {
 
     };
         
-
-
-
         this.componentConfig = {
       iconFiletypes: [".pdf", ".doc", ".txt"],
       showFiletypeIcon: true,
@@ -231,6 +189,7 @@ class InstyBeta extends React.Component {
       dictDefaultMessage: "Drag and drop resume to upload",
       acceptedFiles: ".pdf,.doc,.docx,.txt"
     };
+    this.resumeIDStored = React.createRef();
 
     this.eventHandlers = {
       // This one receives the dropzone object as the first parameter
@@ -283,10 +242,6 @@ class InstyBeta extends React.Component {
       queuecomplete: null
     };
 
-  
-
-
-
     this.convertLanguages = this.convertLanguages.bind(this);
      this.onFileDrop = this.onFileDrop.bind(this);
      this.onDrop = this.onDrop.bind(this);
@@ -311,6 +266,8 @@ class InstyBeta extends React.Component {
      this.createTooltip = this.createTooltip.bind(this);
      this.testFrontEndInstyBeta = this.testFrontEndInstyBeta.bind(this);
      this.handlePostSuccess = this.handlePostSuccess.bind(this);
+     this.onGetResume = this.onGetResume.bind(this);
+     this.onSubmitResumes = this.onSubmitResumes.bind(this);
   }
 
  initCallback (dropzone) {
@@ -363,6 +320,26 @@ mouseOverHandler(d, e) {
 
     return newLangs;
   }
+
+  async onGetResume() {
+    const resume = await Utils.contract.getResume(this.resumeIDStored.current.value).call();
+    console.log(resume)
+  }
+
+  onSubmitResumes(resumeID, score) {
+    Utils.contract.processResumes(resumeID, score*100, new Date().getTime()).send({
+      shouldPollResponse: true,
+      callValue: 0
+  }).then(res => Swal({
+      title: 'Resume Processing Succeeded',
+      type: 'success'
+  })).catch(err => Swal({
+      title: 'Resume Processing Failed',
+      type: 'error'
+  }))
+}
+
+
 onFileDrop() {
     console.log("checking onFileDrop");
   }
@@ -376,6 +353,7 @@ onFileDrop() {
 
     //this.setState({ files: acceptedFiles });
   }
+  
   addedFileCallback(file) {
     console.log("checking file", file);
     this.setState({ analyzeButtonDisabled: false });
@@ -411,8 +389,6 @@ onFileDrop() {
 
       else{
             this.handleResumes(serverResponse);
-
-
       this.setState({loading: false});
       this.setState({resumeCheck: true});
       }
@@ -420,12 +396,9 @@ onFileDrop() {
     }
    
 
-  fileUploadedComplete(response,serverResponse) {
-   
-
-
-   
+  fileUploadedComplete(response,serverResponse) { 
   }
+
   fileUploadedError(response,serverResponse) {
     console.log("checking result from uploadhandler due to error", serverResponse);
 
@@ -437,22 +410,14 @@ onFileDrop() {
     .bind(this),
     3000
 );
-
-
-   
   }
 
   removedFileCallback(file) {
-
     const resumeFiles = this.state.resumeFiles;
-
     console.log("checking file when about to remove", file);
     if (file["status"] === 'success'){
-      
-      
+    
       var temp = file["name"];
-
-
       delete resumeFiles[temp];
 
       if (Object.keys(resumeFiles).length > 0)
@@ -460,10 +425,7 @@ onFileDrop() {
         this.setState({resumeFiles});
       else
         this.setState({resumeFiles, resumeCheck: false});
-      
-    }
-
-    else{
+    } else {
       console.log("got to else in removedfilecallback, heres the result", file.currentTarget.name);
        var temp = file.currentTarget.name;
 
@@ -477,13 +439,8 @@ onFileDrop() {
         this.setState({resumeFiles, resumeCheck: false});
 
     }
-
-
     //this.setState({resumeFiles});
-
-    
   }
-
 
   handleSubmit(){
     console.log("tried to submit");
@@ -491,51 +448,23 @@ onFileDrop() {
     this.setState({ loading: true, loadingMessage: 'Uploading and Scoring Resume(s)...'});
     this.setState({ analyzeButtonDisabled: true });
    
-
-
-    //axios.post("http://localhost:8080/contactJD", { formData }).then( res => {
-      //console.log("checking req", req);
-
-      //console.log("heres the response from server for JD: ", res.data);
-    
-    
-   
-
-
       this.handleFileSubmit();
-  //  });
-
-    
-
   }
 
   testFrontEndInstyBeta(myfiles){
-
-    
-
-
     var data = new FormData();
 
    var fileArray = this.state.myDropZone.getQueuedFiles();
 
-   //console.log("checking fileArray", fileArray);
-
-     
-     //data.append('myfiles',fileArray[0]);
-          
     for (var i=0; i < fileArray.length; i++){
-      //console.log("appending resume",fileArray[i]["name"] );
 
       data.append("myfiles", fileArray[i], fileArray[i]["name"]);
     }
     data.append("JD",this.state.formData.JobDescription);
 
-    // for(var pair of data.entries()) {
-    //   console.log(pair[0]+ ', '+ pair[1]); 
-    //   }
+   var self=this;
 
     
-   var self=this;
 
    axios({
     method: 'post',
@@ -544,8 +473,6 @@ onFileDrop() {
     headers: {
       "Content-type": "multipart/form-data",
     }
-    
-    
     })
     .then(function (response) {
         //handle success
@@ -556,49 +483,30 @@ onFileDrop() {
         //handle error
         console.log("error on front end insty response",response);
     });
-
   }
 
   handlePostSuccess(data){
     if (data["Code"] == 429){
       //Limit exceded from server
       this.fileUploadedSuccess('Limit Exceded');
-    }
-    else if(data["Code"] == 200){
+    } else if(data["Code"] == 200){
       this.fileUploadedSuccess(data["Data"]);
-    }
-    else {
+    } else {
       this.fileUploadedSuccess('Error');
     }
   }
 
   handleFileSubmit(){
      console.log("got to handle file submit");
-    if (this.state.myDropZone){
-
-     // console.log("mydropzone quueue", this.state.myDropZone.getQueuedFiles());
-     
-      if (this.state.myDropZone.getQueuedFiles().length > 0 )
-      {
-        
-
+    if (this.state.myDropZone){     
+      if (this.state.myDropZone.getQueuedFiles().length > 0 ) {
+      
         var fileArray =  this.state.myDropZone.getQueuedFiles();
         console.log("looking at files",fileArray);
 
-        
-
-
-      
         this.testFrontEndInstyBeta();
-
-
-        //this.state.myDropZone.processQueue()
-      }
-      else this.setState({ loading: false });
-
-    }
-
-    else{
+      } else this.setState({ loading: false });
+    } else {
       console.log("got to handle else");
        this.setState({ loading: false });
     }
@@ -609,45 +517,31 @@ onFileDrop() {
 
   handleChange(event){
     const { formData } = this.state;
-
-
     formData[event.target.name] = event.target.value;
-
     this.setState({formData});
   }
 
-
-
-
 handleResumes(resumes){
-
   const {resumeFiles} = this.state;
   var collapse = [];
 
   console.log("check on resumes first", resumes);
 
 var index = 0;
-  
       for (var key in resumes){
         collapse[index] = false;
         resumeFiles[key] = resumes[key];
         index++;
-
-
       }
-
-    
 
     this.setState({resumeFiles});
     this.setState({collapseArrays: collapse});
 
    this.setState({resumesAdded: true});
-      //console.log("checking new state with res files", this.state.resumeFiles);
     
 }
 
 getColor(number){
- 
  if (number >= 65)
     return '#00ADF3';
   else if( number < 65 && number >= 40)
@@ -665,29 +559,12 @@ getColor(number){
  }
 
  median(numbers) {
-    // median of [3, 5, 4, 4, 1, 1, 2, 3] = 3
- 
     return numbers[Math.floor((numbers.length - 1) / 2)];
 }
 
-
-
 sortResumes(resumes){
- 
- //console.log("in sortResumes checking", resumes);
  var sortedResumes = resumes.sort(this.Comparator);
 console.log("in sortResumes checking sorted resumes", sortedResumes);
-
-
-
-
-
-
-
-
-
-
-
 
   return sortedResumes;
 }
@@ -703,16 +580,7 @@ const collapseArrays = this.state.collapseArrays;
 collapseArrays[event.target.id] = !collapseArrays[event.target.id];
 
 this.setState({collapseArrays: collapseArrays});
-
-
-//   const collapseArrays = this.state.collapseArrays;
-//   collapseArrays[index] = !collapseArrays[index];
-
-// this.setState({collapseArrays: collapseArrays});
-
-
 }
-
 
   render() {
     const {formData} = this.state;
@@ -720,9 +588,6 @@ this.setState({collapseArrays: collapseArrays});
 
     const collapseArrays = this.state.collapseArrays;
 
-    //console.log("here is the collapseArrays ", collapseArrays);
-    
-    
     return (
       <div style={{}}>
         <MuiThemeProvider muiTheme={muiTheme}>
@@ -768,11 +633,8 @@ this.setState({collapseArrays: collapseArrays});
 
                 <h6 style={styles.headingStyle}> Meet InstyMatch:  </h6>
 
-
-
                 <h6 style={styles.headingStyle}> Simple, impartial, and lightning-fast. </h6>
 
-               
                 <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJT's extensive candidate database. </p>
                 <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition in our talent lineup.  If you're a recruiter or employer, upload up to ten resumes to compare the candidates for a position you need to fill.</p>
           
@@ -782,9 +644,7 @@ this.setState({collapseArrays: collapseArrays});
               <Section
                 containerSize={1}
                 heading="Step 1."
-                subHeading="Provide position or job description (at least 10 characters)."
-                >
-                     
+                subHeading="Provide position or job description (at least 10 characters)." >
                     <div style={dottedContainer} className="col-12 scores-dotted-container">
                       <label style={labelStyle}>Job Description</label>
                       <TextValidator
@@ -809,21 +669,16 @@ this.setState({collapseArrays: collapseArrays});
                           errorMessages={[
                             "this field is required",
                             "Please enter at least 10 characters"
-                          ]}
-
-                      />
+                          ]}/>
                   </div>
               </Section> 
-
-
+              
               <Section
                 style={{paddingBottom: "50px"}}
                 containerSize={1}
                 heading="Step 2."
-                subHeading="Upload resume(s) (up to 10)."
-                >
+                subHeading="Upload resume(s) (up to 10)." >
                 <div  style={dottedContainer} className="col-md-12 insty-step2-dotted-container">
-
                     <div   className="col-md-12 insty-step2-box">
                     <DropzoneComponent
                       config={this.componentConfig}
@@ -831,21 +686,29 @@ this.setState({collapseArrays: collapseArrays});
                       djsConfig={this.djsConfig}
                     />
                     </div>
-                  </div>
-                     
+                  </div>  
+                  <Blockchain></Blockchain>
+                  <label>
+                    ResumeID:
+                    <br/>
+                     <input type="number" ref={this.resumeIDStored} />
+                  </label>
+                  <br/>
+                  <br/>
+                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
+                                                                this.onGetResume() }  }>Get Resume </button>
+
+                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
+                                                      this.onSubmitResumes(79, 67.8)}  }>Submit </button>
+
               </Section> 
               {
                   !this.state.analyzeButtonDisabled &&
-
               <Section style={{ marginBottom: "5%", marginTop: "2.5%", }} className="insty-submit-button-container">
                 <div className="col-md-1 col-md-offset-5 analyze-button-container">
                  
-                
-
                   <RaisedButton
                     disabledBackgroundColor="rgba(0,0,0,0);"
-                  
-                    
                     onClick={this.getInfo}
                     label="Submit"
                     type="submit"
@@ -870,8 +733,6 @@ this.setState({collapseArrays: collapseArrays});
                 >
                 <div  style={dottedContainer} className="col-md-12 data-visualize-container ">
                   { 
-
-
                    this.sortResumes(
 
                       Object.keys(resumeFiles).map(function(key) 
@@ -896,12 +757,10 @@ this.setState({collapseArrays: collapseArrays});
                             name={item[0]}
                             style={styles.linkedInIcon}
                             color="red"
-                            size={30}
-                          >
+                            size={30} >
                            
                           </FaTimesCircle>
-                          
-                          
+                  
                          </IconButton>
 
                        </div>
@@ -910,42 +769,29 @@ this.setState({collapseArrays: collapseArrays});
                              <a> <img id={index}
                             onClick={this.handleCollapse}
                             style={styles.roundedButton2} className="view-score-breakdown-button" src={this.state.collapseArrays[index]?viewButton:viewButtonClosed}/> </a>
-                          
-
-
-                           
-                            
+                        
                             <Collapse isOpen={this.state.collapseArrays[index]}>
                                
                                  { this.state.collapseArrays[index] &&
 
-                                 
                                   <DataVisualization
                                   data={item}
                                   id={index}
-                                  fileName={item[0]}
-
-                                  />
-                                 
-
+                                  fileName={item[0]}/>
+         
                                  }
 
                             </Collapse>
                       </div>
                     </div>
                     ))
-                    
 
-                    
-                  
 
                   }
                     
 
                   </div>
-
-                  
-                     
+   
               </Section> 
 
                <Section
@@ -957,8 +803,6 @@ this.setState({collapseArrays: collapseArrays});
                  <div className="insty-help-h6" style={{width: "60%", marginLeft: "20%"}}>
 
                 <h6   style={styles.headingStyle}> Want help sharpening your resume?  </h6>
-
-
 
                 <div style={{textAlign: "center", marginTop: "25px"}}>
                   <RaisedButton
@@ -987,6 +831,7 @@ this.setState({collapseArrays: collapseArrays});
            </ValidatorForm>
            </Loadable>
         </MuiThemeProvider>
+        
       </div>
     );
   }
@@ -994,7 +839,6 @@ this.setState({collapseArrays: collapseArrays});
 
 function mapStateToProps(state) {
   const { loggingIn } = state.authentication;
-
 
   return {
     loggingIn,
