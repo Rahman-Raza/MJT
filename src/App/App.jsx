@@ -12,7 +12,9 @@ import { LoginPage } from "../LoginPage";
 import { DashBoard } from "../DashBoard";
 import { RegisterPage } from "../RegisterPage";
 import { AnalyzePage } from "../AnalyzePage";
+
 import { InstyBeta } from "../InstyBeta";
+
 import { Careers } from "../Careers";
 import { CorsCheck } from "../InstyBeta";
 import { SubmitPage } from "../AnalyzePage";
@@ -153,6 +155,7 @@ class App extends React.Component {
               <Route path="/login" component={LoginPage} />
               <Route path="/joborder" component={AddJob} />
               <Route path="/instymatch" component={InstyBeta} />
+
               <Route path="/careers" component={Careers} />
               <Route path="/cors-check" component={CorsCheck} />
               <Route path="/dashboard" component={DashBoard} />
