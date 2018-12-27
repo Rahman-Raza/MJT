@@ -330,7 +330,7 @@ mouseOverHandler(d, e) {
   }
 
   async onGetResume() {
-    const resume = await Utils.contract.getResume(this.resumeIDStored.current.value).call();
+    const resume = await Utils.contract.getResume(this.state.resumeID).call();
     console.log(resume)
   }
 
@@ -763,7 +763,7 @@ async submitResumeUpload(){
                   <label>
                     ResumeID:
                     <br/>
-                     <input type="text" ref={this.resumeIDStored} />
+                     <input type="text" value={this.state.resumeID} />
                   </label>
                   <br/>
                   <br/>
