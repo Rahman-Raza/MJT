@@ -647,10 +647,10 @@ async submitResumeUpload(){
 
 
     // make Submit call to tron here
-
+    this.onSubmitResumes(this.state.resumeID, this.state.resumeScore)
     //and then call this function once that is complete:
-
-    //this.handlePostSuccess(resumeData);
+     
+    this.handlePostSuccess(resumeData);
   }
 
 
@@ -763,15 +763,12 @@ async submitResumeUpload(){
                   <label>
                     ResumeID:
                     <br/>
-                     <input type="number" ref={this.resumeIDStored} />
+                     <input type="text" ref={this.resumeIDStored} />
                   </label>
                   <br/>
                   <br/>
                   <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
                                                                 this.onGetResume() }  }>Get Resume </button>
-
-                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
-                                                      this.onSubmitResumes(79, 67.8)}  }>Submit </button>
 
               </Section> 
               {
