@@ -155,6 +155,11 @@ class InstyBeta extends React.Component {
     super(props);
 
     this.state = {
+        instyData: {},
+        resumeID: '',
+        resumeTimestamp: '',
+        resumeScore: '',
+     
      showToolTip: false,
       analyzeButtonDisabled: true,
       loading: false,
@@ -185,7 +190,7 @@ class InstyBeta extends React.Component {
       params: {
         name: "testfile"
       },
-      maxFiles: 10,
+      maxFiles: 1,
       dictDefaultMessage: "Drag and drop resume to upload",
       acceptedFiles: ".pdf,.doc,.docx,.txt"
     };
@@ -268,6 +273,9 @@ class InstyBeta extends React.Component {
      this.handlePostSuccess = this.handlePostSuccess.bind(this);
      this.onGetResume = this.onGetResume.bind(this);
      this.onSubmitResumes = this.onSubmitResumes.bind(this);
+     this.TronHelperFunction = this.TronHelperFunction.bind(this);
+     this.submitResumeUpload = this.submitResumeUpload.bind(this);
+     this.submitDataToTron = this.submitDataToTron.bind(this);
   }
 
  initCallback (dropzone) {
@@ -451,40 +459,6 @@ onFileDrop() {
       this.handleFileSubmit();
   }
 
-  testFrontEndInstyBeta(myfiles){
-    var data = new FormData();
-
-   var fileArray = this.state.myDropZone.getQueuedFiles();
-
-    for (var i=0; i < fileArray.length; i++){
-
-      data.append("myfiles", fileArray[i], fileArray[i]["name"]);
-    }
-    data.append("JD",this.state.formData.JobDescription);
-
-   var self=this;
-
-    
-
-   axios({
-    method: 'post',
-    url: 'http://18.206.187.45:8080/instybeta',
-    data: data,
-    headers: {
-      "Content-type": "multipart/form-data",
-    }
-    })
-    .then(function (response) {
-        //handle success
-        console.log("here is front end insty response",response);
-        self.handlePostSuccess(response.data);
-    })
-    .catch(function (response) {
-        //handle error
-        console.log("error on front end insty response",response);
-    });
-  }
-
   handlePostSuccess(data){
     if (data["Code"] == 429){
       //Limit exceded from server
@@ -504,7 +478,7 @@ onFileDrop() {
         var fileArray =  this.state.myDropZone.getQueuedFiles();
         console.log("looking at files",fileArray);
 
-        this.testFrontEndInstyBeta();
+        this.TronHelperFunction();
       } else this.setState({ loading: false });
     } else {
       console.log("got to handle else");
@@ -582,6 +556,104 @@ collapseArrays[event.target.id] = !collapseArrays[event.target.id];
 this.setState({collapseArrays: collapseArrays});
 }
 
+TronHelperFunction(){
+//this.testFrontEndInstyBeta();
+
+this.submitResumeUpload()
+}
+
+async submitResumeUpload(){
+   var form = new FormData();
+    var self = this;
+    var fileArray = this.state.myDropZone.getQueuedFiles();
+    form.append('resumefile', fileArray[0]);
+    console.log("checking file", fileArray[0]);
+
+    await axios ("http://18.206.187.45:8080/resumeupload",{
+            method: 'post',
+            data:  form,
+            //headers: { "Content-Type": "application/json" }
+    })
+      
+      .then(function (response) {
+        console.log("heres the response from /resumeupload", response);
+        
+        if(response["status"]  == 200){
+          console.log("sucessfull call to /resumeupload");
+         // console.log("response data for /resumeupload", response.data);
+          self.setState({resumeID : response.data["Data"]});
+          //console.log("checking state tron", self.state.resumeID);
+          self.testFrontEndInstyBeta();
+
+          
+
+            }
+      })
+      .catch(function (error) {
+        console.log('error in /resumeupload ', error);
+        
+      });
+}
+
+  async testFrontEndInstyBeta(myfiles){
+    var data = new FormData();
+
+   var fileArray = this.state.myDropZone.getQueuedFiles();
+
+ 
+
+      data.append("myfiles", fileArray[0], fileArray[0]["name"]);
+    
+    data.append("JD",this.state.formData.JobDescription);
+
+   var self=this;
+
+    
+
+   await axios({
+    method: 'post',
+    url: 'http://18.206.187.45:8080/instybeta',
+    data: data,
+    headers: {
+      "Content-type": "multipart/form-data",
+    }
+    })
+    .then(function (response) {
+        //handle success
+       // console.log("here is front end insty response",response);
+       console.log("sucessfull call to /instybeta");
+        self.setState({instyData: response.data["Data"]});
+        
+        self.submitDataToTron(response.data);
+    })
+    .catch(function (response) {
+        //handle error
+        console.log("error on front end insty response",response);
+    });
+  }
+
+
+
+
+  async submitDataToTron(resumeData){
+  
+    this.setState({loading: false});
+
+    for (var key in resumeData["Data"]){
+      this.setState({resumeScore: resumeData["Data"][key]["total"]});
+      }
+
+    console.log("checking TRON values from state in function submitDataToTron", " resumeID: ",this.state.resumeID," resumeScore: ", this.state.resumeScore, " resumeTimestamp: ", this.state.resumeTimestamp);
+
+
+    // make Submit call to tron here
+
+    //and then call this function once that is complete:
+
+    //this.handlePostSuccess(resumeData);
+  }
+
+
   render() {
     const {formData} = this.state;
     const {resumeFiles} = this.state;
@@ -635,7 +707,7 @@ this.setState({collapseArrays: collapseArrays});
 
                 <h6 style={styles.headingStyle}> Simple, impartial, and lightning-fast. </h6>
 
-                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJT's extensive candidate database. </p>
+                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJTs extensive candidate database. </p>
                 <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition in our talent lineup.  If you're a recruiter or employer, upload up to ten resumes to compare the candidates for a position you need to fill.</p>
           
                 <p style={styles.paragraphStyle}> InstyMatch is limited to 10 scoring requests per day.</p>
@@ -815,8 +887,7 @@ this.setState({collapseArrays: collapseArrays});
                       Rounded={true}
                        labelColor="white"
                       overlayStyle={styles.roundedButtonOverlay}
-                      disableTouchRipple={true}
-                    />
+                      disableTouchRipple={true}/>
                 </div>
                
                 <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> If you've tried InstyMatch and want to finetune your resume, reach out to one of our recruitment specialists.   We'd be delighted to advise and help define your market value, with no obligation whatsoever. </p>

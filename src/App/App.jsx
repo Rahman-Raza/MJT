@@ -89,58 +89,7 @@ class App extends React.Component {
       <MuiThemeProvider muiTheme={muiTheme}>
 
        <div style={styles.container}>
-      <nav id="menu" class=" navi" style={{zIndex: "100"}}>
-   
-    <div class="wrapy">
-      
-        <a href="Landing" class="brand">
-          <img  src={logo} alt="Logo" class="site-logo" />
-         
-        </a>
-
-    
-            
-        <button id="mobile-btn" class="hamburger-btn">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-          
-        <ul class=" uppercase bold top-menu no-float" id="top-menu">
-
-          <li class="nav-item2"><a href="Landing#home" >Home</a></li>
-          <li class="nav-item2"><a href="Landing#services" >Services</a></li>
-          
-          
-          <li class="nav-item2"><a href="Landing#values" >Our Values</a></li>
-
-
-
-
-
-
-
-          <li class="nav-item2"><a href="Landing#talent" >Job Seekers</a></li>
-          <li class="nav-item2"><a href="Landing#Employers" >Employers</a></li>
-          <li class="nav-item2"><a href="Landing#contact" >Contact</a></li>
-          <li class="insty">
-            <a href="/instymatch" >
-           InstyMatch 
-           <img src={question} style={{paddingLeft: "10px",width: "25%",marginRight: "-20px",marginBottom: "5px"}}/>
-           </a>
-
-          </li>
-
-
-
-
-
-
-
-        </ul>
-      </div>
-
-  </nav>
+     
   </div>
 
         <div style={styles.container} className="responsive-container">
