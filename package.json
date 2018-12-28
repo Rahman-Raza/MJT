@@ -10,6 +10,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@material-ui/core": "^3.7.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chart.js": "^1.1.1",
@@ -44,6 +45,7 @@
     "react-fine-uploader": "^1.1.0",
     "react-google-autocomplete": "^1.0.16",
     "react-icons": "^2.2.7",
+    "react-json-view": "^1.19.1",
     "react-linkedin-login": "^1.0.3",
     "react-linkedin-sdk": "^1.0.8",
     "react-loading-overlay": "^0.3.0",

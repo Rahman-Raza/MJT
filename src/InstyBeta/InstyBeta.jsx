@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Collapse} from 'reactstrap';
 import Swal from 'sweetalert2';
-
+import ReactJson from 'react-json-view'
 // const si = require('systeminformation');
 import 'babel-polyfill';
 
@@ -35,7 +35,11 @@ import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
 import IconButton from 'material-ui/IconButton';
 import FaTimesCircle from "react-icons/lib/fa/times-circle";
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 // Theme
 const muiTheme = getMuiTheme({
   palette: {
@@ -155,6 +159,8 @@ class InstyBeta extends React.Component {
     super(props);
 
     this.state = {
+      resumeBlockChainObject: {},
+      dialogOpen: false,
         instyData: {},
         resumeID: '',
         resumeTimestamp: '',
@@ -276,6 +282,7 @@ class InstyBeta extends React.Component {
      this.TronHelperFunction = this.TronHelperFunction.bind(this);
      this.submitResumeUpload = this.submitResumeUpload.bind(this);
      this.submitDataToTron = this.submitDataToTron.bind(this);
+     this.handleDialogClose = this.handleDialogClose.bind(this);
   }
 
  initCallback (dropzone) {
@@ -331,17 +338,30 @@ mouseOverHandler(d, e) {
 
   async onGetResume() {
     const resume = await Utils.contract.getResume(this.state.resumeID).call();
-    console.log(resume)
+    console.log(resume);
+    await this.setState({resumeBlockChainObject: resume});
+    await this.setState({dialogOpen: true});
+
   }
 
-  onSubmitResumes(resumeID, score) {
-    Utils.contract.processResumes(resumeID, score*100, new Date().getTime()).send({
+  async onSubmitResumes(resumeID, score) {
+    var self = this;
+   await Utils.contract.processResumes(resumeID, score*100, new Date().getTime()).send({
       shouldPollResponse: true,
       callValue: 0
-  }).then(res => Swal({
-      title: 'Resume Processing Succeeded',
-      type: 'success'
-  })).catch(err => Swal({
+  }).then(res => {
+
+      Swal({
+        title: 'Resume Processing Succeeded',
+        type: 'success'
+    });
+    self.handlePostSuccess(self.state.instyData);
+
+
+    }
+
+
+  ).catch(err => Swal({
       title: 'Resume Processing Failed',
       type: 'error'
   }))
@@ -453,7 +473,7 @@ onFileDrop() {
   handleSubmit(){
     console.log("tried to submit");
     const formData = this.state.formData.JobDescription;
-    this.setState({ loading: true, loadingMessage: 'Uploading and Scoring Resume(s)...'});
+    this.setState({ loading: true, loadingMessage: 'Uploading and Scoring Resume and submitting to Blockchain...'});
     this.setState({ analyzeButtonDisabled: true });
    
       this.handleFileSubmit();
@@ -622,7 +642,7 @@ async submitResumeUpload(){
         //handle success
        // console.log("here is front end insty response",response);
        console.log("sucessfull call to /instybeta");
-        self.setState({instyData: response.data["Data"]});
+        self.setState({instyData: response.data});
         
         self.submitDataToTron(response.data);
     })
@@ -637,7 +657,7 @@ async submitResumeUpload(){
 
   async submitDataToTron(resumeData){
   
-    this.setState({loading: false});
+
 
     for (var key in resumeData["Data"]){
       this.setState({resumeScore: resumeData["Data"][key]["total"]});
@@ -647,12 +667,15 @@ async submitResumeUpload(){
 
 
     // make Submit call to tron here
-    this.onSubmitResumes(this.state.resumeID, this.state.resumeScore)
+    await this.onSubmitResumes(this.state.resumeID, this.state.resumeScore)
     //and then call this function once that is complete:
      
-    this.handlePostSuccess(resumeData);
+    
   }
 
+handleDialogClose() {
+    this.setState({ dialogOpen: false});
+  };
 
   render() {
     const {formData} = this.state;
@@ -662,6 +685,22 @@ async submitResumeUpload(){
 
     return (
       <div style={{}}>
+       <Blockchain></Blockchain>
+        
+         <Dialog
+          open={this.state.dialogOpen}
+          onClose={this.handleDialogClose}
+          aria-labelledby="form-dialog-title"
+        >
+        
+          
+          <DialogContent>
+           <ReactJson src={this.state.resumeBlockChainObject} />
+          </DialogContent>
+       
+        </Dialog>
+
+
         <MuiThemeProvider muiTheme={muiTheme}>
         <Loadable
         active={this.state.loading}
@@ -759,16 +798,8 @@ async submitResumeUpload(){
                     />
                     </div>
                   </div>  
-                  <Blockchain></Blockchain>
-                  <label>
-                    ResumeID:
-                    <br/>
-                     <input type="text" value={this.state.resumeID} />
-                  </label>
-                  <br/>
-                  <br/>
-                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
-                                                                this.onGetResume() }  }>Get Resume </button>
+                 
+                 
 
               </Section> 
               {
@@ -869,26 +900,21 @@ async submitResumeUpload(){
                 style={{marginBottom: "100px",}}
                 >
 
-                 <div className="insty-help-h6" style={{width: "60%", marginLeft: "20%"}}>
+                 <div className="insty-help-h6" style={{width: "60%", marginLeft: "37.5%"}}>
 
-                <h6   style={styles.headingStyle}> Want help sharpening your resume?  </h6>
+                <label>
+                    ResumeID:
+                    <br/>
+                     <input type="text" value={this.state.resumeID} />
+                  </label>
+                  <br/>
+                  <br/>
+                  <button className="btn btn-primary" onClick={(event) => {event.preventDefault()
+                                                                this.onGetResume() }  }>Get Resume </button>
 
-                <div style={{textAlign: "center", marginTop: "25px"}}>
-                  <RaisedButton
-                      disabledBackgroundColor="rgba(0,0,0,0);"
-                    
-                      buttonStyle={styles.roundedButton}
-                      href="mailto:info@myjobtank.com?Subject=Tried%20Insty%20Beta%20and%20would%20like%20some%20advice..."
-                      label="Talk to us"
-                      type="submit"
-                      Rounded={true}
-                       labelColor="white"
-                      overlayStyle={styles.roundedButtonOverlay}
-                      disableTouchRipple={true}/>
-                </div>
-               
-                <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> If you've tried InstyMatch and want to finetune your resume, reach out to one of our recruitment specialists.   We'd be delighted to advise and help define your market value, with no obligation whatsoever. </p>
               
+               
+                
                  </div>  
               </Section> 
 
