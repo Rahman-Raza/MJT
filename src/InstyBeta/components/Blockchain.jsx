@@ -138,20 +138,7 @@ class Blockchain extends React.Component {
             </div>);
 
         return (
-              <div className='row'>
-                <div className='col-lg-12 text-center' >
-                  <hr/>
-
-                      <div className="topnav">
-                      </div>
-                  <hr style={{color: 'white', backgroundColor: 'white', height: 0.5}}/>
-
-      <br/>
-      <br/>
-
-                </div>
-                
-              </div>
+                <div></div>
         );
     }
 }

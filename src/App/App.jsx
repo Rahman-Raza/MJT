@@ -5,20 +5,19 @@ import { connect } from "react-redux";
 import { history } from "../_helpers";
 import { alertActions } from "../_actions";
 import { PrivateRoute } from "../_components";
-import { HomePage } from "../HomePage";
-import { Landing } from "../Landing";
-import { AddJob } from "../AddJob";
-import { LoginPage } from "../LoginPage";
+
+
+
+
 import { DashBoard } from "../DashBoard";
-import { RegisterPage } from "../RegisterPage";
-import { AnalyzePage } from "../AnalyzePage";
+
+
 
 import { InstyBeta } from "../InstyBeta";
 
-import { Careers } from "../Careers";
-import { CorsCheck } from "../InstyBeta";
-import { SubmitPage } from "../AnalyzePage";
-import { SubmitPageJD } from "../AddJob";
+
+
+
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import Paper from "material-ui/Paper";
@@ -99,19 +98,10 @@ class App extends React.Component {
           <Router history={history}>
             <div >
            
-              <Route exact path="/Resume" component={HomePage} />
-               <Route path="/Landing" component={Landing} />
-              <Route path="/login" component={LoginPage} />
-              <Route path="/joborder" component={AddJob} />
+             
               <Route path="/instymatch" component={InstyBeta} />
 
-              <Route path="/careers" component={Careers} />
-              <Route path="/cors-check" component={CorsCheck} />
-              <Route path="/dashboard" component={DashBoard} />
-              <Route path="/confirm" component={SubmitPage} />
-               <Route path="/confirmJD" component={SubmitPageJD} />
-              <Route path="/register" component={RegisterPage} />
-              <Route path="/analyze" component={AnalyzePage} />
+         
             </div>
           </Router>
         </div>

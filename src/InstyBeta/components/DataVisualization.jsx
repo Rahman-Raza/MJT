@@ -19,6 +19,14 @@ const chartHeadingStyle = {
   marginBottom: "20px",
   marginTop: "10px",
 };
+const chartHeadingStyleDistribution = {
+  fontSize: "14px",
+  fontWeight: "800",
+  color: "#009dd6",
+  marginBottom: "20px",
+  marginTop: "10px",
+  marginLeft: "10px",
+};
 
 const chartLegendStyle = {
 
@@ -485,7 +493,7 @@ class DataVisualization extends Component {
       
         
                 
-                    <h4 style={chartHeadingStyle} className="chart-graph-label">  Distribution of Score </h4>
+                    <h4 style={chartHeadingStyleDistribution} className="chart-graph-label">  Distribution of Score </h4>
                  
              </div>
 

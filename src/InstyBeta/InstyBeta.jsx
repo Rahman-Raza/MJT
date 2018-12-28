@@ -473,7 +473,7 @@ onFileDrop() {
   handleSubmit(){
     console.log("tried to submit");
     const formData = this.state.formData.JobDescription;
-    this.setState({ loading: true, loadingMessage: 'Uploading and Scoring Resume and submitting to Blockchain...'});
+    this.setState({ loading: true, loadingMessage: 'Uploading,Scoring, and Submitting Resume to Blockchain...'});
     this.setState({ analyzeButtonDisabled: true });
    
       this.handleFileSubmit();
@@ -825,11 +825,19 @@ handleDialogClose() {
 
                 <div>
                  <Section
-                 style={{ marginBottom: "5%",}}
+                
                 containerSize={1}
                 heading="Step 3."
                 subHeading="Here are the results of your resume's..."
                 score={true}
+                >
+                </Section>
+                 <Section
+                 style={{ marginBottom: "5%",}}
+                
+                heading=" "
+                subHeading=" "
+               
                 >
                 <div  style={dottedContainer} className="col-md-12 data-visualize-container ">
                   { 
