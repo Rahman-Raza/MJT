@@ -338,7 +338,7 @@ mouseOverHandler(d, e) {
 
   async onGetResume() {
     const resume = await Utils.contract.getResume(this.state.resumeID).call();
-    console.log(resume);
+    //console.log(resume);
     await this.setState({resumeBlockChainObject: resume});
     await this.setState({dialogOpen: true});
 
@@ -369,10 +369,10 @@ mouseOverHandler(d, e) {
 
 
 onFileDrop() {
-    console.log("checking onFileDrop");
+    //console.log("checking onFileDrop");
   }
   uploadReset(){
-    console.log("got to upload reset");
+    //console.log("got to upload reset");
      this.setState({analyzeButtonDisabled: true});
   }
 
@@ -383,7 +383,7 @@ onFileDrop() {
   }
   
   addedFileCallback(file) {
-    console.log("checking file", file);
+    //console.log("checking file", file);
     this.setState({ analyzeButtonDisabled: false });
   }
  fileUploadedSuccess(serverResponse) {
@@ -428,7 +428,7 @@ onFileDrop() {
   }
 
   fileUploadedError(response,serverResponse) {
-    console.log("checking result from uploadhandler due to error", serverResponse);
+    //console.log("checking result from uploadhandler due to error", serverResponse);
 
       this.setState({loadingMessage: 'There was an error processing your resumes.  Please try again.'});
       setTimeout(
@@ -442,7 +442,7 @@ onFileDrop() {
 
   removedFileCallback(file) {
     const resumeFiles = this.state.resumeFiles;
-    console.log("checking file when about to remove", file);
+    //console.log("checking file when about to remove", file);
     if (file["status"] === 'success'){
     
       var temp = file["name"];
@@ -454,7 +454,7 @@ onFileDrop() {
       else
         this.setState({resumeFiles, resumeCheck: false});
     } else {
-      console.log("got to else in removedfilecallback, heres the result", file.currentTarget.name);
+      //console.log("got to else in removedfilecallback, heres the result", file.currentTarget.name);
        var temp = file.currentTarget.name;
 
 
@@ -471,7 +471,7 @@ onFileDrop() {
   }
 
   handleSubmit(){
-    console.log("tried to submit");
+    //console.log("tried to submit");
     const formData = this.state.formData.JobDescription;
     this.setState({ loading: true, loadingMessage: 'Uploading,Scoring, and Submitting Resume to Blockchain...'});
     this.setState({ analyzeButtonDisabled: true });
@@ -491,22 +491,22 @@ onFileDrop() {
   }
 
   handleFileSubmit(){
-     console.log("got to handle file submit");
+     //console.log("got to handle file submit");
     if (this.state.myDropZone){     
       if (this.state.myDropZone.getQueuedFiles().length > 0 ) {
       
         var fileArray =  this.state.myDropZone.getQueuedFiles();
-        console.log("looking at files",fileArray);
+        //console.log("looking at files",fileArray);
 
         this.TronHelperFunction();
       } else this.setState({ loading: false });
     } else {
-      console.log("got to handle else");
+      //console.log("got to handle else");
        this.setState({ loading: false });
     }
   }
   handleFormErrors(errors){
-    console.log("there were errors here", errors);
+    //console.log("there were errors here", errors);
   }
 
   handleChange(event){
@@ -519,7 +519,7 @@ handleResumes(resumes){
   const {resumeFiles} = this.state;
   var collapse = [];
 
-  console.log("check on resumes first", resumes);
+  //console.log("check on resumes first", resumes);
 
 var index = 0;
       for (var key in resumes){
@@ -558,7 +558,7 @@ getColor(number){
 
 sortResumes(resumes){
  var sortedResumes = resumes.sort(this.Comparator);
-console.log("in sortResumes checking sorted resumes", sortedResumes);
+//console.log("in sortResumes checking sorted resumes", sortedResumes);
 
   return sortedResumes;
 }
@@ -567,7 +567,7 @@ handleCollapse(event){
 
 event.preventDefault();
 
-console.log("heres the event for view breakdown click", event.target.id);
+//console.log("heres the event for view breakdown click", event.target.id);
 
 const collapseArrays = this.state.collapseArrays;
 
@@ -587,7 +587,7 @@ async submitResumeUpload(){
     var self = this;
     var fileArray = this.state.myDropZone.getQueuedFiles();
     form.append('resumefile', fileArray[0]);
-    console.log("checking file", fileArray[0]);
+    //console.log("checking file", fileArray[0]);
 
     await axios ("http://18.206.187.45:8080/resumeupload",{
             method: 'post',
@@ -596,10 +596,10 @@ async submitResumeUpload(){
     })
       
       .then(function (response) {
-        console.log("heres the response from /resumeupload", response);
+        //console.log("heres the response from /resumeupload", response);
         
         if(response["status"]  == 200){
-          console.log("sucessfull call to /resumeupload");
+          //console.log("sucessfull call to /resumeupload");
          // console.log("response data for /resumeupload", response.data);
           self.setState({resumeID : response.data["Data"]});
           //console.log("checking state tron", self.state.resumeID);
@@ -610,7 +610,7 @@ async submitResumeUpload(){
             }
       })
       .catch(function (error) {
-        console.log('error in /resumeupload ', error);
+        //console.log('error in /resumeupload ', error);
         
       });
 }
@@ -641,14 +641,14 @@ async submitResumeUpload(){
     .then(function (response) {
         //handle success
        // console.log("here is front end insty response",response);
-       console.log("sucessfull call to /instybeta");
+       //console.log("sucessfull call to /instybeta");
         self.setState({instyData: response.data});
         
         self.submitDataToTron(response.data);
     })
     .catch(function (response) {
         //handle error
-        console.log("error on front end insty response",response);
+        //console.log("error on front end insty response",response);
     });
   }
 
@@ -663,7 +663,7 @@ async submitResumeUpload(){
       this.setState({resumeScore: resumeData["Data"][key]["total"]});
       }
 
-    console.log("checking TRON values from state in function submitDataToTron", " resumeID: ",this.state.resumeID," resumeScore: ", this.state.resumeScore, " resumeTimestamp: ", this.state.resumeTimestamp);
+    //console.log("checking TRON values from state in function submitDataToTron", " resumeID: ",this.state.resumeID," resumeScore: ", this.state.resumeScore, " resumeTimestamp: ", this.state.resumeTimestamp);
 
 
     // make Submit call to tron here
@@ -742,12 +742,12 @@ handleDialogClose() {
 
                  <div style={{width: "75%", marginLeft: "12.5%"}}>
 
-                <h6 style={styles.headingStyle}> Meet InstyMatch:  </h6>
+                <h6 style={styles.headingStyle}> InstyMatch:  </h6>
 
-                <h6 style={styles.headingStyle}> Simple, impartial, and lightning-fast. </h6>
+                <h6 style={styles.headingStyle}> Simple, impartial, decentralized and lightning-fast. </h6>
 
-                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJTs extensive candidate database. </p>
-                <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition in our talent lineup.  If you're a recruiter or employer, upload up to ten resumes to compare the candidates for a position you need to fill.</p>
+                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a Tron Dapp that finds a correlation score between a job description and a resume. </p>
+                <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition of candidates in the blockchain.  If you're a recruiter or employer, upload resumes to compare the candidates for a position you need to fill, and access previous resume submissions in the blockchain.</p>
           
                 <p style={styles.paragraphStyle}> InstyMatch is limited to 10 scoring requests per day.</p>
                  </div>  
@@ -788,7 +788,7 @@ handleDialogClose() {
                 style={{paddingBottom: "50px"}}
                 containerSize={1}
                 heading="Step 2."
-                subHeading="Upload resume(s) (up to 10)." >
+                subHeading="Upload resume." >
                 <div  style={dottedContainer} className="col-md-12 insty-step2-dotted-container">
                     <div   className="col-md-12 insty-step2-box">
                     <DropzoneComponent
@@ -845,7 +845,7 @@ handleDialogClose() {
 
                       Object.keys(resumeFiles).map(function(key) 
                         {
-                         console.log("resumeFiles size", resumeFiles.length);
+                         //console.log("resumeFiles size", resumeFiles.length);
                           return [key, resumeFiles[key]];
                         })
 
