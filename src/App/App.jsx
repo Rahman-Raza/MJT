@@ -85,11 +85,11 @@ class App extends React.Component {
   render() {
     const { alert } = this.props;
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      /*<MuiThemeProvider muiTheme={muiTheme}>
 
        <div style={styles.container}>
      
-  </div>
+  </div>*/
 
         <div style={styles.container} className="responsive-container">
           {alert.message && (
@@ -99,13 +99,13 @@ class App extends React.Component {
             <div >
            
              
-              <Route path="/instymatch" component={InstyBeta} />
+              <Route path="/" component={InstyBeta} />
 
          
             </div>
           </Router>
         </div>
-      </MuiThemeProvider>
+      /*</MuiThemeProvider>*/
     );
   }
 }
