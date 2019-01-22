@@ -156,15 +156,23 @@ const styles = {
         values: {
 
         },
+        valuesContinued:{
+
+        },
         Employers: {
 
         },
         howWe:{
 
         },
-        expertise:{
+        tryInsty:{
 
         },
+        tryInsty2:{
+
+        },
+
+     
         talent: {
 
         },
@@ -497,213 +505,6 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
 
 
 
-
-
-
-
-
-
-
-  <section id="expertise"  className="container  industries ">
-    <div  className="inner animated inner-bottom-margin"  >
-
-        <h1  className="header blue Placingheader">Placing Specialty Talent Is Our Thing</h1>
-
-
-      <h3  className=" white subheader subheader-2">We have developed a network of elite talent for in demand STEM skill sets globally.</h3>
-
-    <div  className="wrap animated" data-animation="fadeInLeft" data-animation-delay="100">
-      <div  className="tile longer"> 
-       
-        <div  className="text">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/expertise%20icon%20finance.png"  className=""  />
-            <h1  className=" uppercase grey extrabold" style={{marginTop: "20px"}}>Banking and Finance</h1>
-          </div>
-
-        <div  className="collapse-box-content">
-             <li >ERP, CRM, and all other HR and banking applications infrastructure, storage, cloud support</li>
-                  <li > Security and compliance roles </li>
-                    <li > (IDS, IPS, Pen testing, SOX, Threat analysis)</li>
-                      <li >Analytics, pricing and risk management including product specific tools </li>
-                       <li > Quantitative Analysis and Desk/User Support</li>
-                      <li >Product specific Business Analysis and Project Management Helpdesk and desktop support roles </li>
-                      <li> Database design and support </li>
-                       
-        </div>     
-             
-        
-      <div  className="dots">
-           <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        </div>
-
-
-       </div>
-
-
-      <div  className="tile longer"> 
-              
-              
-        <div  className="text one-line-padding-high">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/Combined%20Shape.png"  className=""  />
-            <h1  className=" uppercase grey extrabold"  style={{marginTop: "20px"}}>High Tech</h1>
-          </div>
-
-        <div  className="collapse-box-content">
-             
-             <li >Software Engineering (Front-End, Back-End, Full stack)</li>
-                  <li >Machine Learning &amp; Big Data</li>
-                    <li >User Experience, UI/UX</li>
-                      <li >Cloud Architecture</li>
-                       <li >DevOps, Site Reliability Engineers, System Engineers</li>
-                      <li >Project &amp; Program Management</li>
-                        <li >Business Analysis</li>
-                        <li >Cyber Security</li>
-                       
-        </div>     
-             
-        
-      <div  className="dots">
-        
-        </div>
-        </div>
-       </div>
-  
-        <div  className="tile longer"> 
-           
-             
-        <div  className="text">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/broadcasting.png"  className=""  />
-            <h1  className=" uppercase grey extrabold"  style={{marginTop: "20px"}}>Media and Broadcasting</h1>
-          </div>
-
-        <div  className="collapse-box-content">
-            <li  className="">Creative &amp; Digital Roles</li>
-                <li >Front-End Creative Applications (Ruby, Python, Java) Security &amp; Threat Analysis</li>
-                  <li >Quantitative Analysis &amp; Desk/User Support</li>
-                    <li >Quality Assurance &amp; Test Infrastructure Cloud &amp; Security</li>
-                     <li >Product-Specific Business Analysis, Project Management Analytics, Business Intelligence, Data Scientists, Hadoop</li>
-                       
-        </div>     
-             
-        
-      <div  className="dots">
-        
-        </div>
-        </div>
-          </div>
-      </div>
-        
-  
-    
-    <div  className="wrap animated" data-animation="fadeInLeft" data-animation-delay="300">
-      <div  className="tile shorter"> 
-       
-        <div  className="text one-line-padding-high">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/expert.png"  className=""  />
-            <h1  className=" uppercase white extrabold"  style={{marginTop: "20px"}}>Retail</h1>
-          </div>
-
-        <div  className="collapse-box-content">
-          <li >POS Applications Support</li>
-            <li >Analytics, Pricing &amp; Risk Management Component Development &amp; Support</li>
-              <li >Security &amp; Compliance (PCI, SOX DFS)</li>
-                <li >Product specific Business Analysis and Project Management End user support</li>
-                 <li >Big Data Hadoop For Customer Analytics</li>
-                  <br/>     
-        </div>     
-             
-        
-      <div  className="dots">
-        
-        </div>
-        </div>
-       </div>
-
-
-      <div  className="tile shorter"> 
-        
-        <div  className="text one-line-padding">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/industry.png"  className=""  />
-            <h1  className=" uppercase white extrabold" style={{marginTop: "20px"}}>Additional  industries</h1>
-          </div>
-         
-        <div  className="collapse-box-content">
-          <li >Government Management Consulting</li>
-            <li >Insurance</li>
-              <li >Airlines and Transportation</li>
-                 <br/>      
-        </div>     
-             
-        
-      <div  className="dots">
-        
-        </div>
-        </div>
-       </div>
-  
-        <div  className="tile shorter"> 
-       
-        <div  className="text one-line-padding-high">
-
-          <div  className="box-click-container">
-             <img  src="MJT/images/icons/phar.png"  className=""  />
-            <h1  className=" uppercase white extrabold"  style={{marginTop: "20px"}}>Pharmaceutical</h1>
-          </div>
-         
-        <div  className="collapse-box-content">
-          <li >Compliance, Regulation &amp; Security</li>
-            <li >Big Data, AI/Business Intelligence, ERP &amp; EMR Systems Testing &amp; Quality Control</li>
-              <li >Quantitative Analysis &amp; Desk/User Support</li>
-                   <br/>    
-        </div>     
-             
-        
-      <div  className="dots">
-        
-        </div>
-        </div>
-       </div>
-      </div>
-
-
-
-
-
-        <h1  style={{marginTop: "100px"}}  className="header   blue">AI-Fast Solutions</h1>
-      
-      <h3  style={{marginBottom: "100px"}}  className="grey subheader">We leverage AI, intensive screening, and vetting processes to ensure the best match. </h3>
-
-      <div  className="row">
-        <div  className="col-xs-12">
-          <img src="MJT/images/ai-chart.png" alt="" />
-        </div>
-      </div>
-
-
-
-
-    </div>
-    
-
-
-     
-        
-  
-    
-  </section>
   <section id="talent"  className="video  relative animated submit-resume  " data-animation="fadeInLeft" data-animation-delay="300">
 
 
@@ -770,7 +571,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
 
 
 
-<section   className="container white-bg animated" data-animation="fadeInRight" data-animation-delay="300">
+<section   id="tryInsty" className="container white-bg animated" data-animation="fadeInRight" data-animation-delay="300">
   <div  className="inner mobile-inner-1">
  
       <h1  className="header blue mobile-header">So, How Does Your Resume Stack Up?</h1>
@@ -856,7 +657,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
 
   </section>
 
-<section   className="container white-bg" data-animation="fadeInLeft" data-animation-delay="300">
+<section  id="tryInsty2" className="container white-bg" data-animation="fadeInLeft" data-animation-delay="300">
   <div  className="inner bottom-instymatch">
 
       <h1  className="header blue blueheader">InstyMatch:   your unbiased candidate rating system. </h1>
@@ -914,7 +715,7 @@ identify, target, and meet the needs of our clients with accuracy and efficiency
 
   </section>
 
-  <section  style={{marginBottom: "20px"}}  className="container white-bg animated" data-animation="fadeInLeft" data-animation-delay="300">
+  <section id="valuesContinued" style={{marginBottom: "20px"}}  className="container white-bg animated" data-animation="fadeInLeft" data-animation-delay="300">
 
     <div  className="inner-no-margin">
 
@@ -1531,7 +1332,7 @@ technology initiatives with the right high-skilled talent.
 
 
 
-  <section   className="  relative animated footer-section  " data-animation="fadeInLeft" data-animation-delay="100">
+  <section  id="footer" className="  relative animated footer-section  " data-animation="fadeInLeft" data-animation-delay="100">
 
 
 
