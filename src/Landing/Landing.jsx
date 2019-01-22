@@ -1,7 +1,7 @@
 import React, { Component, Image} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+import axios from "axios";
 import Paper from "material-ui/Paper";
 import Background from "../_constants/images/careers.png";
 import Background2 from "../_constants/images/careers2.png";
@@ -144,14 +144,49 @@ const styles = {
     super(props);
 
 
-    this.state = { width: 0, height: 0 };
+    this.state = { width: 0, 
+      height: 0,
+      components: {
+        home: {
+          text: 'hello world',
+        },
+        services: {
+
+        },
+        values: {
+
+        },
+        Employers: {
+
+        },
+        howWe:{
+
+        },
+        expertise:{
+
+        },
+        talent: {
+
+        },
+        contact: {
+
+        },
+
+
+      } 
+
+
+    };
   this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  this.fetchData = this.fetchData.bind(this);
+  this.processData = this.processData.bind(this);
 
   }
 
   componentDidMount() {
   this.updateWindowDimensions();
   window.addEventListener('resize', this.updateWindowDimensions);
+  this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/6', 'home');
 }
 
 componentWillUnmount() {
@@ -162,6 +197,44 @@ updateWindowDimensions() {
   this.setState({ width: window.innerWidth, height: window.innerHeight });
 }
 
+ fetchData(url,component){
+
+var self = this;
+
+ axios({method: 'get',
+    url: url
+  
+    })
+ .then(function (response) {
+
+  console.log("here is data from wp server call", response);
+
+  if (response.data){
+    self.processData(response.data,component);
+  }
+
+ })
+
+ .catch(function (response) {
+    console.log("here is catch error from wp server call", response);
+
+
+ });
+
+
+
+}
+
+
+processData(data, component){
+
+const {components} = this.state;
+
+components[component]['text'] = data['content']['rendered'] ;
+
+this.setState({components: components});
+
+}
 
 
 
@@ -185,11 +258,7 @@ updateWindowDimensions() {
     
             <ul  className="slide-text-1 ">
               <li  className="hometext-1 normal ">
-                <div  className=" blue">Technology driven staffing solutions.
-                <br/>
-                 
-                  Connecting talent globally.
-                </div>
+              <div  className=" blue" dangerouslySetInnerHTML={{ __html: this.state.components['home']['text'] }}></div>
 
               </li>
 
@@ -340,7 +409,7 @@ updateWindowDimensions() {
 <div id='video-container'>
 
 
-  <section   className=" how-we  ">
+  <section   className=" how-we  " id="how-we">
 
     <div  className="inner">
 
@@ -1147,7 +1216,7 @@ technology initiatives with the right high-skilled talent.
                     </a>
 
                     <a  href="https://goo.gl/maps/xn9fyKKQzHD2">
-                    <h4  className="lefttt member-name normal black">600 California Street, 12th floor @WeWork San Francisco,CA 94018</h4>
+                    <h4  className="lefttt member-name normal black">600 California St. FL 12, San Francisco, CA 94108</h4>
                   </a>
                   </span>
 
