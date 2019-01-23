@@ -266,7 +266,7 @@ this.setState({components: components});
     
             <ul  className="slide-text-1 ">
               <li  className="hometext-1 normal ">
-              <div  className=" blue" dangerouslySetInnerHTML={{ __html: this.state.components['home']['text'] }}></div>
+              <div  className=" blue" > Technology Driver Solutions. <br> Connecting Talent Globally.  </div>
 
               </li>
 
