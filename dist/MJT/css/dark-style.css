@@ -12,6 +12,10 @@
 	/* Playball */
 	@import url(https://fonts.googleapis.com/css?family=Playball);
 
+	.responsive-container-uas{
+		padding-top: 75px;
+	}
+
 	.collapse-box-content{
 		 display: inline-block;
 	}
@@ -179,10 +183,7 @@
 
 /* Page Animated item Styles */
 
-	.animated{
-		visibility: hidden;
 
-	}
 
 	.visible{
 		visibility:visible;

@@ -26,6 +26,8 @@
     "form-data": "^2.3.2",
     "helmet": "^3.12.1",
     "history": "^4.6.3",
+    "html-entities": "^1.2.1",
+    "html-react-parser": "^0.6.1",
     "inflight": "^1.0.6",
     "ipware": "^1.0.0",
     "material-ui": "^0.20.0",

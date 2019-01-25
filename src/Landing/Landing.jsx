@@ -6,12 +6,13 @@ import Paper from "material-ui/Paper";
 import Background from "../_constants/images/careers.png";
 import Background2 from "../_constants/images/careers2.png";
 
-
+import Parser from 'html-react-parser';
 import Section from "../InstyBeta/components/Section";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { deepOrange500 } from "material-ui/styles/colors";
-
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 // Theme
 const muiTheme = getMuiTheme({
   palette: {
@@ -151,33 +152,45 @@ const styles = {
           text: 'hello world',
         },
         services: {
-
+          text: 'hello world',
         },
         values: {
-
+           text: 'hello world',
         },
         valuesContinued:{
-
+           text: 'hello world',
         },
-        Employers: {
-
+        employers: {
+           text: 'hello world',
         },
+
         howWe:{
-
-        },
-        tryInsty:{
-
-        },
-        tryInsty2:{
-
+          text: 'hello world',
         },
 
-     
+        howWeServices:{
+          text: 'hello world',
+        },
+
+        instyAd1:{
+           text: 'hello world',
+        },
+
+        instyAd2:{
+          text: 'hello world',
+        },
+
         talent: {
-
+          text: 'hello world',
+        },
+        team: {
+          text: 'hello world',
         },
         contact: {
-
+          text: 'hello world',
+        },
+        footer: {
+          text: 'hello world',
         },
 
 
@@ -188,13 +201,34 @@ const styles = {
   this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   this.fetchData = this.fetchData.bind(this);
   this.processData = this.processData.bind(this);
+  this.createHTML = this.createHTML.bind(this);
 
-  }
+
+}
+
+  
 
   componentDidMount() {
   this.updateWindowDimensions();
   window.addEventListener('resize', this.updateWindowDimensions);
-  this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/6', 'home');
+ 
+}
+
+componentWillMount(){
+   this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/6', 'home');
+  this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/44', 'services');
+    this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/47', 'howWe');
+     this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/49', 'howWeServices');
+      this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/51', 'talent');
+       this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/53', 'instyAd1');
+        this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/55', 'employers');
+         this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/57', 'instyAd2');
+          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/59', 'values');
+          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/61', 'valuesContinued');
+          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/63', 'team');
+          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/65', 'contact');
+          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/67', 'footer');
+
 }
 
 componentWillUnmount() {
@@ -238,13 +272,24 @@ processData(data, component){
 
 const {components} = this.state;
 
+console.log('checking response data',data );
+
 components[component]['text'] = data['content']['rendered'] ;
 
 this.setState({components: components});
 
 }
 
+createHTML(component){
 
+  console.log("checking component", component);
+
+  //console.log("checking raw html",this.state.components['home']['text']  );
+    //console.log("checking parsed html",Parser( this.state.components['home']['text'] )  );
+var decodeData = this.state.components[component]['text'] ;
+
+return ({__html: decodeData});
+}
 
   render() {
 
@@ -252,1126 +297,97 @@ this.setState({components: components});
   
     
     return (
-      <div  classNameName="careers-container" style={{}}>
+      <div  className="careers-container" style={{}}>
 
 
-  <section  className="home pattern black-bg animated" id="home" data-animation="fadeIn" data-animation-delay="400" >
-    <div id="slides"  >
-      <div  className="home-details visible">
 
-       
+<section dangerouslySetInnerHTML={this.createHTML('home')} className="home pattern black-bg animated" id="home" data-animation="fadeIn" data-animation-delay="400" >
 
-      <div id="fadeIn1"  className="fadeIn1">
-        <div  className="hometexts-1 " style={{margin:"40px"}}>
-    
-            <ul  className="slide-text-1 ">
-              <li  className="hometext-1 normal ">
-              <div  className=" blue" > Technology Driver Solutions. <br> Connecting Talent Globally.  </div>
-
-              </li>
-
-
-              <li  className="clear"></li>
-            </ul>
-        </div>
-
-        <div  className="in-line-container row">
-   
-          <div  className="in-line" style={{margin: "20px 40px"}}>
-    
-             <h3  className="mjt-orange feature-buttons uppercase"> Talent </h3> 
-            <a href="#talent"   className=" mjt-orange home-button uppercase semibold ">meet your opportunity</a>
-
-          </div>
-
-           <div  className="in-line" style={{margin: "20px 40px"}}>
-              <h3  className="mjt-orange feature-buttons uppercase"> Employers </h3>
-       
-              <a href="#Employers"  className="mjt-orange home-button uppercase semibold  ">meet your match</a>
-
-            </div>
-
-        </div>
-        
-
-      </div>
-
-
-    </div>
-  </div>
-  </section>
-
-
-
-
-
-
-
-  <section id="services"  className="container container-1 parallax1  parallax1 ">
-    <div  className="inner mobile-inner">
-
-        <h1  className="header   blue mobile-header">We Deliver Results. Better. Faster.</h1>
-   
-      <h3  className="grey subheader">My Job Tank offers AI-driven staffing solutions with extraordinary customer service coupled with our global network of elite talent with high-demand STEM skill sets.
-
-
-
-      </h3>
-
-      
-
-            <div  className="boxes black">
-
-
-
-        <div  className="row boxes-double-row" style={{marginBottom: "50px"}}>
-          <div  className="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
-
-            <div  className="box-click-container">
-              <img  src="MJT/images/icons/experts.png" style={{float: "left", width:"20%", margin: "0px 20px"}} />
-              <p  className="uppercase normal  about-head"> Our People  <br/> Your Experts</p>
-            </div>
-            
-
-            
-              
-                <div  className="collapse-box-content">
-                  <br/><br/>
-                  <p  className="grey about-text">Our teams of passionate, industry experts are experienced and well-versed in technology trends. </p>
-                  <p  className="grey  about-text">Each team member is focused on providing the highest levels of innovative solutions for new enterprises through <br/>  globally iconic companies. </p>
-
-                </div>
-              
-
-          </div>
-
-
-          <div  className="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
-
-            <div  className="box-click-container">
-              <img  src="MJT/images/icons/innovation.png" style={{float: "left", width:"20%", margin: "0px 20px"}} />
-              <p  className="uppercase normal  about-head"> AI-Leveraged <br/>  Technology</p>
-            </div>
-            
-
-            
-              
-                <div  className="collapse-box-content">
-                <br/><br/>
-                 <p  className="grey about-text">Our proprietary AI-enabled technology multiplies our talent network, eliminates human bias and greatly reduces talent matching and acquisition time.</p>
-                </div>
-              
-
-          </div>
-
-      </div>
-
-        <div  className="row row-bottom"  style={{marginBottom: "50px"}}>
-    
-          <div  className="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
-
-            <div  className="box-click-container">
-              <img  src="MJT/images/icons/focus.png" style={{float: "left", width:"20%", margin: "0px 20px"}} />
-              <p  className="uppercase normal  about-head"> Customized,  <br/> Focused Processes </p>
-            </div>
-            
-
-            
-              
-                <div  className="collapse-box-content">
-                <br/><br/>
-                 <p  className="grey about-text">We forecast talent needs and design proactive, customized solutions for today’s fast-moving human capital needs.</p>
-            <p  className="grey about-text">We create individualized strategies for highly-skilled tech talent, connecting them to their next career challenge   and exciting opportunity.</p>
-                </div>
-              
-
-          </div>
-
-          <div  className="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
-
-            <div  className="box-click-container">
-              <img  src="MJT/images/icons/network.png" style={{float: "left", width:"20%", margin: "0px 20px"}} />
-              <p  className="uppercase normal  about-head"> International <br/>  Networks</p>
-            </div>
-            
-
-            
-              
-                <div  className="collapse-box-content">
-                <br/><br/>
-                 <p  className="grey about-text">We have access to a deep well of the brightest technical talent from a wide network of international markets, top tier universities and hidden STEM networks. </p>
-                </div>
-              
-
-          </div>
-
-         </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-<div id='video-container'>
-
-
-  <section   className=" how-we  " id="how-we">
-
-    <div  className="inner">
-
-     
-        <h1  className="header blue meetheader" >How We Meet Your Needs</h1>
-
-  
-      <h3  className=" white subheader-bold" >We’ve separated our services to individually address the goals of each client and candidate.
-At My Job Tank, we focus on four lines of business in order to 
-identify, target, and meet the needs of our clients with accuracy and efficiency.</h3>
-
-
-    </div>
-
-  </section>
-
-  <section  className="container" >
-    
-    <div  className="inner needs-inner">
-      <div  className="service-boxes">
-        
-    
-          <div  className="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100"  >
-          
-           
-      
-             <img  src="MJT/images/icons/handshake.png" style={{width: "25%", margin: "20px"}}/> 
-            <p  className="uppercase service-header grey extrabold" >Contract Services</p>
-
-             <p  className=" normal  about-text grey text-space"> Staff Augmentation  <br/> Contract to Hire</p>
-              
-          </div>
-
-          <div  className="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100"  >
-           
-           
-            
-              <img  src="MJT/images/icons/meeting.png" style={{width: "20%", margin: "20px"}} />
-            <p  className="uppercase service-header grey extrabold" >Managed Engagements</p>
-
-             <p  className=" normal  about-text grey text-space"> Statement of Work <br/>  Project Based Consulting</p>
-              
-          </div>
-          
-          
-           <div  className="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100"  >
-          
-           
-         
-               <img  src="MJT/images/icons/human-resources.png" style={{width: "22%", margin: "20px"}} />
-            <p  className="uppercase service-header grey extrabold" >Direct Hire</p>
-
-             <p  className="normal  about-text grey text-space"> Contingent Search <br/>  Retained Search</p>
-              
-          </div>
-
-          <div  className="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100"  >
-          
-           
-       
-              <img  src="MJT/images/icons/connection.png" style={{width: "24%", margin: "20px"}} />
-            <p  className="uppercase service-header grey extrabold " >Internship Programs</p>
-
-             <p  className=" normal  about-text grey text-space"> Opportunities and <br/>  Campus Recruitment Programs</p>
-              
-          </div>
-
-
-
-
-         
-
-        
-
-
-
-          <div  className="clear"></div>
-
-        </div> 
-      </div>
-  </section>
-
-
-
-
-
-
-  <section id="talent"  className="video  relative animated submit-resume  " data-animation="fadeInLeft" data-animation-delay="300">
-
-
-
-
-  <div  className=" center-of-page">
-    <div  className="row ">
-      <div  className="col-xs-2 ">
-      </div>
-      <div  className="col-md-8  center-text mobile-text">
-        <h1  className="header   blue" >Talent,  Meet  Your  Opportunity.</h1>
-   
-        <h3  className="white subheader">We will partner with you to create a long-term strategy to an exciting, successful career with today’s fast-moving companies. Have a conversation with us today about your career goals and where you’d like to be. We can help define your market value and advise you on your next big move.
-
-        </h3>
-
-         <h4  className=" white">Looking For a Job?
-
-        </h4>
-
-        
-      </div>
-      <div  className="col-xs-2 ">
-      </div>
-    </div>
-
-  </div>
-
-  <div  className="job-button home-details home-box">
-    <div  className="in-line in-line-button" >
-
-            <a href="/resume"   className="  clear-button scroll uppercase semibold home-button">
-                    Submit your resume
-            </a>
-
-    </div>
-
-     <div  className="in-line in-line-button" >
-        
-     
-             <a href="/careers" target="_blank"  className=" clear-button-big scroll uppercase semibold  home-button">
-           See Our Openings </a>
-
-  </div>
-
- 
-</div>
-
-
-
-
-
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section   id="tryInsty" className="container white-bg animated" data-animation="fadeInRight" data-animation-delay="300">
-  <div  className="inner mobile-inner-1">
- 
-      <h1  className="header blue mobile-header">So, How Does Your Resume Stack Up?</h1>
-
-     
-      <h3  className=" subheader-1 grey sub-text">Let InstyMatch show you. In Seconds.</h3>
-
-      <h3  className=" light blue ">Curious about your competition?   </h3>
-
-        <h3  className=" grey subheader-3 max-width-75" >Our Instymatch app shows how your resume compares against others competing for
-        that juicy gig - in literally seconds. Tell us what position you’re considering, upload your resume and see 
-        where you stand in the rankings amongst the others in our database 
-        who are vying for a similar position. 
-      </h3>
-
-      
-
-       <a href="/instymatch"   className=" mjt-orange try-button uppercase semibold home-button">Try InstyMatch </a>
-    </div>
 </section>
 
 
-<section id="Employers"  className="video submit-jd  relative animated  " data-animation="fadeInLeft" data-animation-delay="300">
 
 
 
-
-  <div  className=" center-of-page">
-    <div  className="row match-box">
-      <div  className="col-xs-2 ">
-      </div>
-      <div  className="col-md-8  center-text">
-        <h1  className="header  blue"  >Employers,  Meet  Your  Match.</h1>
-    
-        <h3  className="white meetyourmatch-subtext subheader"> 
-
-          As a leader of technology initiatives, your project and outcomes are critically dependent on accessing and 
-          having highly-skilled players on your team. MJT is well-placed to harness highly competitive 
-            and elusive talent markets in the most important tech hubs in the US and in China.
-
-             <br/>
-            
-
-            Using our proprietay AI/ML platform, we deliver efficicent, speedy matching 
-            results and customized solutions.
-
-
-
-        </h3>
-
-      
-     
-      </div>
-
-      <div  className="col-xs-2 ">
-      </div>
-
-
-
-  </div>
-
-</div>
-<div  className="home-details home-box">
-  <div  className="in-line" >
-    
-         <h4   className="feature-buttons white"> Have a position to fill? </h4> 
-          <a href="/joborder"   className="  clear-button scroll uppercase semibold home-button">
-                  Tell us more
-          </a>
-
-  </div>
-
-  <div  className="in-line">
-          <h4  className="feature-buttons white"> Have a question? </h4>
-     
-             <a href="#contact"  className=" clear-button uppercase semibold home-button ">
-           Contact us </a>
-
-  </div>
-</div>
-     
-      
+  <section dangerouslySetInnerHTML={this.createHTML('services')} id="services"  className="container container-1 parallax1  ">
 
   </section>
 
-<section  id="tryInsty2" className="container white-bg" data-animation="fadeInLeft" data-animation-delay="300">
-  <div  className="inner bottom-instymatch">
 
-      <h1  className="header blue blueheader">InstyMatch:   your unbiased candidate rating system. </h1>
 
+
+
+
+
+
+  <section  dangerouslySetInnerHTML={this.createHTML('howWe')} className=" how-we  " id="how-we">
+
+
+
+  </section>
+
+  <section dangerouslySetInnerHTML={this.createHTML('howWeServices')} className=" how-we-services  " id="how-we-services" className="container" >
     
-      <h3  className=" subheader grey " >Super fast and free.</h3>
-
-      
-   
-   
     
-        <h1  className="header   blue blueheader">Seeking an impartial ranking of your candidate lineup?</h1>
+  </section>
+
+
+
+
+
+
+  <section dangerouslySetInnerHTML={this.createHTML('talent')} id="talent"  className="video  relative animated submit-resume  " data-animation="fadeInLeft" data-animation-delay="300">
+
+
+
+
+  </section>
+
+
+
+<section   dangerouslySetInnerHTML={this.createHTML('instyAd1')} className="container white-bg animated" data-animation="fadeInRight" data-animation-delay="300">
  
-        <h4   className=" grey max-width-75">Let InstyMatch show how your candidates stack up - in literally a few seconds. Upload up to ten resumes, click submit and you’ll see how each one ranks in terms of qualification, experience and suitability for the job. </h4>
-
-         <h4   className=" grey max-width-75">
-          Or, pit a single resume against up to the top ten in our extensive database who would be
-          vying for a similar position.
-
-        </h4>
-
-        <h4   className="  grey max-width-75">
-         Upload up to ten scoring requests a day.
-
-        </h4>
-
-        <div  style={{marginTop: "50px"}}>
-          <a href="/instymatch"    className=" mjt-orange try-button uppercase semibold home-button">Try InstyMatch </a>
-        </div>
-
-        
-  
-   
- 
-
-
-     
-    </div>
 </section>
 
-<section  id="values"  className="values-container  relative animated values-we-live-by  " data-animation="fadeInLeft" data-animation-delay="100">
+
+<section dangerouslySetInnerHTML={this.createHTML('employers')} id="Employers"  className="video submit-jd  relative animated  " data-animation="fadeInLeft" data-animation-delay="300">
 
 
-  <div  className="inner">
-
-        <h1  className="header blue blueheader">Because These Are Values We Live By</h1>
-
-
-
-         <h3 style={{width: "65%", marginLeft: "17.5%"}}  className=" subheader white ">Our core values are embodied by our team members and fuel our approach to 
-            delighting every client we serve.</h3>
-
-
-    </div>
 
   </section>
 
-  <section id="valuesContinued" style={{marginBottom: "20px"}}  className="container white-bg animated" data-animation="fadeInLeft" data-animation-delay="300">
+<section  dangerouslySetInnerHTML={this.createHTML('instyAd2')} id="instyAd2" className="container white-bg" data-animation="fadeInLeft" data-animation-delay="300">
 
-    <div  className="inner-no-margin">
+</section>
 
+<section  id="values" dangerouslySetInnerHTML={this.createHTML('values')} className="values-container  relative animated values-we-live-by  " data-animation="fadeInLeft" data-animation-delay="100">
 
-     <div  className="features-boxes black middle value-box">
-
-       
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="100">
-         
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/value-1.png"  style={{width: "30%"}} />
-          </a>
-          
-          <p  className="feature-head uppercase extrabold grey">Superior customer service</p>
-       
-
-        </div>
-
-
-       
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="200">
-         
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/icon02.png" style={{width: "26%"}} />
-          </a>
-         
-          <p  className="feature-head uppercase extrabold grey">Integrity</p>
-       
-
-        </div>
-
-
-      
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="300">
-         
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/icon03.png" style={{width: "26%"}} />
-          </a>
-          
-          <p  className="feature-head uppercase extrabold grey">Gratitude and respect</p>
-        
-
-        </div>
-
-
-       
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="400">
-         
-          <a  className="f-icon orange">
-             <img src="MJT/images/icons/value/icon04.png" style={{width: "26%"}} />
-          </a>
-          
-          <p  className="feature-head uppercase extrabold grey">Change in the lives of those we serve</p>
-          
-
-        </div>
-
-
-        
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="500">
-      
-          <a  className="f-icon orange">
-             <img src="MJT/images/icons/value/icon05.png" style={{width: "30%"}} />
-          </a>
-        
-          <p  className="feature-head uppercase extrabold grey">Commitment to charities and our communities</p>
-         
-
-        </div>
-
-
-        
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="600">
-         
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/icon06.png" style={{width: "24%"}} />
-          </a>
-          
-          <p  className="feature-head uppercase extrabold grey">International collaboration</p>
-     
-
-        </div>
-
-       
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="700">
-        
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/icon07.png" style={{width: "27%"}} />
-          </a>
-         
-          <p  className="feature-head uppercase extrabold grey">Strength in Diversity</p>
-        
-
-        </div>
-
-      
-        <div  className="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="800">
-         
-          <a  className="f-icon orange">
-            <img src="MJT/images/icons/value/icon08.png" style={{width: "27%"}} />
-          </a>
-        
-          <p  className="feature-head uppercase extrabold grey">Fun along the way</p>
-         
-
-        </div>
-
-
-
-
-
-
-      </div>
-
-    </div> 
 
   </section>
 
-  <section id="contact"  className=" contact-form-custom">
+  <section id="valuesContinued" dangerouslySetInnerHTML={this.createHTML('valuesContinued')} style={{marginBottom: "20px"}}  className="container white-bg animated" data-animation="fadeInLeft" data-animation-delay="300">
+
+
+
+  </section>
+
+  <section id="contact" dangerouslySetInnerHTML={this.createHTML('contact')} className=" contact-form-custom">
    
-    <div  className="inner contact">
-
-        <h1  className="header blue blueheader">Have A General Question? </h1>
-
-
-
-      
-     <h3 style={{width: "65%", marginLeft: "17.5%"}}  className=" subheader white ">Tell us how we can help you:</h3>
-
-    
-   
-
-      
-      <div  className="contact-form">
-        
-        <form id="contact-us" method="post" action="/contact_form">
-
-          <div  className="row">
-            <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-              
-              <input type="text" name="firstname" id="firstname" required="required"  className="form " placeholder="First Name" />
-            </div>
-
-             <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-                
-              <input type="text" name="lastname" id="lastname" required="required"  className="form " placeholder="Last Name" />
-            </div>
-
-          </div>
-          
-          <div  className="row">
-            <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-               
-              <input type="text" name="subject" id="subject" required="required"  className="form " placeholder="Job Position" />
-            </div>
-
-             <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-              
-              <input type="text" name="company" id="company" required="required"  className="form " placeholder="Company" />
-            </div>
-
-          </div>
-          <div  className="row">
-            <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-              
-                  <input type="email" name="email" id="email" required="required"  className="form " placeholder="Email Address" />
-            </div>
-
-             <div  className="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
-                
-              <input type="text" name="phone" id="phone" required="required"  className="form " placeholder="Phone Number" />
-            </div>
-
-          </div>
-            
-
-          
-    
-     
-          <div  className="relative fullwidth col-xs-12">
-             <textarea name="message" id="message"  className="form textarea "  placeholder="Type your message here"></textarea>
-           
-            <button type="submit" id="submit" name="submit"  className="form-btn ">Send Message</button> 
-          </div>
-          
-          <div  className="clear"></div>
-        </form>
-
-    
-        <div  className="mail-message-area">
-      
-          <div  className="alert gray-bg mail-message not-visible-message">
-            <strong>Thank You !</strong> Your message has been delivered.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  <section id="team"  className="container white-bg-circle-rotated parallax4">
-
-   
-    <div  className="inner team bottom-instymatch-1">
-
-      <h1  className="header  blue blueheader">Our People.  Your Experts.  <br/> In A City Near You.</h1>
-       
-        <h5  className="  grey max-width-75 sub-grey">MJT teams are located in three prime tech and service hubs 
-in the US and in China. With over 100 years of combined experience in the staffing industry, our 
-leaders and teams of experts value superior customer and client service above all else. </h5> 
-
-<h5  className=" grey max-width-75 sub-grey">
-Let us help you actualize your upcoming project or long-term
-technology initiatives with the right high-skilled talent. 
-        </h5>
-
-         <h1  className="header   blue blueheader">Contact Us Today!</h1>
-
-
-
-
-
-
-     
-      <div style={{marginTop: "100px", marginBottom: "10px"}}  className="team-members inner-details animated "   data-animation="fadeInRight" data-animation-delay="100">
-
-      
-        <div  className="row contact-detail-row" >
-            
-
-            <div  className="col-xs-2"></div>
-
-          <div  className="col-xs-7 member" >
-            <div  className="member-inner">
-            
-              <a  className="team-image">
-           
-                <img src="MJT/images/team/SF.png" alt=""  />
-              </a>
-              
-            </div> 
-           
-
-          </div>
-
-          <div  className="col-xs-6 col-xs-offset-1 member2">
-           
-
-                  <div  className="row">
-                  <span  className="sameliny"> 
-
-                   <a style={{marginRight: "20px"}} href="mailto:info@myjobtank.com">
-                      <img src="MJT/images/icons/mail-black-envelope-symbol.png" />
-                    </a>
-
-                    <a href="mailto:info@myjobtank.com">
-                      <h4  className="lefttt member-name normal black">info@myjobtank.com</h4> 
-                    </a>
-                  </span>
-
-                    </div>
-
-                    <div  className="row">
-                 <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} >
-                      <img src="MJT/images/icons/call.png"  />
-                    </a>
-
-                    <h4  className="lefttt member-name normal black">+1.415.795.7488</h4>
-
-                  </span>
-
-                </div>
-
-            
-              
-            <div  className="row">
-                <span  className="sameliny"> 
-
-                     <a style={{marginRight: "20px"}} href="https://www.linkedin.com/company/my-job-tank-inc/">
-                      <img src="MJT/images/icons/linkedin-logo.png"  />
-                    </a>
-
-                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
-                    <h4  className="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
-                    </a>
-
-                  </span>
-                </div>
-
-              <div  className="row">
-                  <span  className="sameliny"> 
-
-                      <a style={{marginRight: "20px"}} href="https://goo.gl/maps/xn9fyKKQzHD2">
-                      <img src="MJT/images/icons/location.png"  />
-                    </a>
-
-                    <a  href="https://goo.gl/maps/xn9fyKKQzHD2">
-                    <h4  className="lefttt member-name normal black">600 California St. FL 12, San Francisco, CA 94108</h4>
-                  </a>
-                  </span>
-
-                </div>
-
-              
-
-          </div>
-
-         
-       </div>
-
-
-
-
-
-       <div  className="row contact-detail-row" >
-            
-
-            <div  className="col-xs-2"></div>
-
-          <div  className="col-xs-7 member" >
-            <div  className="member-inner">
-             
-              <a  className="team-image">
-               
-                <img src="MJT/images/team/SEATTLE.png" alt=""  />
-              </a>
-              
-            </div> 
-
-           
-
-          </div>
-
-          <div  className="col-xs-6 col-xs-offset-1 member2">
-           
-
-           
-
-                  <div  className="row">
-                  <span  className="sameliny"> 
-
-                   <a style={{marginRight: "20px"}} href="mailto:info@myjobtank.com">
-                     <img src="MJT/images/icons/mail-black-envelope-symbol.png"  />
-                    </a>
-
-                    <a  href="mailto:info@myjobtank.com">
-                    <h4  className="lefttt member-name normal black overflow">info@myjobtank.com</h4> 
-                   </a>
-                  </span>
-
-                    </div>
-
-                    <div  className="row">
-                 <span  className="sameliny"> 
-
-                   <a style={{marginRight: "20px"}} >
-                      <img src="MJT/images/icons/call.png"  />
-                    </a>
-
-                    <h4  className="lefttt member-name normal black">+1.206.267.1122</h4>
-
-                  </span>
-
-                </div>
-
-            
-
-              
-            <div  className="row">
-                <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="https://www.linkedin.com/company/my-job-tank-inc/">
-                      <img src="MJT/images/icons/linkedin-logo.png"  />
-                    </a>
-
-                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
-                    <h4  className="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
-                    </a>
-
-                  </span>
-                </div>
-
-              <div  className="row">
-                  <span  className="sameliny"> 
-
-                  <a style={{marginRight: "20px"}} href="https://goo.gl/maps/8ojC3v2ozNp">
-                      <img src="MJT/images/icons/location.png"  />
-                    </a>
-
-                    <a  href="https://goo.gl/maps/8ojC3v2ozNp">
-                    <h4  className="lefttt member-name normal black">10400 NE 4th Street Bellevue, WA 98004</h4>
-                    </a>
-
-                  </span>
-
-                </div>
-
-              
-
-          </div>
-
-         
-       </div>
-
-       <div  className="row contact-detail-row" >
-            
-
-            <div  className="col-xs-2"></div>
-
-          <div  className="col-xs-7 member" >
-            <div  className="member-inner">
-              
-              <a  className="team-image">
-              
-                <img src="MJT/images/team/NYC.png" alt=""  />
-              </a>
-              
-            </div> 
-
-           
-
-          </div>
-
-          <div  className="col-xs-6 col-xs-offset-1 member2">
-           
-
-                 
-
-                  <div  className="row">
-                  <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="mailto:info@myjobtank.com">
-                      <img src="MJT/images/icons/mail-black-envelope-symbol.png"  />
-                    </a>
-
-                    <a href="mailto:info@myjobtank.com">
-                      <h4  className="lefttt member-name normal black">info@myjobtank.com</h4> 
-                    </a>
-
-                  </span>
-
-                    </div>
-
-                    <div  className="row">
-                 <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} >
-                      <img src="MJT/images/icons/call.png"  />
-                    </a>
-
-
-                    <h4  className="lefttt member-name normal black">+1.646.568.4717</h4>
-
-                  </span>
-
-                </div>
-
-              
-            <div  className="row">
-                <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="https://www.linkedin.com/company/my-job-tank-inc/">
-                      <img src="MJT/images/icons/linkedin-logo.png"  />
-                    </a>
-
-                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
-                      <h4  className="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
-                    </a>
-
-                  </span>
-                </div>
-
-              <div  className="row">
-                  <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="https://goo.gl/maps/SQvVXTUPQK62">
-                      <img src="MJT/images/icons/location.png"  />
-                    </a>
-
-                    <a  href="https://goo.gl/maps/SQvVXTUPQK62">
-                      <h4  className="lefttt member-name normal black">1460 Broadway, 5th floor, New York, NY 10036</h4>
-                    </a>
-
-                  </span>
-
-                </div>
-
-              
-
-          </div>
-
-         
-       </div>
-
-       <div  className="row contact-detail-row" >
-            
-
-            <div  className="col-xs-2"></div>
-
-          <div  className="col-xs-7 member" >
-            <div  className="member-inner">
-             
-              <a  className="team-image">
-               
-                <img src="MJT/images/team/SHANGHAI.png" alt=""  />
-              </a>
-              
-            </div> 
-
-           
-
-          </div>
-
-          <div  className="col-xs-6 col-xs-offset-1 member2">
-           
-
-            
-
-                  <div  className="row">
-                  <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="mailto:info@myjobtank.com">
-                      <img src="MJT/images/icons/mail-black-envelope-symbol.png"  />
-                    </a>
-
-                    <a  href="mailto:info@myjobtank.com">
-                      <h4  className="lefttt member-name normal black overflow">info@myjobtank.com</h4> 
-                    </a>
-
-                  </span>
-
-                    </div>
-
-                    <div  className="row">
-                 <span  className="sameliny"> 
-
-                     <a style={{marginRight: "20px"}} >
-                      <img src="MJT/images/icons/call.png"  />
-                    </a>
-
-                    <h4  className=" lefttt member-name normal black">+86.21.5266.0132</h4>
-
-                  </span>
-
-                </div>
-
-              
-            <div  className="row">
-                <span  className="sameliny"> 
-
-                    <a style={{marginRight: "20px"}} href="https://www.linkedin.com/company/my-job-tank-inc/">
-                       <img src="MJT/images/icons/linkedin-logo.png"  />
-                    </a>
-
-                    <a  href="https://www.linkedin.com/company/my-job-tank-inc/">
-                     <h4  className=" lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
-                    </a>
-
-                  </span>
-                </div>
-
-              <div  className="row">
-                  <span  className="sameliny"> 
-
-                     <a style={{marginRight: "28px"}} href="https://goo.gl/maps/qvCw4W9L9qT2">
-                     <img src="MJT/images/icons/location.png"  />
-                    </a>
-
-                    <a style={{marginRight: "28px"}} href="https://goo.gl/maps/qvCw4W9L9qT2">
-                      <h4 style={{marginLeft: "-7px"}}  className=" lefttt member-name normal black">No. 468 Nanjing West Road, Jing’an District, 
-                        Shanghai, People's Republic of China</h4>
-                    </a>
-
-                  </span>
-
-                </div>
-
-              
-
-          </div>
-
-         
-       </div>
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-       
-        <div  className="clear"></div>
-      </div>
-    </div>
-  </section>
-
   
-
-
-</div>
-
+  </section>
 
 
 
-  <section  id="footer" className="  relative animated footer-section  " data-animation="fadeInLeft" data-animation-delay="100">
+  <section id="team"  dangerouslySetInnerHTML={this.createHTML('team')} className="container white-bg-circle-rotated parallax4">
 
-
-
-
-  
-    <div  className="row " style={{width: "85%", marginLeft: "7.5%", marginTop: "75px"}}>
-      <div  className="col-xs-2">
-       
-          <a href="#home"  className="scroll logo">
-         
-            <img  src="MJT/images/logo-mjt.png" alt="Logo"  />
-          </a>
-        
-      </div>
-
-      <div  className="col-xs-6  center-text">
-    
-
-        
-      </div>
-      <div  className="col-xs-4 ">
-
-        <div  className="col-xs-6 animated" data-animation="fadeIn" data-animation-delay="300">
-          <a href="/careers"> <h4  className="uppercase green">Careers at MJT </h4> </a>
-          </div>
-          <div  className="col-xs-6 animated" data-animation="fadeIn" data-animation-delay="300">
-          <a href="https://www.linkedin.com/company/my-job-tank-inc/"><h4  className="uppercase green">LinkedIn</h4> </a>
-          </div>
-      </div>
-
-
-    </div>
-    <div  className="row footer-text" style={{width: "85%", marginLeft: "7.5%"}}>
+   
  
-     <h3  className="  white">My Job Tank is a technology-driven human capital resource specializing in high-skilled technical talent solutions. MJT offers strategic partnerships with dynamic companies, leveraging an innovative AI platform that offers fast, efficient talent matching paired with exceptional personalized service. Our specialist teams in San Francisco, New York City, Seattle, and Shanghai deliver results as we delight today's fast-moving organizations and highly skilled talent with advanced strategies on an international scale.
+  </section>
 
-          </h3>
- 
-    </div>
+
+
+  <section  id="footer" dangerouslySetInnerHTML={this.createHTML('footer')}  className="  relative animated footer-section  " data-animation="fadeInLeft" data-animation-delay="100">
+
 
 
 

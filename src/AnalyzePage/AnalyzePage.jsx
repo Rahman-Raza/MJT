@@ -165,6 +165,8 @@ class AnalyzePage extends React.Component {
     return (
       <div style={{}}>
         <MuiThemeProvider muiTheme={muiTheme}>
+
+         <div className="responsive-container-uas">
          <Loadable
         active={this.state.loading}
         spinner
@@ -311,6 +313,7 @@ class AnalyzePage extends React.Component {
             </Paper>
           </Section>
              </Loadable>
+             </div>
         </MuiThemeProvider>
       </div>
     );

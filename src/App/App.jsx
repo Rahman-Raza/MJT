@@ -106,11 +106,11 @@ class App extends React.Component {
           
         <ul class=" uppercase bold top-menu no-float" id="top-menu">
 
-          <li class="nav-item2"><a href="Landing#home" >Home</a></li>
-          <li class="nav-item2"><a href="Landing#services" >Services</a></li>
+          <li class="nav-item2"><a href="/" >Home</a></li>
+          <li class="nav-item2"><a href="/#services" >Services</a></li>
           
           
-          <li class="nav-item2"><a href="Landing#values" >Our Values</a></li>
+          <li class="nav-item2"><a href="#values" >Our Values</a></li>
 
 
 
@@ -118,11 +118,11 @@ class App extends React.Component {
 
 
 
-          <li class="nav-item2"><a href="Landing#talent" >Job Seekers</a></li>
-          <li class="nav-item2"><a href="Landing#Employers" >Employers</a></li>
-          <li class="nav-item2"><a href="Landing#contact" >Contact</a></li>
+          <li class="nav-item2"><a href="/#talent" >Job Seekers</a></li>
+          <li class="nav-item2"><a href="/#Employers" >Employers</a></li>
+          <li class="nav-item2"><a href="/#contact" >Contact</a></li>
           <li class="insty">
-            <a href="/instymatch" >
+            <a href="/instymatch" target="_blank" >
            InstyMatch 
            <img src={question} style={{paddingLeft: "10px",width: "25%",marginRight: "-20px",marginBottom: "5px"}}/>
            </a>
@@ -147,9 +147,11 @@ class App extends React.Component {
           )}
           <Router history={history}>
             <div >
-           
-              <Route exact path="/Resume" component={HomePage} />
-               <Route path="/Landing" component={Landing} />
+
+               <Route exact path="/" component={Landing} />
+              <Route path="/Resume" component={HomePage} />
+
+            
               <Route path="/login" component={LoginPage} />
               <Route path="/joborder" component={AddJob} />
               <Route path="/instymatch" component={InstyBeta} />
@@ -160,6 +162,7 @@ class App extends React.Component {
                <Route path="/confirmJD" component={SubmitPageJD} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/analyze" component={AnalyzePage} />
+           
             </div>
           </Router>
         </div>
