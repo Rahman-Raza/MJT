@@ -215,7 +215,7 @@ const styles = {
 }
 
 componentWillMount(){
-   this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/6', 'home');
+   this.fetchData('https://ec2-3-91-190-204.compute-1.amazonaws.com/wp-json/wp/v2/posts/5', 'home');
   this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/44', 'services');
     this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/47', 'howWe');
      this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/49', 'howWeServices');
@@ -241,6 +241,11 @@ updateWindowDimensions() {
 
  fetchData(url,component){
 
+
+    if (component == 'home'){
+      console.log("checking home api call");
+  }
+
 var self = this;
 
  axios({method: 'get',
@@ -249,10 +254,15 @@ var self = this;
     })
  .then(function (response) {
 
-  console.log("here is data from wp server call", response);
+ // console.log("here is data from wp server call", response);
 
   if (response.data){
     self.processData(response.data,component);
+
+    if (component === 'home'){
+      console.log("checking home api call", response.data);
+  }
+
   }
 
  })
@@ -272,7 +282,7 @@ processData(data, component){
 
 const {components} = this.state;
 
-console.log('checking response data',data );
+//console.log('checking response data',data );
 
 components[component]['text'] = data['content']['rendered'] ;
 
@@ -282,7 +292,7 @@ this.setState({components: components});
 
 createHTML(component){
 
-  console.log("checking component", component);
+  //console.log("checking component", component);
 
   //console.log("checking raw html",this.state.components['home']['text']  );
     //console.log("checking parsed html",Parser( this.state.components['home']['text'] )  );
