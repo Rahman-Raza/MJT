@@ -122,7 +122,7 @@ class App extends React.Component {
           <li class="nav-item2"><a href="/#Employers" >Employers</a></li>
           <li class="nav-item2"><a href="/#contact" >Contact</a></li>
           <li class="insty">
-            <a href="/instymatch" target="_blank" >
+            <a href="/instymatch"  >
            InstyMatch 
            <img src={question} style={{paddingLeft: "10px",width: "25%",marginRight: "-20px",marginBottom: "5px"}}/>
            </a>

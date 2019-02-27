@@ -70,7 +70,7 @@ module.exports = (app) => {
       var options2 = {
         method: 'POST',
                 
-        url: 'http://18.206.187.45:8080/instybeta',
+        url: 'https://mjtbe.tk/instybeta',
         formData: myfiles,
                
       };

@@ -215,19 +215,19 @@ const styles = {
 }
 
 componentWillMount(){
-   this.fetchData('https://ec2-3-91-190-204.compute-1.amazonaws.com/wp-json/wp/v2/posts/5', 'home');
-  this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/44', 'services');
-    this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/47', 'howWe');
-     this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/49', 'howWeServices');
-      this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/51', 'talent');
-       this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/53', 'instyAd1');
-        this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/55', 'employers');
-         this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/57', 'instyAd2');
-          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/59', 'values');
-          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/61', 'valuesContinued');
-          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/63', 'team');
-          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/65', 'contact');
-          this.fetchData('http://34.221.180.21/wp-json/wp/v2/posts/67', 'footer');
+   this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/5', 'home');
+  this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/7', 'services');
+    this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/9', 'howWe');
+     this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/11', 'howWeServices');
+      this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/13', 'talent');
+       this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/15', 'instyAd1');
+        this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/17', 'employers');
+         this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/19', 'instyAd2');
+          this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/21', 'values');
+          this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/23', 'valuesContinued');
+          this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/25', 'team');
+          this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/27', 'contact');
+          this.fetchData('https://mjtwordpress.tk/wp-json/wp/v2/posts/29', 'footer');
 
 }
 

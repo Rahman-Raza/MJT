@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {PieChart, Legend} from 'react-easy-chart';
+import RaisedButton from "material-ui/RaisedButton";
 import Pie from './Pie';
   const colors = ['#43A19E', '#7B43A1', '#F2317A', '#FF9824', '#58CF6C'];
   const data =[5, 12, 8, 3, 10];
@@ -9,39 +10,69 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import { BarChart, CartesianGrid,XAxis,YAxis,Tooltip,Bar,ResponsiveContainer,Label} from 'recharts';
 import FaQuestionCircle from "react-icons/lib/fa/question-circle";
 import FaCircle from "react-icons/lib/fa/circle";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
+
+ const roundedButton = {
+   
+
+
+     margin: "0 auto",
+     color: "white",
+   
+    position: "relative",
+    height: "100%",
+    bordeRadius: "10px",
+    padding: "10px 50px",
+    boxShadow: "0px",
+    backgroundColor: "#79C239",
+  };
 const linkedInIcon ={
 
   };
+   const negativeMargin = {
+    marginTop: "-4px",
+  };
+
 const chartHeadingStyle = {
   fontSize: "14px",
-  fontWeight: "800",
+  fontWeight: "400",
   color: "#009dd6",
   marginBottom: "20px",
   marginTop: "10px",
+};
+const chartHeadingStyleDistribution = {
+  fontSize: "14px",
+  fontWeight: "400",
+  color: "#FFFFFF",
+  marginBottom: "25px",
+  marginTop: "0px",
+  marginLeft: "60px",
 };
 
 const chartLegendStyle = {
 
   marginTop: "12px",
   fontSize: "10px",
-  fontWeight: "400",
+    fontWeight: "100",
   color: "#009dd6",
 
 };
 const chartLegendStaticStyle = {
 
   marginLeft: "1px",
-  marginTop: "15px",
+  marginTop: "17px",
   fontSize: "14px",
-  fontWeight: "400",
+ fontWeight: "100",
   color: "#56A1FD",
 
 };
 const chartLegendDynamicStyle = {
   marginLeft: "1px",
-  marginTop: "15px",
+  marginTop: "17px",
   fontSize: "14px",
-  fontWeight: "400",
+  fontWeight: "100",
   color: "#09D4C1",
 
 };
@@ -82,7 +113,7 @@ const dottedContainer = {
   borderRadius: "10px",
   padding: "10px 10px 30px",
   margin: "10px 0",
-  overflow: "scroll",
+  
 };
 const customStyle = {
     '.legend': {
@@ -180,7 +211,7 @@ class DataVisualization extends Component {
     //var cleanData = this.cleanData(this.props.data);
 
     
-
+    console.log("checking for resume data visualization data", this.props.data);
     var pieData = this.makePieData(this.props.data);
     var barData = this.makeBarData(this.props.data);
 
@@ -203,6 +234,7 @@ class DataVisualization extends Component {
     this.cleanData = this.cleanData.bind(this);
     this.makePieData = this.makePieData.bind(this);
     this.makeBarData = this.makeBarData.bind(this);
+    this.handleDownloadPdf = this.handleDownloadPdf.bind(this);
  
   }
 
@@ -447,6 +479,37 @@ class DataVisualization extends Component {
     return false;
   }
 
+  handleDownloadPdf(event){
+
+    console.log("checking window scale", window.devicePixelRatio);
+
+
+
+html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
+  .then((canvas) => {
+    const imgData = canvas.toDataURL('image/png');
+    console.log("checking canvas",canvas);
+
+    // const url = window.URL.createObjectURL(new Blob([imgData]));
+    //       const link = document.createElement('a');
+    //       link.href = url;
+    //       link.setAttribute('download','image.png' );
+    //       document.body.appendChild(link);
+    //       link.click();
+
+      const pdf = new jsPDF();
+
+      pdf.setFontSize(24);
+      pdf.text(10, 25, this.props.fileName)
+     pdf.addImage(imgData, 'PNG', 0, 40, 0, 0);
+     pdf.save("download.pdf");  
+    document.body.appendChild(canvas);
+
+  })
+;
+
+}
+
 
   render() {
     let tooltip;
@@ -457,166 +520,176 @@ class DataVisualization extends Component {
 
  
       
-      <div className="data-visualize-container" style={dottedContainer}>
-
-       <div className="row">
-      
-        <div className="col-md-7"> 
-          {tooltip}
-          </div>
-       
-      </div>
-      
-
-   
-     <div className="row" style={{marginRight: "40px"}}>
-
-     
-
-      <div className="col-md-4" style={{marginRight: "0px", minWidth: "300px"}}>
-      <Section
-                
-                heading=" "
-                
-                style={{margin: "10px"}}
-                
-                >
-           <div className="row">
-      
+    <div className="data-visualize-container"  style={dottedContainer}>
+      <div className="pdfArea" id={this.props.fileName}>
+        <div className="row">
         
-                
-                    <h4 style={chartHeadingStyle} className="chart-graph-label">  Distribution of Score </h4>
-                 
-             </div>
-
-                
-       <PieChart
-                                      mouseOverHandler={this.mouseOverHandler}
-                                      mouseOutHandler={this.mouseOutHandler.bind(this)}
-                                      mouseMoveHandler={this.mouseMoveHandler.bind(this)}
-                                      size={250}
-                                      innerHoleSize={125}
-                                      data={this.state.data}
-                                      labels
-                                      styles={{
-                                      '.chart_lines': {
-                                        strokeWidth: 0
-                                      },
-                                      '.chart_text': {
-                                        color: 'white',
-                                        fontFamily: 'serif',
-                                        fontSize: '1.25em',
-                                        fill: '#333'
-                                      },
-                                      '.pie-chart-label':{
-                                        fontWeight: "400",
-                                        fontSize: '12px !important',
-                                        color: 'white !important',
-                                        fill: 'white !important',
-                                      },
-                                    }}
-          />
+          <div className="col-md-7" data-html2canvas-ignore="true"> 
+            {tooltip}
+            </div>
          
+        </div>
      
+       <div className="row" >
+
+        <div className="col-md-4" style={{marginRight: "0px", minWidth: "300px"}}>
+          <Section
+                    
+                    heading=" "
+                    
+                    style={{margin: "10px"}}
+                    
+                    >
+             <div className="row">
+        
+          
+                  
+                      <h4 style={chartHeadingStyleDistribution} className="chart-graph-label">  Distribution of Score </h4>
+                   
+               </div>
+
+                  
+            <PieChart
+                                        mouseOverHandler={this.mouseOverHandler}
+                                        mouseOutHandler={this.mouseOutHandler.bind(this)}
+                                        mouseMoveHandler={this.mouseMoveHandler.bind(this)}
+                                        size={250}
+                                        innerHoleSize={125}
+                                        data={this.state.data}
+                                        labels
+                                        styles={{
+                                        '.chart_lines': {
+                                          strokeWidth: 0
+                                        },
+                                        '.chart_text': {
+                                          color: 'white',
+                                          fontFamily: 'serif',
+                                          fontSize: '1.25em',
+                                          fill: '#333'
+                                        },
+                                        '.pie-chart-label':{
+                                          fontWeight: "400",
+                                          fontSize: '12px !important',
+                                          color: 'white !important',
+                                          fill: 'white !important',
+                                        },
+                                      }}
+            />
+           
+       
             </Section>
         </div>
 
-        <div className="col-md-2" style={{marginTop:"2.5%", minWidth: "150px"}}> 
-           <Legend
-          
-            data={this.state.data}
-            dataId={'name'}
-            config={this.state.config}
-            styles={customStyle}
+          <div className="col-md-2" style={{marginTop:"7.5%", minWidth: "150px"}}> 
+             <Legend
             
-          />
+              data={this.state.data}
+              dataId={'name'}
+              config={this.state.config}
+              styles={customStyle}
+              
+            />
           </div>
-   
-         
-   
-        <div className="col-md-6 score-analysis-container"  >
-         <Section
-                
-                heading=" "
-                
-                >
-           
-          <div className="row">
-           <div className="col-md-1"></div>
-          <div className="col-md-4">
-      
+          <div className="col-md-6 col-sm-10 score-analysis-container" style={{marginRight: "0px !important"}} >
+           <Section
+                  
+                  heading=" "
+                  
+                  >
+             
+            <div className="row">
+              <div className="col-md-1"></div>
+              <div className="col-md-4">
         
-                
-                    <h4 style={chartHeadingStyle} className="chart-graph-label"> Score Analysis </h4>
+          
+                  
+                      <h4 style={chartHeadingStyle} className="chart-graph-label"> Score Analysis </h4>
+                   
+               </div>
+              <div className="col-md-7 score-analysis-tooltip"> 
+
+
                  
-             </div>
-            <div className="col-md-7 score-analysis-tooltip"> 
+                        <div className="col-md-2" style={negativeMargin}>
+                            <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
+                                  <FaQuestionCircle
+                                style={linkedInIcon}
+                                color="#56A1FD"
+                                size={20}
+                              />
+                            </IconButton>
+                          </div>
 
-
-               
-                      <div className="col-md-2">
-                          <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
-                                <FaQuestionCircle
-                              style={linkedInIcon}
-                              color="#56A1FD"
-                              size={20}
-                            />
-                          </IconButton>
+                          
+                        <div className="col-md-1" style={negativeMargin}>
+                           <h4 style={chartLegendStaticStyle}> Static </h4>
                         </div>
+
+                         <div className="col-md-2" style={negativeMargin}>
+                            <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
+                                  <FaQuestionCircle
+                                style={linkedInIcon}
+                                color="#09D4C1"
+                                size={20}
+                              />
+                            </IconButton>
+                          </div>
 
                         
-                      <div className="col-md-1" style={{marginLeft: "-3px"}}>
-                         <h4 style={chartLegendStaticStyle}> Static </h4>
-                      </div>
-
-                       <div className="col-md-2">
-                          <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
-                                <FaQuestionCircle
-                              style={linkedInIcon}
-                              color="#09D4C1"
-                              size={20}
-                            />
-                          </IconButton>
+                        <div className="col-md-1" style={{marginLeft: "-3px", marginTop:"-4px"}}>
+                           <h4 style={chartLegendDynamicStyle}> Dynamic </h4>
                         </div>
+                 </div>
+               </div>
+                <ResponsiveContainer width="95%" height={250}>
 
-                      
-                      <div className="col-md-1" style={{marginLeft: "-3px"}}>
-                         <h4 style={chartLegendDynamicStyle}> Dynamic </h4>
-                      </div>
-                 
-                 
-                 
-              </div>
-         </div>
-        <ResponsiveContainer width="95%" height={250}>
+                    <BarChart width={500} height={250} data={this.state.barData}>
+                        <CartesianGrid vertical={false} />
+                        <XAxis dataKey="name" >
+                        
+                        </XAxis>
+                       <YAxis  label={{ value: 'Percentage', angle: -90, offset: 2, position: 'topLeft' }}/>
+                        <Tooltip />
+                        
+                    <Bar dataKey="dynamic" fill="#09D4C1" />
+                    <Bar dataKey="static" fill="#56A1FD" />
+                       
+                      </BarChart>
+               </ResponsiveContainer>
+           </Section>
+          </div>
 
-            <BarChart width={500} height={250} data={this.state.barData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" >
-                
-                </XAxis>
-               <YAxis  label={{ value: 'Percentage', angle: -90, offset: 2, position: 'topLeft' }}/>
-                <Tooltip />
-                
-            <Bar dataKey="dynamic" fill="#09D4C1" />
-            <Bar dataKey="static" fill="#56A1FD" />
-               
-              </BarChart>
-       </ResponsiveContainer>
-         </Section>
+          <div className="col-md-1"> </div>
+        
         </div>
-   
 
-        <div className="col-md-1"> </div>
-                                       
-    
 
-      
+         <div className="row">
+        
+          <div className="col-md-8 col-md-offset-2" style={{padding: "25px 0px"}}> 
+            <p> {this.props.data[1]['feedback']} </p>
+          </div>
+         
+        </div>
       </div>
-
+      <div className="row" style={{textAlign: "center", marginTop: "25px"}}>
+                  <RaisedButton
+                      disabledBackgroundColor="rgba(0,0,0,0);"
+                      onClick={this.handleDownloadPdf}
+                      buttonStyle={roundedButton}
+                     
+                      label="Download PDF"
+                     
+                      Rounded={true}
+                       labelColor="white"
+                     
+                      disableTouchRipple={true}
+                    />
+        </div>
+      
       
 
-      </div>
+  </div>
 
     );
   }

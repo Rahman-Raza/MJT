@@ -311,6 +311,7 @@ class InstyBeta extends React.Component {
      this.createTooltip = this.createTooltip.bind(this);
      this.testFrontEndInstyBeta = this.testFrontEndInstyBeta.bind(this);
      this.handlePostSuccess = this.handlePostSuccess.bind(this);
+    
   }
 
  initCallback (dropzone) {
@@ -539,7 +540,7 @@ onFileDrop() {
 
    axios({
     method: 'post',
-    url: 'http://18.206.187.45:8080/instybeta',
+    url: 'https://mjtbe.tk/instybeta',
     data: data,
     headers: {
       "Content-type": "multipart/form-data",
@@ -714,6 +715,7 @@ this.setState({collapseArrays: collapseArrays});
 }
 
 
+
   render() {
     const {formData} = this.state;
     const {resumeFiles} = this.state;
@@ -882,39 +884,26 @@ this.setState({collapseArrays: collapseArrays});
 
                     )
                    .map((item, index) => (
-                  <div className="row" style={{margin:"15px"}} className="score-row">
+                  <div className="row" style={{margin:"40px 15px"}}  className="score-row">
                     
-                      <div style={{marginBottom:"2%"}} className="col-md-11">
+                      <div style={{marginBottom:"2%"}} className="col-md-10">
                        <label style={labelStyle}> {item[1]["total"]} / 100</label>
                      <Progress percent={item[1]["total"] } style={{overflowWrap: "break-word",}} status="success"  theme={{success: {symbol: item[0], color: this.getColor(item[1]["total"])}}}/>
                       </div>
-                      <div className="col-md-1 close-button-insty" style={{marginBottom:"25px !important"}}>
-                      
-                        <IconButton name={item[0]}   onClick={this.removedFileCallback}  >
-                          <FaTimesCircle
-                            onClick={this.removedFileCallback}
-                            name={item[0]}
-                            style={styles.linkedInIcon}
-                            color="red"
-                            size={30}
-                          >
-                           
-                          </FaTimesCircle>
-                          
-                          
-                         </IconButton>
-
-                       </div>
-                      <div style={{marginBottom:"1.5%"}} className="col-md-12 view-score-breakdown">
-                          
+                  
+                      <div style={{marginTop:"1.5%"}} className="col-md-12 view-score-breakdown">
+                          <span>
                              <a> <img id={index}
                             onClick={this.handleCollapse}
                             style={styles.roundedButton2} className="view-score-breakdown-button" src={this.state.collapseArrays[index]?viewButton:viewButtonClosed}/> </a>
-                          
+                            
+
+                           
+
 
 
                            
-                            
+                            </span>
                             <Collapse isOpen={this.state.collapseArrays[index]}>
                                
                                  { this.state.collapseArrays[index] &&
@@ -922,7 +911,7 @@ this.setState({collapseArrays: collapseArrays});
                                  
                                   <DataVisualization
                                   data={item}
-                                  id={index}
+                                 
                                   fileName={item[0]}
 
                                   />

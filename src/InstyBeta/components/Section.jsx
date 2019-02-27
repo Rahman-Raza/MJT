@@ -7,18 +7,18 @@ const containerStyle = {
   zIndex: "20"
 };
 const containerStyle2 = {
-  maxWidth: "85%",
+  maxWidth: "95%",
   position: "relative",
   zIndex: "20"
 };
 
 const containerStyle3 = {
-  maxWidth: "85%",
+  maxWidth: "95%",
   position: "relative",
   zIndex: "20"
 };
 const containerStyle4 = {
-  maxWidth: "65%",
+  maxWidth: "75%",
   position: "relative",
   zIndex: "20"
 };

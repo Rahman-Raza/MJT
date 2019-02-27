@@ -62,7 +62,7 @@ class CorsCheck extends Component {
   }
 
     getInfoPost(){
-	  axios.post('http://18.206.187.45:8080/instantmatcher/', { })
+	  axios.post('https://mjtbe.tk/instantmatcher/', { })
       .then(res => {
         console.log("checking POST with cors proxy",res);
         console.log(res.data);

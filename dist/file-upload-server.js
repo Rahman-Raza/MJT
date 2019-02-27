@@ -16,9 +16,9 @@ module.exports = (app) => {
     
   const multer = require('multer');
   var request = require('request-promise');
-  var getRequestUrl = 'http://18.206.187.45:8080/presignedurl/';
+  var getRequestUrl = 'https://mjtbe.tk/presignedurl/';
   var getFormRequestUrlMatt = ' http://18.219.52.10:5000/';
-  var getFormRequestUrlYev = ' http://18.206.187.45:8080/rawdata/';
+  var getFormRequestUrlYev = ' https://mjtbe.tk/rawdata/';
   const storage = multer.memoryStorage();
   const upload = multer({storage: storage});
   var FormData = require('form-data');
@@ -29,7 +29,7 @@ module.exports = (app) => {
 
     var options = {
       method: 'GET',
-      uri:  'http://18.206.187.45:8080/confirmationemailuser/' + email
+      uri:  'https://mjtbe.tk/confirmationemailuser/' + email
                   
       };
 
@@ -80,7 +80,7 @@ module.exports = (app) => {
     console.log("checking POST_FORM", POST_FORM);
      var options= {
                     method: 'POST',
-                    url: 'http://18.206.187.45:8080/submitbasicinfo',
+                    url: 'https://mjtbe.tk/submitbasicinfo',
                     body: JSON.stringify(POST_FORM),
                    
                   }
@@ -120,7 +120,7 @@ function callParsers(res){
 
                             var options2 = {
                             method: 'GET',
-                            uri: global_linkedIn_parse ? 'http://18.206.187.45:8080/rawdatalinkedin/'.concat(global_resumeID)+'/'.concat('"'+global_resume_filename+'"') :  getFormRequestUrlYev,
+                            uri: global_linkedIn_parse ? 'https://mjtbe.tk/rawdatalinkedin/'.concat(global_resumeID)+'/'.concat('"'+global_resume_filename+'"') :  getFormRequestUrlYev,
                                         
                             };
 
@@ -166,7 +166,7 @@ function callParsers(res){
 
 //POST request made from client side.  This sends a resume ID to backend server, recieves the parsed resume result, and sends it to client side.
   app.post('/analyze',(req,res) => {
-      var url = 'http://18.206.187.45:8080/parsedresult/'+global_resumeID;
+      var url = 'https://mjtbe.tk/parsedresult/'+global_resumeID;
       console.log("checking analyze url",url);
 
        var options = {
@@ -196,7 +196,7 @@ function callParsers(res){
   //POST request that recieves job description from client side, and sends it to /jobposting backend endpoint.
 
   app.post('/submitJD',(req,res) => {
-      var url = 'http://18.206.187.45:8080/jobposting';
+      var url = 'https://mjtbe.tk/jobposting';
       console.log("checking jobpost url",url);
 
        var options = {
@@ -247,7 +247,7 @@ function callParsers(res){
 
         var options = {
               method: 'POST',
-              uri: 'http://18.206.187.45:8080/resumeupload',
+              uri: 'https://mjtbe.tk/resumeupload',
               
               formData: resumefile,
             
@@ -316,7 +316,7 @@ function callParsers(res){
      
         var options = {
       method: 'PUT',
-      uri:  'http://18.206.187.45:8080/submitresult',
+      uri:  'https://mjtbe.tk/submitresult',
       body: sendBody
                   
       };
@@ -366,7 +366,7 @@ app.get('/getResumeId', (req, res) => {
     if (req.body) {
        var options = {
       method: 'POST',
-      uri: req.body["ResumeID"] ? 'http://18.206.187.45:8080/linkedinafterresume/'+req.body["ResumeID"] :'http://18.206.187.45:8080/linkedin',
+      uri: req.body["ResumeID"] ? 'https://mjtbe.tk/linkedinafterresume/'+req.body["ResumeID"] :'https://mjtbe.tk/linkedin',
       body: JSON.stringify(req.body["Response"])
                   
       };
