@@ -479,14 +479,60 @@ class DataVisualization extends Component {
     return false;
   }
 
+  yourSplit(N,string){
+  var app=string.split(' '),
+      arrayApp=[],
+      stringApp="";
+  app.forEach(function(sentence,index){
+    stringApp+=sentence+' ';
+    
+    if((index+1)%N===0){
+      arrayApp.push(stringApp);
+      stringApp='';
+    }else if(app.length===index+1 && stringApp!==''){
+      arrayApp.push(stringApp);
+      stringApp='';
+    }
+  });
+  return arrayApp;
+  
+}
+
+  parseSeperateJD(jd){
+
+   let returnArray = this.yourSplit(12,jd);
+
+   if (returnArray.length > 25){
+
+
+    returnArray = returnArray.splice(0,25);
+
+    let lastString = returnArray[24];
+
+    lastString = lastString + '...';
+
+
+    returnArray[24] = lastString;
+
+    console.log("checking last element of returnArray", lastString);
+   }
+
+    return returnArray;
+
+
+  }
+
   handleDownloadPdf(event){
 
     console.log("checking window scale", window.devicePixelRatio);
 
 
 
-html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
-  .then((canvas) => {
+    html2canvas(
+      document.getElementById(this.props.fileName),
+      { 'scale': .72, 'type':'view', 'windowWidth': 1415, 'windowHeight': 735, 'width': 1084 }
+    )
+    .then((canvas) => {
     const imgData = canvas.toDataURL('image/png');
     console.log("checking canvas",canvas);
 
@@ -499,11 +545,33 @@ html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
 
       const pdf = new jsPDF();
 
-      pdf.setFontSize(24);
-      pdf.text(10, 25, this.props.fileName)
-     pdf.addImage(imgData, 'PNG', 0, 40, 0, 0);
-     pdf.save("download.pdf");  
-    document.body.appendChild(canvas);
+       pdf.setFontSize(24);
+      pdf.text(10, 20, 'Resume Analysis');
+      pdf.setFontSize(16);
+      pdf.text(10, 40, 'Job Description: ');
+      pdf.setFontSize(12);
+
+      let JD =  this.parseSeperateJD(this.props.JD);
+      let currentLineNumber = 50;
+
+      
+      pdf.text(10, currentLineNumber, JD);
+
+
+      for (let i = 0; i < JD.length; i++){
+        currentLineNumber += 5;
+      }
+      pdf.setFontSize(16);
+      pdf.text(10, currentLineNumber+=10, this.props.fileName);
+      pdf.setTextColor(0,157,214);
+      pdf.text(10, currentLineNumber+=10, 'Total Score: ' +this.props.data[1]["total"] );
+
+      
+     pdf.addImage(imgData, 'PNG', 0, currentLineNumber+=10, 0, 0);
+     pdf.setDrawColor(0,157,214);
+     pdf.roundedRect(5,currentLineNumber,203,90,5,5,'S');
+     pdf.save(this.props.fileName + '_ANALYSIS.pdf');  
+    //document.body.appendChild(canvas);
 
   })
 ;
@@ -606,12 +674,12 @@ html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
                       <h4 style={chartHeadingStyle} className="chart-graph-label"> Score Analysis </h4>
                    
                </div>
-              <div className="col-md-7 score-analysis-tooltip"> 
+              <div className="col-md-7 score-analysis-tooltip" > 
 
 
                  
-                        <div className="col-md-2" style={negativeMargin}>
-                            <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
+                        <div className="col-md-2"  style={negativeMargin}>
+                            <IconButton   tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based purely on resume content.">
                                   <FaQuestionCircle
                                 style={linkedInIcon}
                                 color="#56A1FD"
@@ -625,8 +693,8 @@ html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
                            <h4 style={chartLegendStaticStyle}> Static </h4>
                         </div>
 
-                         <div className="col-md-2" style={negativeMargin}>
-                            <IconButton  tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
+                         <div className="col-md-2"  style={negativeMargin}>
+                            <IconButton   tooltipPosition="top-left"  tooltipStyles={{fontSize:"14px",}} tooltip="Resume score based on Job Description.">
                                   <FaQuestionCircle
                                 style={linkedInIcon}
                                 color="#09D4C1"
@@ -641,7 +709,7 @@ html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
                         </div>
                  </div>
                </div>
-                <ResponsiveContainer width="95%" height={250}>
+                <ResponsiveContainer  height={250}>
 
                     <BarChart width={500} height={250} data={this.state.barData}>
                         <CartesianGrid vertical={false} />
@@ -664,7 +732,7 @@ html2canvas(document.getElementById(this.props.fileName),{ 'scale': .75, })
         </div>
 
 
-         <div className="row">
+         <div className="row" >
         
           <div className="col-md-8 col-md-offset-2" style={{padding: "25px 0px"}}> 
             <p> {this.props.data[1]['feedback']} </p>

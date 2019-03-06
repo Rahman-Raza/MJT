@@ -911,7 +911,7 @@ this.setState({collapseArrays: collapseArrays});
                                  
                                   <DataVisualization
                                   data={item}
-                                 
+                                  JD={formData.JobDescription}
                                   fileName={item[0]}
 
                                   />
