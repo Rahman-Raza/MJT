@@ -1,4 +1,5 @@
 //IIFE
+
 (function () {
   "use strict";
   var menuId;

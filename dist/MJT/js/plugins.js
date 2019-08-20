@@ -187,21 +187,6 @@ Home Super Slider (images)
 Scroll Navigation
 =============================================== */	
 
-$(function() {
-		'use strict';
-
-		$('.scroll').bind('click', function(event) {
-			var $anchor = $(this);
-			var headerH = $('#navigation').outerHeight();
-			$('html, body').stop().animate({
-				scrollTop : $($anchor.attr('href')).offset().top - headerH + "px"
-			}, 1200, 'easeInOutExpo');
-
-			event.preventDefault();
-		});
-	});
-
-
 
  /* ==============================================
 Active Navigation Calling

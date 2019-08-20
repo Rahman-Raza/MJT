@@ -294,9 +294,11 @@ createHTML(component){
 
   //console.log("checking component", component);
 
-  //console.log("checking raw html",this.state.components['home']['text']  );
+  console.log("checking raw html",this.state.components['home']['text']  );
     //console.log("checking parsed html",Parser( this.state.components['home']['text'] )  );
 var decodeData = this.state.components[component]['text'] ;
+
+//console.log("checking decodedata", )
 
 return ({__html: decodeData});
 }
