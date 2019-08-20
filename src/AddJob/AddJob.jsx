@@ -162,7 +162,7 @@ class AddJob extends React.Component {
       obj[key] = info[key];
     }
     for (var key in checks) {
-      obj[key] = checks[key];
+      obj[key] = JSON.stringify(checks[key]);
     }
     obj["Language"] = JSON.stringify(langs);
     obj["RequiredSkills"] = JSON.stringify(skills);
@@ -183,7 +183,7 @@ class AddJob extends React.Component {
   render() {
     console.log("about to render ");
     return (
-      <div style={{}}>
+       <div className="responsive-container-uas">
         <MuiThemeProvider muiTheme={muiTheme}>
         <Loadable
         active={this.state.loading}
@@ -220,12 +220,12 @@ class AddJob extends React.Component {
               
                 <Section
                 containerSize={"80%"}
-                heading="Job Description"
+                heading="职位简介"
                 subHeading=" "
                 style={{ marginTop: "30px",marginBottom: "10px",
                  }}
                 >
-                <h3 style={{marginTop: "10px", }}> Please fill the following:</h3>
+                <h3 style={{marginTop: "10px", }}> 请填入以下信息</h3>
                      
                    
                 </Section> 
@@ -233,12 +233,12 @@ class AddJob extends React.Component {
                 <Section
                   
                   containerSize={"80%"}
-                  heading=" Your Details"
+                  heading="基本信息"
                 >
                   <Info onRef={ref => (this.InfoContainer = ref)} />
                 </Section>
 
-                <Section containerSize={"80%"} heading="Languages">
+                <Section containerSize={"80%"} heading="语言">
                   <RatedInputContainer
                     onRef={ref => (this.LanguagesContainer = ref)}
                     dataType="Languages"
@@ -247,7 +247,7 @@ class AddJob extends React.Component {
                   />
                 </Section>
 
-                <Section containerSize={"80%"} heading="Key Skills">
+                <Section containerSize={"80%"} heading="关键技能">
                   <RatedInputContainer
                     onRef={ref => (this.SkillsContainer = ref)}
                     dataType="Skills"
@@ -256,7 +256,7 @@ class AddJob extends React.Component {
                   />
                 </Section>
 
-                <Section containerSize={"80%"} heading="Compensation">
+                <Section containerSize={"80%"} heading="薪酬">
                   <CheckBoxes onRef={ref => (this.CheckBoxesContainer = ref)} />
                 </Section>
 
@@ -267,14 +267,14 @@ class AddJob extends React.Component {
                     marginLeft: "25%"
                   }}
                 >
-                  <div className="col-md-1 col-md-offset-2">
+                  <div className=" col-md-offset-2">
                     
 
                     <RaisedButton
                       className="submit-button-addjob"
                       labelColor="white"
                       disabled={this.state.submitButtonDisabled}
-                      label="Submit"
+                      label="提交"
                       type="submit"
                       Rounded={true}
                       buttonStyle={styles.analyzeButton}

@@ -60,7 +60,8 @@ const styles = {
     padding: "0px",
     margin: "0px",
     paddingLeft: "0px",
-    paddingRight: "0px"
+    paddingRight: "0px",
+    
   }
 };
 
@@ -91,7 +92,7 @@ class App extends React.Component {
    
     <div class="wrapy">
       
-        <a href="Landing" class="brand">
+        <a href="/" class="brand">
           <img  src={logo} alt="Logo" class="site-logo" />
          
         </a>
@@ -106,11 +107,11 @@ class App extends React.Component {
           
         <ul class=" uppercase bold top-menu no-float" id="top-menu">
 
-          <li class="nav-item2"><a href="/" >Home</a></li>
-          <li class="nav-item2"><a href="/#services" >Services</a></li>
+          <li class="nav-item2"><a href="/" >首页</a></li>
+          <li class="nav-item2"><a href="/#services" >服务</a></li>
           
           
-          <li class="nav-item2"><a href="#values" >Our Values</a></li>
+          <li class="nav-item2"><a href="/#values" >我们的价值观</a></li>
 
 
 
@@ -118,9 +119,9 @@ class App extends React.Component {
 
 
 
-          <li class="nav-item2"><a href="/#talent" >Job Seekers</a></li>
-          <li class="nav-item2"><a href="/#Employers" >Employers</a></li>
-          <li class="nav-item2"><a href="/#contact" >Contact</a></li>
+          <li class="nav-item2"><a href="/#talent" >求职者</a></li>
+          <li class="nav-item2"><a href="/#Employers" >雇主</a></li>
+          <li class="nav-item2"><a href="/#contact" >联系我们</a></li>
           <li class="insty">
             <a href="/instymatch"  >
            InstyMatch 

@@ -100,7 +100,7 @@ class EducationContainer extends Component {
         <div style={rowStyles} className="row">
           <div style={addButtonContainer} className="col-md-4">
             <a style={addButtonStyles} onClick={this.addEducation}>
-              + Add Education
+              + 添加项目
             </a>
           </div>
         </div>

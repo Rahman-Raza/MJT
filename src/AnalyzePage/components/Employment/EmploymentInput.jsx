@@ -41,13 +41,13 @@ class EmploymentInput extends Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.validate = this.validate.bind(this);
 
-    if (this.props.data.Employer) {
+    if (this.props.data.companyName) {
       data = {
-        Employer: this.props.data.Employer,
+        Employer: this.props.data.companyName,
         Length: this.props.data.Length,
-        Title: this.props.data.Title,
+        Title: this.props.data.title,
         StartDate: this.getDate(),
-        JobDescription: this.props.data.JobDescription,
+        JobDescription: this.props.data.comments,
       };
     } else {
       data = {
@@ -107,16 +107,12 @@ class EmploymentInput extends Component {
 
      var ret;
      
-      this.props.data.StartDate ? ret = this.convertUTCDateToLocalDate(new Date(this.props.data.StartDate)).getFullYear().toString() : ret = ''
-
-
-
-
+      this.props.data.startDateString ? ret = this.convertUTCDateToLocalDate(new Date(this.props.data.startDateString)).getFullYear().toString() : ret = ''
 
       if (ret === '0' || ret === '-1' || ret === '')
           return '';
       else{
-        ret = (this.convertUTCDateToLocalDate(new Date(this.props.data.StartDate)).getMonth()+'/'+ this.convertUTCDateToLocalDate(new Date(this.props.data.StartDate)).getFullYear()).toString();
+        ret = (this.convertUTCDateToLocalDate(new Date(this.props.data.startDateString)).getMonth()+'/'+ this.convertUTCDateToLocalDate(new Date(this.props.data.startDateString)).getFullYear()).toString();
         return ret;
       }
     }
@@ -147,7 +143,7 @@ class EmploymentInput extends Component {
           <InputField
             name="Employer"
             onChangeValue={this.handleChange}
-            labelText="Employer"
+            labelText="就业单位"
             hintText={formData.Employer}
           />
         </div>
@@ -155,7 +151,7 @@ class EmploymentInput extends Component {
           <InputField
             name="Length"
             onChangeValue={this.handleChange}
-            labelText="Duration"
+            labelText="时长"
             hintText={formData.Length}
           />
         </div>
@@ -163,7 +159,7 @@ class EmploymentInput extends Component {
           <InputField
             name="Title"
             onChangeValue={this.handleChange}
-            labelText="Job Position"
+            labelText="职位"
             hintText={formData.Title}
           />
         </div>
@@ -174,14 +170,14 @@ class EmploymentInput extends Component {
             openToYear={true} DatesChecker={true} 
             
             
-            labelText="Start Date" hintText={this.validate(formData.StartDate)}
+            labelText="开始日期" hintText={this.validate(formData.StartDate)}
           />
         </div>
         <div className="col-sm-12">
           <InputField
             name="JobDescription"
             onChangeValue={this.handleChange}
-            labelText="Job Description"
+            labelText="职位简介"
             hintText={formData.JobDescription}
             multiLine={true}
             rows={5}

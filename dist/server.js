@@ -17,7 +17,7 @@ const sendmail = require('sendmail')();
 var nodeoutlook = require('nodejs-nodemailer-outlook');
 
 
-app.set('port', 8080);
+app.set('port', 8086);
 // Add headers
 app.enable('trust proxy');
 

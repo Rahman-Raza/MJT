@@ -16,13 +16,13 @@ class Progress extends React.Component {
     return (
       <div style={rowStyle} className="row">
         <div style={colStyle} className="col-md-4">
-          <Indicator label="Upload" completed={true} />
+          <Indicator label="上传文件" completed={true} />
         </div>
         <div style={colStyle} className="col-md-4">
-          <Indicator label="Analyze & Review" completed={this.props.analyze} />
+          <Indicator label="分析与反馈" completed={this.props.analyze} />
         </div>
         <div style={colStyle} className="col-md-4">
-          <Indicator label="Submitted" completed={this.props.submit ==true ? true : false} />
+          <Indicator label="提交文件" completed={this.props.submit ==true ? true : false} />
         </div>
       </div>
     );

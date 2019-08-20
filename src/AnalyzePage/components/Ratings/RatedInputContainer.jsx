@@ -44,8 +44,8 @@ class RatedInputContainer extends Component {
       inputs:
         this.props.formData.length > 0
           ? this.props.formData.map(value => ({
-              Name: value["Name"],
-              Level: value["Level"]
+              Name: value,
+              Level: 6,
             }))
           : this.props.defaultValues.map(value => ({
               Name: value,
@@ -135,7 +135,7 @@ class RatedInputContainer extends Component {
         </div>
         <div className="row">
           <p style={toggleStyle} onClick={this.toggleInputShow}>
-            + Add {this.props.dataType}
+            + 添加项目
           </p>
         </div>
         {this.state.showInput && (
@@ -147,12 +147,8 @@ class RatedInputContainer extends Component {
               maxSearchResults={10}
             />
            <RaisedButton
-              Rounded={true}
-           
-             
-                      
-                   
-                label="Add"
+              Rounded={true} 
+                label="添加"
                 
                 onClick={() => {
                   this.addSkill(this.state.currentAddition);

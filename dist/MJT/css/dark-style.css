@@ -12,6 +12,10 @@
 	/* Playball */
 	@import url(https://fonts.googleapis.com/css?family=Playball);
 
+	.responsive-container{
+		
+	}
+
 	.responsive-container-uas{
 		padding-top: 75px;
 	}
@@ -665,8 +669,13 @@
   .top-menu {
     display: block;
   }
-}
 
+}
+@media screen and (max-width: 450px){
+	.service-box{
+		max-width: 100% !important;
+	}
+}
 
 .top-menu li {
   display: block;
@@ -795,8 +804,11 @@
         width:100%;
         background-color:rgb(0,0,0);
     }
-    
+    .responsive-container{
+    	overflow-x: hidden !important;
+    }
 }
+
 
 @media only screen and (min-width: 1170px) {
    .hamburger-btn {

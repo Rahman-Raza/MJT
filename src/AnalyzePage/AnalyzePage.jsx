@@ -61,11 +61,11 @@ const styles = {
     
      margin: "0 auto",
      color: "white",
-   
+   width: "150%",
     position: "relative",
     height: "100%",
     bordeRadius: "10px",
-    padding: "10px 50px",
+    padding: "20px 30px",
     boxShadow: "0px",
     backgroundColor: "#79C239",
     
@@ -131,28 +131,22 @@ class AnalyzePage extends React.Component {
       
     };
     console.log("checking FINAL DATA", data);
+    history.push("/confirm");
+    // if (this.props.data["ResumeID"] != "") {
+    //   axios.post("/submitResult", { data })
 
-    if (this.props.data["ResumeID"] != "") {
-      axios.post("/submitResult", { data })
-
-        .then(res => {
+    //     .then(res => {
           
-          console.log("checking after /submitresult",res.data);
-          this.setState({ loading: false });
-          history.push("/confirm");
-        });
-    
+    //       console.log("checking after /submitresult",res.data);
+    //       this.setState({ loading: false });
+    //       history.push("/confirm");
+    //     });
 
+    // } 
 
-
-
-
-
-    } 
-
-    else {
-      history.goBack();
-    }
+    // else {
+    //   history.goBack();
+    // }
   }
 
   handleAnalyze() {
@@ -162,6 +156,10 @@ class AnalyzePage extends React.Component {
   }
 
   render() {
+    console.log("checking incoming")
+    const Personal = {
+
+    }
     return (
       <div style={{}}>
         <MuiThemeProvider muiTheme={muiTheme}>
@@ -193,25 +191,25 @@ class AnalyzePage extends React.Component {
                   color: "#009dd6"
                 }}
               />
-              <Section containerSize={100} heading="Personal Information">
+              <Section containerSize={100} heading="分析">
                 <Info
                   onRef={ref => (this.InfoContainer = ref)}
                   formData={this.props.data["Personal"]}
                 />
               </Section>
-              <Section containerSize={100} heading="Education">
+              <Section containerSize={100} heading="个人信息">
                 <EducationContainer
                   onRef={ref => (this.EducationContainer = ref)}
                   formData={this.props.data["Education"]}
                 />
               </Section>
-              <Section containerSize={100} heading="Employment History">
+              <Section containerSize={100} heading="就业历史">
                 <EmploymentContainer
                   onRef={ref => (this.EmploymentContainer = ref)}
                   formData={this.props.data["Employment"]}
                 />
               </Section>
-              <Section containerSize={100} heading="Key Skills">
+              <Section containerSize={100} heading="核心技能">
                 <RatedInputContainer
                   onRef={ref => (this.SkillsContainer = ref)}
                   dataType="Skills"
@@ -219,7 +217,7 @@ class AnalyzePage extends React.Component {
                   defaultValues={[]}
                 />
               </Section>
-              <Section containerSize={100} heading="Language">
+              <Section containerSize={100} heading="语言">
                 <RatedInputContainer
                   onRef={ref => (this.LanguagesContainer = ref)}
                   dataType="Languages"
@@ -227,43 +225,43 @@ class AnalyzePage extends React.Component {
                   defaultValues={[]}
                 />
               </Section>
-              <Section containerSize={100} heading="Expectation">
+              <Section containerSize={100} heading="预期薪资">
                 <Expectation
                   onRef={ref => (this.PreferenceContainer = ref)}
                   formData={this.props.data["Preference"]}
                 />
               </Section>
-              <Section containerSize={100} heading="Patent">
+              <Section containerSize={100} heading="专利">
                 <AttributeContainer
                   onRef={ref => (this.PatentsContainer = ref)}
                   formData={this.props.data["Patents"]}
                   labels={[
                     {
                       name: "Name",
-                      labelText: "Patent Name",
-                      hintText: "Patent Name"
+                      labelText: "专利名称",
+                      hintText: "专利名称"
                     },
                     {
                       name: "Date",
-                      labelText: "Date",
+                      labelText: "日期",
                       hintText: "MM/DD/YYYY"
                     }
                   ]}
                 />
               </Section>
-              <Section containerSize={100} heading="Publication">
+              <Section containerSize={100} heading="发表论文">
                 <AttributeContainer
                   onRef={ref => (this.PublicationsContainer = ref)}
                   formData={this.props.data["Publications"]}
                   labels={[
                     {
                       name: "Name",
-                      labelText: "Conference / Journal Name",
-                      hintText: "Conference / Journal Name"
+                      labelText: "会议/论文名称",
+                      hintText: "会议/论文名称"
                     },
                     {
                       name: "Date",
-                      labelText: "Date",
+                      labelText: "日期",
                       hintText: "MM/DD/YYYY"
                     }
                   ]}
@@ -272,7 +270,7 @@ class AnalyzePage extends React.Component {
               <Section
                 style={{ marginBottom: "5%" }}
                 containerSize={100}
-                heading="License and Certification"
+                heading="证书"
               >
                 <AttributeContainer
                   onRef={ref => (this.LicensesContainer = ref)}
@@ -280,12 +278,12 @@ class AnalyzePage extends React.Component {
                   labels={[
                     {
                       name: "Name",
-                      labelText: "License / Certifcation Name",
-                      hintText: "License / Certifcation Name"
+                      labelText: "证书名称",
+                      hintText: "证书名称"
                     },
                     {
                       name: "Date",
-                      labelText: "Date",
+                      labelText: "日期",
                       hintText: "MM/DD/YYYY"
                     }
                   ]}
@@ -299,7 +297,7 @@ class AnalyzePage extends React.Component {
                   <RaisedButton
                   
                     onClick={this.getInfo}
-                    label="Submit"
+                    label="提交"
                     labelColor="white"
                     type="submit"
                     Rounded={true}
@@ -348,7 +346,37 @@ function mapStateToProps(state) {
     Licenses: [{}]
   };
 
-  const data = state.addForm["data"][0] ? state.addForm["data"][0] : emptyData;
+
+  var data = state.addForm["data"][0] ? state.addForm["data"][0] : emptyData;
+  const newData = {
+    ResumeID: data.FileName,
+    Education: data.Edu,
+    Employment: data.Work,
+    Personal: {
+      Name: data.Name,
+      Email: data.Email,
+      Mobile: data.Phone,
+      NativeTongue: 'English',
+      Status: 'Full Time',
+      Location: data.PreferredLocation,
+
+    },
+    Preference: {
+      JobStatus: undefined,
+      PreferredLocation: data.PreferredLocation,
+      Relocation: data.Relocation,
+      SalaryEnd: data.SalaryEnd,
+      SalaryStart: data.SalaryStart,
+      Travel: data.Travel,
+      VisaStatus: "Do Not require sponsorship"
+    },
+    Skills: data.Skills,
+    Patents: [{}],
+    Publications: [{}],
+    Licenses: [{}]
+  };
+
+  data = newData;
   console.log("checking the mapStateToProps in analyze", data);
   return {
     loggingIn,

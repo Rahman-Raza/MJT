@@ -217,7 +217,7 @@ class Expecation extends Component {
            primary={true}
             onCheck={this.handleCheckChange}
             checked={this.state.formData.Relocation}
-              label="Accept Relocation"
+              label="同意调动"
               style={checkBoxStyles}
               labelStyle={checkboxLableStyles}
             />
@@ -237,7 +237,7 @@ class Expecation extends Component {
             primary={true}
               name="Travel"
               checked={this.state.formData.Travel}
-              label="Willing to Travel"
+              label="同意公差"
               style={checkBoxStyles}
               labelStyle={checkboxLableStyles}
             />

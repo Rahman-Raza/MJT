@@ -75,7 +75,7 @@ class SubmitPage extends React.Component {
 
     
     return (
-     <div style={{  }}>
+     <div className="responsive-container-uas">
       <MuiThemeProvider muiTheme={muiTheme}>
        
            <Section containerSize={100}>
@@ -91,10 +91,10 @@ class SubmitPage extends React.Component {
            <div className="col-md-6" >
            <Paper style={styles.paperStyle} zDepth={5}> 
           <Section containerSize={100} style={{marginTop: "10%", marginBottom: "10%"}} >
-            <h2>Thank you for your submission. </h2>
+            <h2>感谢您提交的信息 </h2>
           </Section>
           <Section className="animated" data-animation="fadeInLeft" data-animation-delay="400" containerSize={100} style={{marginTop: "15%", marginBottom: "15%"}} >
-           <h3>Our staff will reach out to you shortly. </h3>
+           <h3>工作人员将会近期和您联络 </h3>
           </Section>
           
           

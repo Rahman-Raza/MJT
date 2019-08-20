@@ -82,11 +82,7 @@ module.exports = (app) => {
                     method: 'POST',
                     url: 'https://mjtbe.tk/submitbasicinfo',
                     body: JSON.stringify(POST_FORM),
-                   
                   }
-
-                  
-
                     request(options)
                       .then(function(body){
 
@@ -101,8 +97,6 @@ module.exports = (app) => {
                           console.log("done with form POST request");
                            });
   }
-
-
 function callParsers(res){
        var options = {
               method: 'GET',
@@ -166,9 +160,8 @@ function callParsers(res){
 
 //POST request made from client side.  This sends a resume ID to backend server, recieves the parsed resume result, and sends it to client side.
   app.post('/analyze',(req,res) => {
-      var url = 'https://mjtbe.tk/parsedresult/'+global_resumeID;
+      var url = 'https://mjtbe.tk/personalresume/'+global_resumeID;
       console.log("checking analyze url",url);
-
        var options = {
               method: 'GET',
               uri: url,
@@ -176,25 +169,18 @@ function callParsers(res){
            
         request(options)
          .then(function (body){
-
           console.log("analyze GET body",body);
           res.send(JSON.parse(body)["Data"]);
 
         })
           .catch(function (err) {
-                // Delete failed...
                 console.log("FAIL for GET analyze ", err);
-               
-               
             })
             .finally(function () {
                       console.log("done with analyze GET");
-
               });
 })
-
   //POST request that recieves job description from client side, and sends it to /jobposting backend endpoint.
-
   app.post('/submitJD',(req,res) => {
       var url = 'https://mjtbe.tk/jobposting';
       console.log("checking jobpost url",url);
@@ -229,57 +215,35 @@ function callParsers(res){
        
    app.post('/uploadHandler', upload.any() , function (req, res, next) {
     if (req.files ) {
-
-      var resumefile= {
-       
-      };
-
+      var resumefile= {};
         var resfile = {
           value: req.files[0].buffer,
           options: {
             filename: req.files[0].originalname,
           }
         }
-
         resumefile["resumefile"] = resfile;
         console.log("checking resuemfile", resumefile);
-
-
         var options = {
               method: 'POST',
               uri: 'https://mjtbe.tk/resumeupload',
-              
               formData: resumefile,
-            
             };
-           
         request(options)
         .then(function (body) {
             console.log("POST to resumeupload with success", body);
-           
-
                    
                     global_file_put = true;
                     global_resumeID = JSON.parse(body)["Data"];
-                    
                  res.send("Success");
-              
-                
-                
-
         })
-
         .catch(function (err) {
-            // Delete failed...
             console.log("POST no success for /resumeupload ", err);
-           
-           
+            res.status(400).send(err);  
         }).finally(function () {
                       console.log("done with all requests5");
-                       });        
-          
+                       }); 
       }
-       
     });
 
 

@@ -12,7 +12,7 @@ COPY . /usr/src/app/
 RUN cp -a /tmp/node_modules /usr/src/app/
 
 ENV NODE_ENV=production
-ENV PORT=8080
+ENV PORT=8086
 CMD [ "pm2-runtime", "start", "pm2.json", "--web" ]
-EXPOSE 8080
+EXPOSE 8086
 

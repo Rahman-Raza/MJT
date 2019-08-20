@@ -72,7 +72,7 @@ class Info extends Component {
               name="Name"
               onChangeValue={this.handleInfoChange}
               hintText={formData.Name}
-              labelText="Name"
+              labelText="姓名"
             />
           </div>
           <div style={colStyle} className="col-md-4">
@@ -80,7 +80,7 @@ class Info extends Component {
               name="NativeTongue"
               onChangeValue={this.handleInfoChange}
               hintText={formData.NativeTongue}
-              labelText="Language"
+              labelText="语言"
             />
           </div>
           <div style={colStyle} className="col-md-4">
@@ -88,7 +88,7 @@ class Info extends Component {
               name="Phone Number"
               onChangeValue={this.handleInfoChange}
               hintText={formData.Mobile}
-              labelText="Phone Number"
+              labelText="电话号码"
             />
           </div>
         </div>
@@ -98,7 +98,7 @@ class Info extends Component {
               name="Email"
               onChangeValue={this.handleInfoChange}
               hintText={formData.Email}
-              labelText="Email"
+              labelText="电子邮箱"
             />
           </div>
           <div style={colStyle} className="col-md-4">
@@ -106,16 +106,16 @@ class Info extends Component {
               name="Location"
               onChangeValue={this.handleInfoChange}
               hintText={formData.Location}
-              labelText="Current Location"
+              labelText="现在所处位置"
             />
           </div>
           <div style={colStyle} className="col-md-4 last-row-margin">
-            <label className="label-no-largin" style={labelStyle}>Current Status</label>
+            <label className="label-no-largin" style={labelStyle}>工作现状</label>
             <Dropdown
               onRef={ref => (this.CurrentStatus = ref)}
               startValue={formData.Status}
             >
-              <MenuItem value={undefined} primaryText="Current Status" />
+              <MenuItem value={undefined} primaryText="工作现状" />
               <MenuItem value={"Part Time"} primaryText="Part Time" />
               <MenuItem value={"Full Time"} primaryText="Full Time" />
               <MenuItem value={"Contract"} primaryText="Contract" />

@@ -92,7 +92,7 @@ class EmploymentContainer extends Component {
         </div>
         <div style={addButtonContainer} className="col-md-4">
           <a style={addButtonStyles} onClick={this.addEmployment}>
-            + Add Employment History
+            + 添加就业历史
           </a>
         </div>
       </div>

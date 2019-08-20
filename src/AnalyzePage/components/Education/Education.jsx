@@ -36,12 +36,12 @@ class Education extends Component {
     this.validate = this.validate.bind(this);
      this.handleDateChange = this.handleDateChange.bind(this);
 
-    if (this.props.data.Institution) {
+    if (this.props.data.school) {
       data = {
-        DegreeType: this.props.data.DegreeType,
+        DegreeType: this.props.data.degree,
         GraduationDate: this.getDate(),
-        Institution: this.props.data.Institution,
-        Major: this.props.data.Major
+        Institution: this.props.data.school,
+        Major: this.props.data.major
       };
     } else {
       data = {
@@ -88,7 +88,7 @@ convertUTCDateToLocalDate(date) {
   getDate() {
      var ret;
 
-      (this.props.data.GraduationDate && this.props.data.GraduationDate != 'unknown') ? ret = this.convertUTCDateToLocalDate(new Date(this.props.data.GraduationDate)).getFullYear().toString() : ret = ''
+      (this.props.data.gradDateString && this.props.data.gradDateString != 'unknown') ? ret = this.convertUTCDateToLocalDate(new Date(this.props.data.gradDateString)).getFullYear().toString() : ret = ''
 
 
 
@@ -133,7 +133,7 @@ convertUTCDateToLocalDate(date) {
           <InputField
             name="Institution"
             onChangeValue={this.handleChange}
-            labelText="Institution"
+            labelText="学院"
             hintText={this.validate(formData.Institution)}
           />
         </div>
@@ -141,7 +141,7 @@ convertUTCDateToLocalDate(date) {
           <InputField
             name="Major"
             onChangeValue={this.handleChange}
-            labelText="Major"
+            labelText="专业"
             hintText={this.validate(formData.Major)}
           />
         </div>
@@ -149,7 +149,7 @@ convertUTCDateToLocalDate(date) {
           <InputField
             name="DegreeType"
             onChangeValue={this.handleChange}
-            labelText="Degree"
+            labelText="文凭"
             hintText={this.validate(formData.DegreeType)}
           />
         </div>
@@ -158,7 +158,7 @@ convertUTCDateToLocalDate(date) {
             onChangeValue={this.handleDateChange}  
             openToYear={true} 
             DatesChecker={true} 
-            labelText="Graduation Date" 
+            labelText="毕业日期" 
             hintText={this.validate(formData.GraduationDate)}
           />
         </div>

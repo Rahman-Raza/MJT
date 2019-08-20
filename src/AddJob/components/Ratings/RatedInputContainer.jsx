@@ -127,7 +127,7 @@ class RatedInputContainer extends Component {
         </div>
         <div className="row">
           <p style={toggleStyle} onClick={this.toggleInputShow}>
-            + Add {this.props.dataType}
+            + {this.props.dataType}
           </p>
         </div>
         {this.state.showInput && (
@@ -145,7 +145,7 @@ class RatedInputContainer extends Component {
               
                       
                      
-                label="Add"
+                label="+"
                 
                 onClick={() => {
                   this.addSkill(this.state.currentAddition);

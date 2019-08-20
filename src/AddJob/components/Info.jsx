@@ -262,7 +262,7 @@ class Info extends Component {
             <Section containerSize={"100%"}>
               <TextValidator
                 className="text-field-input"
-                floatingLabelText="First Name"
+                floatingLabelText="名"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -281,7 +281,7 @@ class Info extends Component {
 
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Last Name"
+                floatingLabelText="姓"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -299,7 +299,7 @@ class Info extends Component {
               />
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Phone Number"
+                floatingLabelText="电话号码"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -324,7 +324,7 @@ class Info extends Component {
               />
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Email"
+                floatingLabelText="邮箱"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -343,7 +343,7 @@ class Info extends Component {
             <Section containerSize={"100%"}>
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Company Name"
+                floatingLabelText="公司名称"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -362,7 +362,7 @@ class Info extends Component {
 
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Company Size"
+                floatingLabelText="公司规模"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -381,7 +381,7 @@ class Info extends Component {
               />
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Job Position"
+                floatingLabelText="职位"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -400,7 +400,7 @@ class Info extends Component {
 
               <TextValidator
               className="text-field-input"
-                floatingLabelText="Company Location"
+                floatingLabelText="公司地址"
                 floatingLabelFixed={true}
                 floatingLabelStyle={floatingLabelStyle}
                 onChange={this.handleChange}
@@ -421,11 +421,11 @@ class Info extends Component {
               </div>
              
               <div style={colStyle} className="col-md-12">
-                <Section containerSize={"100%"} heading="Ideal Requirements:">
+                <Section containerSize={"100%"} heading="最优必备素质">
 
               <div style={colStyle} className="col-md-6">
                 <div style={{ position: "relative", margin: "10px 0" }}>
-                <label style={labelStyle}>Work Experience Needed</label>
+                <label style={labelStyle}>需要工作经历</label>
                 <SelectValidator
                 className="text-field-input"
                   name="WorkExperience"
@@ -445,7 +445,7 @@ class Info extends Component {
                   errorMessages={["this field is required"]}
                   SelectProps={{ native: true }}
                 >
-                  <MenuItem value={0} primaryText="Work Experience needed" />
+                  <MenuItem value={0} primaryText="需要工作经历" />
                   <MenuItem value={1} primaryText="0 - 2 Years" />
                   <MenuItem value={2} primaryText="2 - 5 Years" />
                   <MenuItem value={3} primaryText="5 - 10 Years" />
@@ -454,7 +454,7 @@ class Info extends Component {
               </div>
 
               <div style={{ position: "relative", margin: "10px 0" }}>
-                <label style={labelStyle}>Highest Education Completed</label>
+                <label style={labelStyle}>最高学历</label>
                 <SelectValidator
                 className="text-field-input"
                   name="Education"
@@ -476,7 +476,7 @@ class Info extends Component {
                 >
                   <MenuItem
                     value={0}
-                    primaryText="Highest Education Completed"
+                    primaryText="最高学历"
                   />
                   <MenuItem value={1} primaryText="High School Diploma" />
                   <MenuItem value={2} primaryText="Bachelors Degree" />
@@ -491,7 +491,7 @@ class Info extends Component {
 
             <div style={colStyle} className="col-md-6">
               <div style={{ position: "relative", margin: "10px 0" }}>
-                <label style={labelStyle}>Employment Type</label>
+                <label style={labelStyle}>就业种类</label>
                 <SelectValidator
                 className="text-field-input"
                   name="EmploymentType"
@@ -511,7 +511,7 @@ class Info extends Component {
                   errorMessages={["this field is required"]}
                   SelectProps={{ native: true }}
                 >
-                  <MenuItem value={0} primaryText="Employment Type" />
+                  <MenuItem value={0} primaryText="就业种类" />
                   <MenuItem value={1} primaryText="Full-time" />
                   <MenuItem value={2} primaryText="Full-time (Contactor)" />
                   <MenuItem value={3} primaryText="Part-time" />
@@ -521,7 +521,7 @@ class Info extends Component {
               </div>
 
               <div style={{ position: "relative", margin: "10px 0" }}>
-                <label style={labelStyle}>Employment Type</label>
+                <label style={labelStyle}>薪资范围</label>
                 <SelectValidator
                 className="text-field-input"
                   name="BaseSalary"
@@ -541,7 +541,7 @@ class Info extends Component {
                   errorMessages={["this field is required"]}
                   SelectProps={{ native: true }}
                 >
-                  <MenuItem value={0} primaryText="Salary Range" />
+                  <MenuItem value={0} primaryText="薪资范围" />
                   <MenuItem value={1} primaryText="$0-$50,000" />
                   <MenuItem value={2} primaryText="$50,000 - $100,000" />
                   <MenuItem value={3} primaryText="$100,000 - $250,000" />
@@ -557,7 +557,7 @@ class Info extends Component {
 
         
           <div style={colStyle} className="col-md-12">
-            <Section containerSize={"100%"} heading="Summary">
+            <Section containerSize={"100%"} heading="总结">
               <TextValidator
               
                 floatingLabelFixed={true}
@@ -585,7 +585,7 @@ class Info extends Component {
 
        
           <div style={colStyle} className="col-md-12">
-            <Section containerSize={"100%"}  heading="Key Responsibilities">
+            <Section containerSize={"100%"}  heading="关键职责">
               <TextValidator
                
                 floatingLabelFixed={true}

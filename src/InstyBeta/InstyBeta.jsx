@@ -228,7 +228,7 @@ class InstyBeta extends React.Component {
         name: "testfile"
       },
       maxFiles: 10,
-      dictDefaultMessage: "Drag and drop resume to upload",
+      dictDefaultMessage: "请拖拽或选取简历上传",
       acceptedFiles: ".pdf,.doc,.docx,.txt"
     };
 
@@ -768,27 +768,27 @@ this.setState({collapseArrays: collapseArrays});
 
                  <div style={{width: "75%", marginLeft: "12.5%"}}>
 
-                <h6 style={styles.headingStyle}> Meet InstyMatch:  </h6>
+                <h6 style={styles.headingStyle}> 遇见 instymatch  </h6>
 
 
 
-                <h6 style={styles.headingStyle}> Simple, impartial, and lightning-fast. </h6>
+                <h6 style={styles.headingStyle}> 简单，公正，迅捷 </h6>
 
                
-                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> InstyMatch is a free ranking tool that finds a correlation score between a job description and up to ten other resumes in MJT's extensive candidate database. </p>
-                <p style={styles.paragraphStyle}> If you're a candidate, rate your resume against the competition in our talent lineup.  If you're a recruiter or employer, upload up to ten resumes to compare the candidates for a position you need to fill.</p>
+                <p style={{marginTop: "50px", textAlign: "center", fontSize: "16px", color: "#666666"}}> instymatch是一款免费的排序工具用于从MJT候选人数据库中找出是个最适候选人 </p>
+                <p style={styles.paragraphStyle}>  如果您是求职者，请上传简历来看看您在职库简历库中的排名。 如果您是企业招聘员，请上传至多10份简历来为候选人排名</p>
           
-                <p style={styles.paragraphStyle}> InstyMatch is limited to 10 scoring requests per day.</p>
+                <p style={styles.paragraphStyle}> instymatch 每天只允许排序10条</p>
                  </div>  
               </Section> 
               <Section
                 containerSize={1}
-                heading="Step 1."
-                subHeading="Provide position or job description (at least 10 characters)."
+                heading="第一步"
+                subHeading="提供职位或职位简介（至少10个字符）"
                 >
                      
                     <div style={dottedContainer} className="col-12 scores-dotted-container">
-                      <label style={labelStyle}>Job Description</label>
+                      <label style={labelStyle}>职位简介</label>
                       <TextValidator
                           multiLine={true}
                           rows={4}
@@ -802,7 +802,7 @@ this.setState({collapseArrays: collapseArrays});
                           hintStyle={hintStyle}
                           underlineFocusStyle={underlineStyle}
                           underlineStyle={underlineStyle}
-                          hintText="Please insert a brief summary of the role here..."
+                          hintText="请输入职位简介（文字）"
                           style={{
                             fontSize: "14px",
                             color:"black",
@@ -821,8 +821,8 @@ this.setState({collapseArrays: collapseArrays});
               <Section
                 style={{paddingBottom: "50px"}}
                 containerSize={1}
-                heading="Step 2."
-                subHeading="Upload resume(s) (up to 10)."
+                heading="第二部"
+                subHeading="上传简历（最多十份）"
                 >
                 <div  style={dottedContainer} className="col-md-12 insty-step2-dotted-container">
 
@@ -849,7 +849,7 @@ this.setState({collapseArrays: collapseArrays});
                   
                     
                     onClick={this.getInfo}
-                    label="Submit"
+                    label="提交"
                     type="submit"
                     Rounded={true}
                     buttonStyle={styles.roundedButton}
@@ -867,7 +867,7 @@ this.setState({collapseArrays: collapseArrays});
                  style={{ marginBottom: "5%",}}
                 containerSize={1}
                 heading="Step 3."
-                subHeading="Here are the results of your resume's..."
+                subHeading="职位简介提交页面"
                 score={true}
                 >
                 <div  style={dottedContainer} className="col-md-12 data-visualize-container ">
@@ -896,11 +896,6 @@ this.setState({collapseArrays: collapseArrays});
                              <a> <img id={index}
                             onClick={this.handleCollapse}
                             style={styles.roundedButton2} className="view-score-breakdown-button" src={this.state.collapseArrays[index]?viewButton:viewButtonClosed}/> </a>
-                            
-
-                           
-
-
 
                            
                             </span>
@@ -945,7 +940,7 @@ this.setState({collapseArrays: collapseArrays});
 
                  <div className="insty-help-h6" style={{width: "60%", marginLeft: "20%"}}>
 
-                <h6   style={styles.headingStyle}> Want help sharpening your resume?  </h6>
+                <h6   style={styles.headingStyle}> 职位简介提交页面  </h6>
 
 
 
@@ -964,7 +959,7 @@ this.setState({collapseArrays: collapseArrays});
                     />
                 </div>
                
-                <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> If you've tried InstyMatch and want to finetune your resume, reach out to one of our recruitment specialists.   We'd be delighted to advise and help define your market value, with no obligation whatsoever. </p>
+                <p style={{marginTop: "50px", width: "80%", marginLeft: "10%",textAlign: "center", fontSize: "16px"}}> 如果您尝试使用了instymatch并且希望修饰您的简历，请联系我们的招聘客服。我们将十分荣幸去指导和帮助您找到您的市场价值 </p>
               
                  </div>  
               </Section> 

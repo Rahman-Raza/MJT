@@ -301,7 +301,7 @@ class HomePage extends React.Component {
         name: "testfile"
       },
       maxFiles: 1,
-      dictDefaultMessage: "Drag and drop resume to upload",
+      dictDefaultMessage: "上传简历（拖拽或选取）",
       acceptedFiles: ".pdf,.doc,.docx,.txt"
     };
 
@@ -355,12 +355,12 @@ class HomePage extends React.Component {
     this.state = {
       global_resumeID: "",
       global_fileput: false,
-      isLinkedInLoggedIn: false,
+      isLinkedInLoggedIn: true,
       loading: false,
-      loadingMessage: "Uploading your Resume...",
-      salaryFloating: "Salary range",
-      locationFloating: "Preferred Location",
-      currentStatusFloating: "Current Status",
+      loadingMessage: "正在上传您的简历",
+      salaryFloating: "薪资范围",
+      locationFloating: "偏好的工作地点",
+      currentStatusFloating: "工作类别",
       stepIndex: 0,
       salary: -1,
       currentStatus: -1,
@@ -384,7 +384,7 @@ class HomePage extends React.Component {
     };
   }
   onFileDrop() {
-    this.setState({ loading: true, loadingMessage: "Uploading your Resume..." });
+    this.setState({ loading: true, loadingMessage: "正在上传您的简历" });
   }
 
   componentDidMount() {
@@ -545,7 +545,7 @@ class HomePage extends React.Component {
     event.preventDefault();
 
     const formData = this.state.formData;
-    this.setState({ loading: true, loadingMessage: "Submitting your Information for Analysis..."});
+    this.setState({ loading: true, loadingMessage: "请提交用于分析的信息"});
     this.setState({ analyzeButtonDisabled: true });
 
     axios.post("/contact", { formData }).then(res => {
@@ -574,7 +574,7 @@ class HomePage extends React.Component {
 
           this.setState({
             loading: false,
-            loadingMessage: "Submitting your Information for Analysis...",
+            loadingMessage: "请提交用于分析的信息",
             analyzeButtonDisabled: false,
             global_fileput: true,
             global_resumeID: res.data
@@ -586,7 +586,7 @@ class HomePage extends React.Component {
   fileUploadedError(response,serverResponse) {
     console.log("checking result from uploadhandler due to error", serverResponse);
 
-      this.setState({loadingMessage: 'There was an error processing your information.  Please try again.'});
+      this.setState({loadingMessage: '信息加载错误，请重试.'});
       setTimeout(
     function() {
         this.setState({loading: false});
@@ -621,7 +621,7 @@ class HomePage extends React.Component {
   getPreferredLocation(value) {
     switch (value) {
       case 0:
-        return "Preferred Location";
+        return "偏好的工作地点";
       case 1:
         return "California";
       case 2:
@@ -651,7 +651,7 @@ class HomePage extends React.Component {
   getCurrentStatus(value) {
     switch (value) {
       case 0:
-        return "Current Status";
+        return "工作类别";
       case 1:
         return "Part Time";
       case 2:
@@ -683,7 +683,7 @@ class HomePage extends React.Component {
               callBack={this.responseLinkedin}
               fields=":(public-profile-url,positions)"
               className={"linkedin-sdk-button"}
-              textButton={"Login with Linkedin"}
+              textButton={"领英注册"}
               buttonType={"button"}
               icon={<Icon />}
             />
@@ -744,7 +744,7 @@ class HomePage extends React.Component {
               <div className="row" style={{ marginLeft: "5px" }}>
                 <h3 style={{ marginTop: "30px", color: "#7ac143", marginLeft: "20px",marginBottom: "20px" }}>
                   {" "}
-                  Please complete the following:{" "}
+                  请填入信息:{" "}
                 </h3>
 
                 </div>
@@ -763,11 +763,11 @@ class HomePage extends React.Component {
                     <div className="row" style={{ marginLeft: "5px" }}>
                       <div className="col-md-5" style={styles.form1Style}>
                         <TextValidator
-                          floatingLabelText="Name"
+                          floatingLabelText="姓名"
                           onChange={this.handleChange}
                           floatingLabelStyle={styles.floatingLabelStyle}
                           fullWidth={true}
-                          name="Name"
+                          name="Name" 
                           style={styles.textFieldRootStyle}
                           inputStyle={styles.textFieldInputStyle}
                           underlineStyle={styles.textFieldUnderlineStyle}
@@ -779,7 +779,7 @@ class HomePage extends React.Component {
                           ]}
                         />
                         <TextValidator
-                          floatingLabelText="Phone Number"
+                          floatingLabelText="电话号码"
                           floatingLabelStyle={styles.floatingLabelStyle}
                           onChange={this.handleChange}
                           style={styles.textFieldRootStyle}
@@ -802,7 +802,7 @@ class HomePage extends React.Component {
                           ]}
                         />
                         <TextValidator
-                          floatingLabelText="Email"
+                          floatingLabelText="电子邮箱"
                           floatingLabelStyle={styles.floatingLabelStyle}
                           onChange={this.handleChange}
                           style={styles.textFieldRootStyle}
@@ -925,7 +925,7 @@ class HomePage extends React.Component {
                             }
 
                             name="relocationChecked"
-                            label="Willing to relocate"
+                            label="愿意异地工作"
                             checked={formData.relocationChecked}
                             onCheck={this.relocationUpdateCheck.bind(this)}
                             style={styles.checkbox1}
@@ -946,7 +946,7 @@ class HomePage extends React.Component {
                             </i>
                           }
                           name="travelChecked"
-                          label="Willing to travel"
+                          label="接受公差"
                           checked={formData.travelChecked}
                           onCheck={this.travelUpdateCheck.bind(this)}
                           style={styles.checkbox2}
@@ -961,7 +961,7 @@ class HomePage extends React.Component {
 
                <Section containerSize={""}>
               <div style={{marginTop:"5px",marginLeft:"25px"}} className="mobile-question-button">
-                <IconButton className="mobile-question-button" style={{marginTop:"5px"}} tooltipPosition="center-right" touch={true} tooltipStyles={{fontSize:"14px",marginBottom:"40px",marginLeft:"20px"}} tooltip="Submit your resume so that our candidate-recruiter pairing system can find you your next role!">
+                <IconButton className="mobile-question-button" style={{marginTop:"5px"}} tooltipPosition="center-right" touch={true} tooltipStyles={{fontSize:"14px",marginBottom:"40px",marginLeft:"20px"}} tooltip="请提交简历，我们的匹配系统将为您找到下一个机会">
                   <FaQuestionCircle
                 style={styles.linkedInIcon}
                 color="#0077B5"
@@ -997,11 +997,11 @@ class HomePage extends React.Component {
                 </Section>
 
                 <Section style={{ marginBottom: "5%" }} containerSize={1}>
-                  <div className="col-md-1 col-md-offset-4 analyze-button-container">
+                  <div className=" col-md-offset-4 analyze-button-container">
                     <MuiThemeProvider muiTheme={muiTheme}>
                       <RaisedButton
                         
-                        label="Analyze"
+                        label="分析"
                         labelColor="white"
                         type="submit"
                         disabled={this.state.analyzeButtonDisabled}

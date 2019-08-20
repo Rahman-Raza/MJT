@@ -93,27 +93,27 @@ class CheckBoxes extends Component {
           {[
             {
               name: "OvertimePay",
-              label: "Overtime"
+              label: "加班"
             },
             {
               name: "Commisions",
-              label: "Commissions"
+              label: "佣金"
             },
             {
               name: "Bonuses",
-              label: "Bonuses"
+              label: "奖金"
             },
             {
               name: "HealthBenefits",
-              label: "Health"
+              label: "医疗"
             },
             {
               name: "Wellness",
-              label: "Wellness"
+              label: "健康福利"
             },
             {
               name: "TravelMealHousingAllowance",
-              label: "Travel / Meal / Housing Allowance"
+              label: "旅行/餐饮/住房额度"
             }
           ].map(current => (
             <div style={checkboxContainerStyle}>

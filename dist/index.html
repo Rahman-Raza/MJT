@@ -1,210 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
-    <meta charset="utf-8" />
-    <title>MyJobTank</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    
-    <!--Favicon -->
-
-
-  <!-- CSS Files -->
-
-  
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-
-
-  <link rel="stylesheet" href="MJT/css/reset.css" />
-  <link rel="stylesheet" href="MJT/css/modal.css" />
-  <link rel="stylesheet" href="MJT/css/cssTiles.css" />
-  <link rel="stylesheet" href="MJT/css/animate.min.css" />
-  <link rel="stylesheet" href="MJT/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="MJT/css/dark-style.css" />
-  <link rel="stylesheet" href="MJT/css/flexslider.css" />
-  <link rel="stylesheet" href="MJT/css/font-awesome.css" />
-  <link rel="stylesheet" href="MJT/css/owl.carousel.css" />
-  <link rel="stylesheet" href="MJT/css/prettyPhoto.css" />
-  <link rel="stylesheet" href="MJT/css/responsive.css" />
-  <link rel="stylesheet" href="MJT/css/gradients.css" />
-  <link rel="stylesheet" href="MJT/css/player/YTPlayer.css" />
-  <link rel="stylesheet" href="MJT/css/devicon.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
- 
-  
-
-
-
-
-
-
-  <style>
+   <head>
+      <meta charset="utf-8" />
+      <title>MyJobTank</title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      <!--Favicon -->
+      <!-- CSS Files -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="MJT/css/reset.css" />
+      <link rel="stylesheet" href="MJT/css/modal.css" />
+      <link rel="stylesheet" href="MJT/css/cssTiles.css" />
+      <link rel="stylesheet" href="MJT/css/animate.min.css" />
+      <link rel="stylesheet" href="MJT/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="MJT/css/dark-style.css" />
+      <link rel="stylesheet" href="MJT/css/flexslider.css" />
+      <link rel="stylesheet" href="MJT/css/font-awesome.css" />
+      <link rel="stylesheet" href="MJT/css/owl.carousel.css" />
+      <link rel="stylesheet" href="MJT/css/prettyPhoto.css" />
+      <link rel="stylesheet" href="MJT/css/responsive.css" />
+      <link rel="stylesheet" href="MJT/css/gradients.css" />
+      <link rel="stylesheet" href="MJT/css/player/YTPlayer.css" />
+      <link rel="stylesheet" href="MJT/css/devicon.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+      <style>
          a {
-      cursor: pointer;
-    }
-
-    .help-block {
-      font-size: 12px;
-    }
-
-    .main-header {
-      height: 72px;
-      box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15);
-      background: #fff;
-      border: 4px;
-    }
-
-    .container {
-      max-width: 1170px;
-      margin: 0 auto;
-    }
-
-    .header-logo {
-      display: inline-block;
-      margin-bottom: 25px;
-    }
-
-    .logo-img {
-      width: 250px;
-    }
-
-    .logo-text {
-      font-family: logo_font;
-      font-size: 24px;
-      vertical-align: top;
-      margin-top: 15px;
-      display: inline-block;
-    }
-
-    .filepicker.dropzone.dz-clickable {
-     text-align: center;
-    padding: 5px;
-    background-color: white !important;
-    border-radius: 10px;
-    min-height: 160px !important;
-    
-
-     border: 2px solid #FFAA3B;
-    }
-
-    .dz-default.dz-message {
-      color: #ACACAC;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .linkedin-sdk-button {
-      background: none;
-      border: none;
-      color: #ACACAC;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .rounded-button {
-
-    }
-
-    .rounded-button button {
-      border-radius: 25px !important;
-    }
-    </style>
-
-
-  <!-- End CSS Files -->
-
-</head>
-
-<body  >
-
-
-
-
-
-
- 
-  
-
-    
-
-
-  <!-- Video -->
-
-  
-
-
-
-
-
-
- <!--  <div class="col-xs-12">
-    <div class="row " style="margin-bottom:50px">
-      <div class="col-xs-1 ">
+         cursor: pointer;
+         }
+         .help-block {
+         font-size: 12px;
+         }
+         .main-header {
+         height: 72px;
+         box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15);
+         background: #fff;
+         border: 4px;
+         }
+         .container {
+         max-width: 1170px;
+         margin: 0 auto;
+         }
+         .header-logo {
+         display: inline-block;
+         margin-bottom: 25px;
+         }
+         .logo-img {
+         width: 250px;
+         }
+         .logo-text {
+         font-family: logo_font;
+         font-size: 24px;
+         vertical-align: top;
+         margin-top: 15px;
+         display: inline-block;
+         }
+         .filepicker.dropzone.dz-clickable {
+         text-align: center;
+         padding: 5px;
+         background-color: white !important;
+         border-radius: 10px;
+         min-height: 160px !important;
+         border: 2px solid #FFAA3B;
+         }
+         .dz-default.dz-message {
+         color: #ACACAC;
+         font-size: 16px;
+         font-weight: 700;
+         }
+         .linkedin-sdk-button {
+         background: none;
+         border: none;
+         color: #ACACAC;
+         font-size: 16px;
+         font-weight: 700;
+         }
+         .rounded-button {
+         }
+         .rounded-button button {
+         border-radius: 25px !important;
+         }
+      </style>
+      <!-- End CSS Files -->
+   </head>
+   <body>
+      <div style="height: auto; padding: 0px; margin: 0px;">
+         <nav id="menu" class="navi scroll" style="z-index: 100;">
+            <div class="wrapy">
+               <a href="/" class="brand"><img src="b80bdcd23c64f0aaa01b4b827df0c9ee.png" alt="Logo" class="site-logo"></a><button id="mobile-btn" class="hamburger-btn"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+               <ul class=" uppercase bold top-menu no-float" id="top-menu">
+                  <li class="nav-item2" href="/"><a href="/">首页</a></li>
+                  <li class="nav-item2" href="/#services"><a href="#services">服务</a></li>
+                  <li class="nav-item2"><a href="/#values">我们的价值观</a></li>
+                  <li class="nav-item2"><a href="/#talent">求职者</a></li>
+                  <li class="nav-item2"><a href="/#Employers">雇主</a></li>
+                  <li class="nav-item2"><a href="/#contact">联系我们</a></li>
+                  <li class="insty"><a href="/instymatch">InstyMatch<img src="3887abe2be628320495dfa6496ecd851.png" style="padding-left: 10px; width: 25%; margin-right: -20px; margin-bottom: 5px;"></a></li>
+               </ul>
+            </div>
+         </nav>
       </div>
-        <div class="col-xs-10 " > -->
-          <div id="app"></div>
-        <!-- </div>
-        <div class="col-xs-1 ">
+      <div class="responsive-container" style="height: auto; padding: 0px; margin: 0px;">
+         <div>
+            <div class="careers-container">
+               <section class="home pattern black-bg animated fadeIn visible" id="home" data-animation="fadeIn" data-animation-delay="400">
+                  <div style="position: relative; overflow: hidden; width: 100%; height: 1164px;" id="slides">
+                     <div class="home-details visible">
+                        <div id="fadeIn1" class="fadeIn1">
+                           <div class="hometexts-1 " style="margin:40px">
+                              <ul class="slide-text-1 ">
+                                 <li class="hometext-1 normal ">
+                                    <div class=" blue">
+                                       <p>技术驱动解决方案</p>
+                                       <p></p>
+                                       <p> 集结全球人才</p>
+                                       <p></p>
+                                    </div>
+                                 </li>
+                                 <li class="clear"></li>
+                              </ul>
+                           </div>
+                           <div class="in-line-container row">
+                              <div class="in-line" style="margin: 20px 40px">
+                                 <h3 class="mjt-orange feature-buttons uppercase"> 让人才 </h3>
+                                 <p>            <a href="#talent" class=" mjt-orange home-button uppercase semibold ">遇见机遇</a></p>
+                              </div>
+                              <div class="in-line" style="margin: 20px 40px">
+                                 <h3 class="mjt-orange feature-buttons uppercase"> 让雇主 </h3>
+                                 <p> <a href="#Employers" class="mjt-orange home-button uppercase semibold  ">遇见对的人</a></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <p></p>
+                        </div>
+                        <p></p>
+                     </div>
+                     <p></p>
+                  </div>
+               </section>
+               <section id="services" class="container container-1 parallax1  " style="background-position: 50% -670px;">
+                  <div class="inner mobile-inner">
+                     <h1 class="header   blue mobile-header">我们为您提供更好更快的结果</h1>
+                     <h3 class="grey subheader">
+                        职库是为国际化人才提供综合解决方案的平台，以卓越的客户服务和全球精英人才网络竭诚提供人工智能驱动的岗位安置解决方案。
+                        <p></p>
+                     </h3>
+                     <div class="boxes black">
+                        <div class="row boxes-double-row" style="marginBottom: 50px">
+                           <div class="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
+                              <div class="box-click-container">
+                                 <img src="MJT/images/icons/experts.png" style="float: left; width:20%; margin: 0px 20px">
+                                 <p></p>
+                                 <p class="uppercase normal  about-head"> 我们的团队  <br> 您的专家</p>
+                                 <p></p>
+                              </div>
+                              <div class="collapse-box-content">
+                                 <p class="grey about-text">我们的团队由充满热情的领域专家组成，经验丰富，深刻洞悉科技趋势。 </p>
+                                 <p class="grey  about-text">无论是初新企业还是全球标志性企业，我们的团队竭诚为您提供最高水平的创新解决方案  </p>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
+                              <div class="box-click-container">
+                                 <img src="MJT/images/icons/innovation.png" style="float: left; width:20%; margin: 0px 20px">
+                                 <p></p>
+                                 <p class="uppercase normal  about-head"> 人工智能支持的 <br>  技术</p>
+                                 <p></p>
+                              </div>
+                              <div class="collapse-box-content">
+                                 <p class="grey about-text">我们的专有AI技术使人才网络成倍增加，消除了人为偏差，大大减少了人才匹配和获取时间。</p>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <p></p>
+                        </div>
+                        <div class="row row-bottom" style="marginBottom: 50px">
+                           <div class="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
+                              <div class="box-click-container">
+                                 <img src="MJT/images/icons/focus.png" style="float: left; width:20%; margin: 0px 20px">
+                                 <p></p>
+                                 <p class="uppercase normal  about-head"> 定制化、  <br> 专注的流程</p>
+                                 <p></p>
+                              </div>
+                              <div class="collapse-box-content">
+                                 <p class="grey about-text">我们预测人才需求，并为当今快速发展的人力资本需求设计主动的定制化解决方案。</p>
+                                 <p class="grey about-text">我们为高技能人才创造个性化战略，帮助他们迎接下一个职场挑战，抓住机遇。</p>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="col-xs-5 col-xs-offset-1 about-box animated" data-animation="fadeIn" data-animation-delay="100">
+                              <div class="box-click-container">
+                                 <img src="MJT/images/icons/network.png" style="float: left; width:20%; margin: 0px 20px">
+                                 <p></p>
+                                 <p class="uppercase normal  about-head"> 全球 <br>  网络</p>
+                                 <p></p>
+                              </div>
+                              <div class="collapse-box-content">
+                                 <p class="grey about-text">我们能够从广泛国际市场、顶尖大学和隐藏STEM网络中获得最优质的的技术人才。</p>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <p></p>
+                        </div>
+                        <p></p>
+                     </div>
+                     <p></p>
+                  </div>
+               </section>
+               <section class=" how-we  " id="how-we">
+                  <div class="inner">
+                     <p>
+                        <!-- Header -->
+                     </p>
+                     <h1 class="header blue meetheader" style="">我们如何满足您的需求</h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h3 class=" white subheader-bold">我们分化服务内容，细致解决每位客户与求职者的需求<br>
+                        在职库，我们分化四条业务线<br>
+                        准确有效地查找、定位并满足客户需求。
+                     </h3>
+                     <p>
+                        <!-- Boxes -->
+                     </p>
+                  </div>
+                  <p>
+                     <!-- End Service Inner -->
+                  </p>
+               </section>
+               <section class="container" id="how-we-services">
+                  <div class="inner needs-inner">
+                     <div class="service-boxes">
+                        <p>
+                           <!-- Box 1 -->
+                        </p>
+                        <div class="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100">
+                           <!-- Icon -->
+                           <p></p>
+                           <p>
+                              <!-- Header --><br>
+                              <img src="MJT/images/icons/handshake.png" style="width:25%; margin:20px;"> 
+                           </p>
+                           <p class="uppercase service-header grey extrabold">合约服务</p>
+                           <p class=" normal  about-text grey text-space"> 人资资源扩充 <br> 合同工-全职</p>
+                           <p></p>
+                        </div>
+                        <div class="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100">
+                           <!-- Icon -->
+                           <p></p>
+                           <p>
+                              <!-- Header --><br>
+                              <img src="MJT/images/icons/meeting.png" style="width:20%; margin:20px;">
+                           </p>
+                           <p class="uppercase service-header grey extrabold">管理参与</p>
+                           <p class=" normal  about-text grey text-space"> 工作说明书 <br> 项目咨询</p>
+                           <p></p>
+                        </div>
+                        <div class="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100">
+                           <!-- Icon -->
+                           <p></p>
+                           <p>
+                              <!-- Header --><br>
+                              <img src="MJT/images/icons/human-resources.png" style="width:22%; margin:20px;">
+                           </p>
+                           <p class="uppercase service-header grey extrabold">直招</p>
+                           <p class="normal  about-text grey text-space"> 非专属型猎头 <br> 专属型猎头</p>
+                           <p></p>
+                        </div>
+                        <div class="col-xs-3 service-box animated" data-animation="fadeIn" data-animation-delay="100">
+                           <!-- Icon -->
+                           <p></p>
+                           <p>
+                              <!-- Header --><br>
+                              <img src="MJT/images/icons/connection.png" style="width:24%; margin:20px;">
+                           </p>
+                           <p class="uppercase service-header grey extrabold ">实习项目</p>
+                           <p class=" normal  about-text grey text-space"> 机会与 <br> 校园招聘项目</p>
+                           <p></p>
+                        </div>
+                        <div class="clear"></div>
+                        <p></p>
+                     </div>
+                     <p>
+                        <!-- End Boxes -->
+                     </p>
+                  </div>
+               </section>
+               <section id="talent" class="video relative animated submit-resume fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300">
+                  <div class=" center-of-page">
+                     <div class="row ">
+                        <div class="col-xs-2 ">
+                        </div>
+                        <div class="col-md-8  center-text mobile-text">
+                           <h1 class="header   blue">让人才，遇见机遇。</h1>
+                           <p>
+                              <!-- Description -->
+                           </p>
+                           <h3 class="white subheader">
+                              我们会同你一起制定长期战略，助您在当今发展快速的企业环境中获得职业成功。今天就行动，与我们分享您的职业目标与方向，让我们将帮您定义市场价值，为您下一次职场机遇出谋划策。
+                              <p></p>
+                           </h3>
+                           <h4 class=" white">
+                              找工作么？
+                              <p></p>
+                           </h4>
+                        </div>
+                        <div class="col-xs-2 ">
+                        </div>
+                        <p></p>
+                     </div>
+                     <p></p>
+                  </div>
+                  <div class="job-button home-details home-box">
+                     <div class="in-line in-line-button">
+                        <p>            <a href="/resume" class="  clear-button scroll uppercase semibold home-button">上传简历</a></p>
+                     </div>
+                     <div class="in-line in-line-button">
+                        <a href="/careers" target="_blank" class=" clear-button-big scroll uppercase semibold  home-button">查看我们的职缺 </a>
+                     </div>
+                  </div>
+               </section>
+               <section class="container white-bg animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="300">
+                  <div class="inner mobile-inner-1">
+                     <!-- Header -->
+                     <p></p>
+                     <h1 class="header blue mobile-header">简历写得如何？</h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h3 class=" subheader-1 grey sub-text">让InstyMatch几秒帮您搞定！</h3>
+                     <h3 class=" light blue ">想了解竞争对手的情况么？ </h3>
+                     <h3 class=" grey subheader-3 max-width-75">只需几秒，我们的Instymatch就可向您展示其他竞争求职者的情况<br>
+                        不信？输入您的意向岗位，上传简历，看看<br>
+                        您在我们数据库相似岗位求职人才中的排名如何吧！<br>
+                       
+                     </h3>
+                     <p>       <a href="/instymatch" class=" mjt-orange try-button uppercase semibold home-button">试试InstyMatch </a>
+                     </p>
+                  </div>
+               </section>
+               <section id="Employers" class="video submit-jd relative animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300">
+                  <div class=" center-of-page">
+                     <div class="row match-box">
+                        <div class="col-xs-2 ">
+                        </div>
+                        <div class="col-md-8  center-text">
+                           <h1 class="header  blue">让雇主，遇见对的人。</h1>
+                           <p>
+                              <!-- Description -->
+                           </p>
+                           <h3 class="white meetyourmatch-subtext subheader">
+                              <p>          作为技术项目领导者，团队成功需要最优技能的成员。<br>
+                                 职库可为您在中国和美国高度竞争的人才市场<br>
+                                 网罗最佳技术资源。
+                              </p>
+                              <p></p>
+                              <p>           我们自主的人工智能/机器学习平台为您带去高效、快速的匹配<br>
+                                 结果与定制化解决方案。
+                              </p>
+                           </h3>
+                        </div>
+                        <div class="col-xs-2 ">
+                        </div>
+                        <p></p>
+                     </div>
+                  </div>
+                  <div class="home-details home-box">
+                     <div class="in-line">
+                        <h4 class="feature-buttons white"> 有职缺，在找人？ </h4>
+                        <p>          <a href="/joborder" class="  clear-button scroll uppercase semibold home-button">与我们分享更多细节！</a></p>
+                     </div>
+                     <div class="in-line">
+                        <h4 class="feature-buttons white"> 有问题？ </h4>
+                        <p>             <a href="#contact" class=" clear-button uppercase semibold home-button ">立刻联系我们</a>
+                        </p>
+                     </div>
+                  </div>
+               </section>
+               <section id="instyAd2" class="container white-bg" data-animation="fadeInLeft" data-animation-delay="300">
+                  <div class="inner bottom-instymatch">
+                     <!-- Header -->
+                     <p></p>
+                     <h1 class="header blue blueheader">InstyMatch：<br> 您最公正的候选人评选系统。 </h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h3 class=" subheader grey ">快速便捷零收费。</h3>
+                     <h1 class="header   blue blueheader">寻找最客观的候选人名单？</h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h4 class=" grey max-width-75">只需几秒，InstyMatch帮助您快速评估候选人。上传至多10份简历，点击提交，查看候选人资质、经验和适合度排名。 </h4>
+                     <h4 class=" grey max-width-75">
+                        或者，选取一份简历，与我们强大数据库中的类似岗位前10候选人进行对比。<br>
+                        
+                        <p></p>
+                     </h4>
+                     <h4 class="  grey max-width-75">
+                        每日可最多提交10条对比请求。
+                        <p></p>
+                     </h4>
+                     <div style=" margin-top: 50px">
+                        <a href="/instymatch" class=" mjt-orange try-button uppercase semibold home-button">试试InstyMatch </a>
+                     </div>
+                     <p></p>
+                  </div>
+               </section>
+               <section id="values" class="values-container relative animated values-we-live-by fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="100">
+                  <div class="inner">
+                     <h1 class="header blue blueheader">我们践行的价值观</h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h3 style="width: 65%; margin-left: 17.5%;" class=" subheader white ">我们的核心价值观反映在每位成员的言行上，并不断鞭策<br>
+                        我们为每位客户带去满意的服务。
+                     </h3>
+                     <p></p>
+                  </div>
+               </section>
+               <section id="valuesContinued" class="container white-bg animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300" style="margin-bottom: 20px;">
+                  <section id="values-continued" style="margin-bottom: 50px" class="container white-bg animated" data-animation="fadeInLeft" data-animation-delay="300">
+                     <div class="inner-no-margin">
+                        <div class="features-boxes black middle value-box">
+                           <p>
+                              <!-- Box 1 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="100">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/value-1.png" style="width:30%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">优质的客户服务</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 2 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="200">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon02.png" style="width:26%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">诚信</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 3 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="300">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon03.png" style="width:26%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">感恩与尊重</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 4 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="400">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon04.png" style="width:26%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">改变客户生活</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 5 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="500">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon05.png" style="width:30%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">回归慈善、回馈社区</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 6 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="600">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon06.png" style="width:24%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">国际协作</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 7 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="700">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon07.png" style="width:27%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">多元化优势</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p>
+                              <!-- Box 6 -->
+                           </p>
+                           <div class="col-xs-9 f-box animated" data-animation="fadeIn" data-animation-delay="800">
+                              <!-- Icon --><br>
+                              <a class="f-icon orange"><br>
+                              <img src="MJT/images/icons/value/icon08.png" style="width:27%;"><br>
+                              </a><br>
+                              <!-- Header -->
+                              <p></p>
+                              <p class="feature-head uppercase extrabold grey">一路乐趣相伴</p>
+                              <p>
+                                 <!-- Text -->
+                              </p>
+                           </div>
+                           <p></p>
+                        </div>
+                        <p>
+                           <!-- End Features Boxes -->
+                        </p>
+                     </div>
+                     <p>
+                        <!-- End Features Inner -->
+                     </p>
+                  </section>
+               </section>
+               <section id="contact" class=" contact-form-custom">
+                  <p>
+                     <!-- Contact Inner -->
+                  </p>
+                  <div class="inner contact">
+                     <h1 class="header blue blueheader">有问题？</h1>
+                     <p>
+                        <!-- Description -->
+                     </p>
+                     <h3 style="width: 65%; margin-left: 17.5%;" class=" subheader white ">请留言，我们会竭诚帮助您：</h3>
+                     <p>
+                        <!-- Header -->
+                     </p>
+                     <p>
+                        <!-- Form Area -->
+                     </p>
+                     <div class="contact-form">
+                        <!-- Form -->
+                        <p></p>
+                        <form id="contact-us" method="post" action="/contact_form">
+                           <div class="row">
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="text" name="firstname" id="firstname" required="required" class="form " placeholder="名称">
+                              </div>
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="text" name="lastname" id="lastname" required="required" class="form " placeholder="名称">
+                              </div>
+                              <p></p>
+                           </div>
+                           <p>
+                              <!-- Left Inputs -->
+                           </p>
+                           <div class="row">
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="text" name="subject" id="subject" required="required" class="form " placeholder="职位">
+                              </div>
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="text" name="company" id="company" required="required" class="form " placeholder="公司名称">
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="row">
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="email" name="email" id="email" required="required" class="form " placeholder="电子邮箱">
+                              </div>
+                              <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                                 <!-- Name --><br>
+                                 <input type="text" name="phone" id="phone" required="required" class="form " placeholder="电话号码">
+                              </div>
+                              <p></p>
+                           </div>
+                           <p>
+                              <!-- Bottom Submit -->
+                           </p>
+                           <div class="relative fullwidth col-xs-12">
+                              <textarea name="message" id="message" class="form textarea " placeholder="请输入信息"></textarea>
+                              <br>
+                              <!-- Send Button --><br>
+                              <button type="submit" id="submit" name="submit" class="form-btn ">发送消息</button>
+                           </div>
+                           <p>
+                              <!-- End Bottom Submit --><br>
+                              <!-- Clear -->
+                           </p>
+                           <div class="clear"></div>
+                           <p></p>
+                        </form>
+                        <p>
+                           <!-- Your Mail Message -->
+                        </p>
+                        <div class="mail-message-area">
+                           <!-- Message -->
+                           <p></p>
+                           <div class="alert gray-bg mail-message not-visible-message">
+                              <strong>感谢与我们联系！</strong> 您的消息已成功提交。
+                           </div>
+                           <p></p>
+                        </div>
+                        <p></p>
+                     </div>
+                     <p>
+                        <!-- End Contact Form Area -->
+                     </p>
+                  </div>
+                  <p>
+                     <!-- End Inner -->
+                  </p>
+               </section>
+               <section id="team" class="container white-bg-circle-rotated parallax4" style="background-position: 50% -895px;">
+                  <br>
+                  <section id="team" class="container white-bg-circle-rotated parallax4">
+                     <p>
+                        <!-- Team Inner -->
+                     </p>
+                     <div class="inner team bottom-instymatch-1">
+                        <h1 class="header  blue blueheader">我们的团队，您的专家。<br> 我们所在的最近城市</h1>
+                        <p>
+                           <!-- Description -->
+                        </p>
+                        <h5 class="  grey max-width-75 sub-grey">职库团队在美国与中国三大主要技术服务枢纽城市设有四家办公室<br>
+                           团队成员岗位安置经验累计超过100年。我们的<br>
+                           领导与专家团队追求最卓越的客户服务。
+                        </h5>
+                        <h5 class=" grey max-width-75 sub-grey">
+                           无论是短期项目，还是长期科技战略，让我们为您提供高科技人才，为您的成功助力！<br>
+                           
+                        </h5>
+                        <h1 class="header   blue blueheader">立刻联系我们吧！</h1>
+                        <div style="margin-top:100px;margin-bottom: 10px" class="team-members inner-details animated " data-animation="fadeInRight" data-animation-delay="100">
+                           <p>
+                              <!-- Member -->
+                           </p>
+                           <div class="row contact-detail-row">
+                              <div class="col-xs-2"></div>
+                              <div class="col-xs-7 member">
+                                 <div class="member-inner">
+                                    <!-- Team Member Image --><br>
+                                    <a class="team-image">
+                                       <br>
+                                       <!-- Img --><br>
+                                       <img src="MJT/images/team/SF.png" alt=""><br>
+                                    </a>
+                                    <p></p>
+                                 </div>
+                                 <p>
+                                    <!-- End Member Inner -->
+                                 </p>
+                              </div>
+                              <p>
+                                 <!-- End Member -->
+                              </p>
+                              <div class="col-xs-6 col-xs-offset-1 member2">
+                                 <p>
+                                    <!-- Name -->
+                                 </p>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="mailto:info@myjobtank.com"><img src="MJT/images/icons/mail-black-envelope-symbol.png"><br>
+                                       </a>
+                                       <a href="mailto:info@myjobtank.com">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black">info@myjobtank.com</h4>
+                                       </a>
+                                       <p><a href="mailto:info@myjobtank.com">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;"><img src="MJT/images/icons/call.png"></a>
+                                       <p></p>
+                                       <h4 class="lefttt member-name normal black">+1.415.795.7488</h4>
+                                       <p>                  </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="https://www.linkedin.com/company/my-job-tank-inc/"><img src="MJT/images/icons/linkedin-logo.png"></a>
+                                       <a href="https://www.linkedin.com/company/my-job-tank-inc/">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                                       </a>
+                                       <p><a href="https://www.linkedin.com/company/my-job-tank-inc/"></a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;" href="https://goo.gl/maps/xn9fyKKQzHD2"><br>
+                                       <img src="MJT/images/icons/location.png"><br>
+                                       </a><br>
+                                       <a href="https://goo.gl/maps/xn9fyKKQzHD2">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black">600 California Street, 12th floor @WeWork San Francisco,CA 94018</h4>
+                                       </a>
+                                       <p><a href="https://goo.gl/maps/xn9fyKKQzHD2">                  </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="row contact-detail-row">
+                              <div class="col-xs-2"></div>
+                              <div class="col-xs-7 member">
+                                 <div class="member-inner">
+                                    <!-- Team Member Image --><br>
+                                    <a class="team-image"><br>
+                                    <img src="MJT/images/team/SEATTLE.png" alt=""><br>
+                                    </a>
+                                    <p></p>
+                                 </div>
+                                 <p>
+                                    <!-- End Member Inner -->
+                                 </p>
+                              </div>
+                              <p>
+                                 <!-- End Member -->
+                              </p>
+                              <div class="col-xs-6 col-xs-offset-1 member2">
+                                 <p>
+                                    <!-- Name -->
+                                 </p>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="mailto:info@myjobtank.com"><br>
+                                       <img src="MJT/images/icons/mail-black-envelope-symbol.png"><br>
+                                       </a><br>
+                                       <a href="mailto:info@myjobtank.com">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black overflow">info@myjobtank.com</h4>
+                                       </a>
+                                       <p><a href="mailto:info@myjobtank.com">                   </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;"><br>
+                                       <img src="MJT/images/icons/call.png"><br>
+                                       </a>
+                                       <p></p>
+                                       <h4 class="lefttt member-name normal black">+1.206.267.1122</h4>
+                                       <p>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;" href="https://www.linkedin.com/company/my-job-tank-inc/"> <img src="MJT/images/icons/linkedin-logo.png"><br>
+                                       </a><br>
+                                       <a href="https://www.linkedin.com/company/my-job-tank-inc/">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                                       </a>
+                                       <p><a href="https://www.linkedin.com/company/my-job-tank-inc/">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;" href="https://goo.gl/maps/8ojC3v2ozNp"><br>
+                                       <img src="MJT/images/icons/location.png"><br>
+                                       </a><br>
+                                       <a href="https://goo.gl/maps/8ojC3v2ozNp">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black">10400 NE 4th Street Bellevue, WA 98004</h4>
+                                       </a>
+                                       <p><a href="https://goo.gl/maps/8ojC3v2ozNp"> </a></p>
+                                       <p>                  </p>
+                                    </span>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="row contact-detail-row">
+                              <div class="col-xs-2"></div>
+                              <div class="col-xs-7 member">
+                                 <div class="member-inner">
+                                    <a class="team-image"><br>
+                                    <img src="MJT/images/team/NYC.png" alt=""><br>
+                                    </a>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <div class="col-xs-6 col-xs-offset-1 member2">
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;" href="mailto:info@myjobtank.com"><br>
+                                       <img src="MJT/images/icons/mail-black-envelope-symbol.png"><br>
+                                       </a><br>
+                                       <a href="mailto:info@myjobtank.com">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black">info@myjobtank.com</h4>
+                                       </a>
+                                       <p><a href="mailto:info@myjobtank.com">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;"><br>
+                                       <img src="MJT/images/icons/call.png"><br>
+                                       </a>
+                                       <p></p>
+                                       <h4 class="lefttt member-name normal black">+1.646.568.4717</h4>
+                                       <p>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style=" margin-right: 20px;" href="https://www.linkedin.com/company/my-job-tank-inc/"><img src="MJT/images/icons/linkedin-logo.png"></a>
+                                       <a href="https://www.linkedin.com/company/my-job-tank-inc/">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                                       </a>
+                                       <p><a href="https://www.linkedin.com/company/my-job-tank-inc/"></a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="https://goo.gl/maps/SQvVXTUPQK62"><br>
+                                       <img src="MJT/images/icons/location.png"><br>
+                                       </a><br>
+                                       <a href="https://goo.gl/maps/SQvVXTUPQK62">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black">1460 Broadway, 5th floor, New York, NY 10036</h4>
+                                       </a>
+                                       <p><a href="https://goo.gl/maps/SQvVXTUPQK62"></a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="row contact-detail-row">
+                              <div class="col-xs-2"></div>
+                              <div class="col-xs-7 member">
+                                 <div class="member-inner">
+                                    <a class="team-image"><br>
+                                    <img src="MJT/images/team/SHANGHAI.png" alt=""><br>
+                                    </a>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <p>
+                                 <!-- End Member -->
+                              </p>
+                              <div class="col-xs-6 col-xs-offset-1 member2">
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="mailto:info@myjobtank.com"><br>
+                                       <img src="MJT/images/icons/mail-black-envelope-symbol.png"><br>
+                                       </a><br>
+                                       <a href="mailto:info@myjobtank.com">
+                                          <p></p>
+                                          <h4 class="lefttt member-name normal black overflow">info@myjobtank.com</h4>
+                                       </a>
+                                       <p><a href="mailto:info@myjobtank.com">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;"><br>
+                                       <img src="MJT/images/icons/call.png"><br>
+                                       </a>
+                                       <p></p>
+                                       <h4 class=" lefttt member-name normal black">+86.21.5266.0132</h4>
+                                       <p>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 20px;" href="https://www.linkedin.com/company/my-job-tank-inc/"><img src="MJT/images/icons/linkedin-logo.png"></a><br>
+                                       <a href="https://www.linkedin.com/company/my-job-tank-inc/">
+                                          <p></p>
+                                          <h4 class=" lefttt member-name normal black overflow">https://www.linkedin.com/company/my-job-tank-inc/</h4>
+                                       </a>
+                                       <p><a href="https://www.linkedin.com/company/my-job-tank-inc/">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <div class="row">
+                                    <span class="sameliny">
+                                       <br>
+                                       <a style="margin-right: 28px;" href="https://goo.gl/maps/qvCw4W9L9qT2"><br>
+                                       <img src="MJT/images/icons/location.png"><br>
+                                       </a><br>
+                                       <a style="margin-right: 28px;" href="https://goo.gl/maps/qvCw4W9L9qT2">
+                                          <p></p>
+                                          <h4 style=" margin-left:-7px;" class=" lefttt member-name normal black">静安区南京西路468号<br>
+                                             中国上海
+                                          </h4>
+                                       </a>
+                                       <p><a style="margin-right: 28px;" href="https://goo.gl/maps/qvCw4W9L9qT2">                    </a><br>
+                                       </p>
+                                    </span>
+                                 </div>
+                                 <p></p>
+                              </div>
+                              <p></p>
+                           </div>
+                           <div class="clear"></div>
+                           <p></p>
+                        </div>
+                        <p>
+                           <!-- End Members -->
+                        </p>
+                     </div>
+                     <p>
+                        <!-- End Team Inner --><br>
+                     </p>
+                  </section>
+               </section>
+               <section id="footer" class="relative animated footer-section fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="100">
+                  <div class="row " style="width: 85%; margin-left: 7.5%; margin-top: 75px;">
+                     <div class="col-xs-2">
+                        <p>
+                           <a href="#home" class="scroll logo">
+                              <br>
+                              <!-- Your Logo --><br>
+                              <img src="MJT/images/logo-mjt.png" alt="Logo"><br>
+                           </a>
+                        </p>
+                     </div>
+                     <div class="col-xs-6  center-text"></div>
+                     <div class="col-xs-4 ">
+                        <div class="col-xs-6 animated" data-animation="fadeIn" data-animation-delay="300">
+                           <a href="/careers">
+                              <p></p>
+                              <h4 class="uppercase green">加入我们 </h4>
+                           </a>
+                           <p><a href="/careers"> </a>
+                           </p>
+                        </div>
+                        <div class="col-xs-6 animated" data-animation="fadeIn" data-animation-delay="300">
+                           <a href="https://www.linkedin.com/company/my-job-tank-inc/">
+                              <p></p>
+                              <h4 class="uppercase green">领英</h4>
+                           </a>
+                           <p><a href="https://www.linkedin.com/company/my-job-tank-inc/"> </a>
+                           </p>
+                        </div>
+                        <p></p>
+                     </div>
+                     <p></p>
+                  </div>
+                  <div class="row footer-text" style="width: 85%; margin-left: 7.5%;">
+                     <h3 class="  white">
+                        职库是一家由科技驱动的人力资本资源公司，专业提供高技术技术人才解决方案。职库诚邀充满活力的企业携手搭建合作伙伴关系，以创新人工智能平台与最贴心的的客户服务提供快速高效人才匹配服务。我们旧金山、纽约市、西雅图和上海的专家团队为当今快速发展的企业和高技能人才提供国际视野的优质战略选择。
+                        <p></p>
+                     </h3>
+                  </div>
+               </section>
+               <footer class="footer animated fadeIn visible" data-animation="fadeIn" data-animation-delay="300">
+                  <p class="copyright normal grey" style="font-size: 14px; width: 85%; margin-left: 7.5%; padding: 10px;">© 2018 MyJobTank. All Rights Reserved. Please find the Terms of Service and Privacy and Security Statement regarding MyJobTank's services.</p>
+               </footer>
+            </div>
+         </div>
       </div>
-    </div>
-  </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" src="bundle.js"></script></body>
-
-
-<script type="text/javascript" src="MJT/js/jquery-3.3.1.js"></script>
-  <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
-  <script type="text/javascript" src="MJT/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.appear.js"></script>
-  <script type="text/javascript" src="MJT/js/waypoints.min.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.prettyPhoto.js"></script>
-  <script type="text/javascript" src="MJT/js/modernizr-latest.js"></script>
-
-  <script type="text/javascript" src="MJT/js/jquery.parallax-1.1.3.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.easing.1.3.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.superslides.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.flexslider.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.isotope.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.mb.YTPlayer.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.fitvids.js"></script>
-  <script type="text/javascript" src="MJT/js/jquery.slabtext.js"></script>
-  <script type="text/javascript" src="MJT/js/plugins.js"></script>
-  <script  src="MJT/js/index.js"></script>
-
-
-
-
-  
-
-
-
-  <!-- Theme Panel -->
-
-  <!-- End Theme Panel -->
-
-
-  <!-- JS Files -->
-
-
-
-   <!-- End JS Files -->
-
-
+      <!-- </div>
+         <div class="col-xs-1 ">
+         </div>
+         </div>
+         </div> -->
+      <script type="text/javascript" src="bundle.js"></script>
+   </body>
+   <script type="text/javascript" src="MJT/js/jquery-3.3.1.js"></script>
+   <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+   <script type="text/javascript" src="MJT/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.appear.js"></script>
+   <script type="text/javascript" src="MJT/js/waypoints.min.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.prettyPhoto.js"></script>
+   <script type="text/javascript" src="MJT/js/modernizr-latest.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.parallax-1.1.3.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.easing.1.3.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.superslides.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.flexslider.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.isotope.js"></script>
+   <script type="text/javascript" src="MJT/js/jquery.slabtext.js"></script>
+   <script type="text/javascript" src="MJT/js/plugins.js"></script>
+   <script  src="MJT/js/index.js"></script>
 </html>
