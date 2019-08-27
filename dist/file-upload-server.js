@@ -13,7 +13,7 @@ var global_linkedIn_parse = false;
 const fs = require('fs');
 
 module.exports = (app) => {
-    
+
   const multer = require('multer');
   var request = require('request-promise');
   var getRequestUrl = 'https://mjtbe.tk/presignedurl/';
@@ -23,14 +23,14 @@ module.exports = (app) => {
   const upload = multer({storage: storage});
   var FormData = require('form-data');
 
-    
- 
+
+
   function auto_email(res,email){
 
     var options = {
       method: 'GET',
       uri:  'https://mjtbe.tk/confirmationemailuser/' + email
-                  
+
       };
 
        request(options)
@@ -38,19 +38,19 @@ module.exports = (app) => {
                     if (JSON.parse(body)["Code"] === 200){
                     console.log("succesfull POST to /confirmationemailuser", body);
                     res.send("Success");
-                   
+
                   }
                   else{
                      res.status(500);
                   }
-                   
-                  
-                    
+
+
+
                   })
                     .catch(function(err){
                       console.log("ERROR in sending autoemail", err);
                     }).finally(function () {
-                     
+
                       console.log("done with AUTOEMAIL");
                        });
 
@@ -82,10 +82,10 @@ module.exports = (app) => {
                     method: 'POST',
                     url: 'https://mjtbe.tk/submitbasicinfo',
                     body: JSON.stringify(POST_FORM),
-                   
+
                   }
 
-                  
+
 
                     request(options)
                       .then(function(body){
@@ -97,7 +97,7 @@ module.exports = (app) => {
                         .catch(function(err){
                           console.log("no POST success for FORM Data ", err);
                         }).finally(function () {
-                         
+
                           console.log("done with form POST request");
                            });
   }
@@ -107,21 +107,21 @@ function callParsers(res){
        var options = {
               method: 'GET',
               uri: getFormRequestUrlMatt,
-                          
+
               };
 
-              
-                       
+
+
             request(options)
               .then(function (body) {
-                      
-                       
+
+
                          console.log("recieved ok from Mustafa parser for RESUME ID", body);
 
                             var options2 = {
                             method: 'GET',
                             uri: global_linkedIn_parse ? 'https://mjtbe.tk/rawdatalinkedin/'.concat(global_resumeID)+'/'.concat('"'+global_resume_filename+'"') :  getFormRequestUrlYev,
-                                        
+
                             };
 
 
@@ -133,8 +133,8 @@ function callParsers(res){
                                       console.log("recieved ok from Yevs parser FOR RESUME ID", body);
                                       global_resumeID = JSON.parse(body).Data;
                                       res.status(200).send( global_resumeID);
-                                      
-                                     
+
+
 
 
                               })
@@ -142,8 +142,8 @@ function callParsers(res){
                                 console.log("GET no success for Yevs parser FOR RESUME ID ", err);
                               }).finally(function () {
                                   console.log("done with GET request for Yevs Parser FOR RESUME ID");
-                                   
-                                  
+
+
                                    });
                        // }
                        // else console.log("didnt get 200 from MUstafas parser, got", body);
@@ -152,47 +152,40 @@ function callParsers(res){
              .catch(function (err) {
                         // Delete failed...
               console.log("GET no success for Mustafa parser FOR RESUME ID", err);
-                       
-                       
+
+
               }).finally(function () {
                               console.log("done with GET request for Mustafas parser FOR RESUME ID");
                                });
     } //end function call_parsers
 
 
-   
+
 
 
 
 //POST request made from client side.  This sends a resume ID to backend server, recieves the parsed resume result, and sends it to client side.
-  app.post('/analyze',(req,res) => {
-      var url = 'https://mjtbe.tk/parsedresult/'+global_resumeID;
-      console.log("checking analyze url",url);
+app.post('/analyze',(req,res) => {
+    var url = 'https://mjtbe.tk/personalresume/'+global_resumeID;
+    console.log("checking analyze url",url);
+     var options = {
+            method: 'GET',
+            uri: url,
+    };
 
-       var options = {
-              method: 'GET',
-              uri: url,
-      };
-           
-        request(options)
-         .then(function (body){
+      request(options)
+       .then(function (body){
+        console.log("analyze GET body",body);
+        res.send(JSON.parse(body)["Data"]);
 
-          console.log("analyze GET body",body);
-          res.send(JSON.parse(body)["Data"]);
-
-        })
-          .catch(function (err) {
-                // Delete failed...
-                console.log("FAIL for GET analyze ", err);
-               
-               
-            })
-            .finally(function () {
-                      console.log("done with analyze GET");
-
-              });
+      })
+        .catch(function (err) {
+              console.log("FAIL for GET analyze ", err);
+          })
+          .finally(function () {
+                    console.log("done with analyze GET");
+            });
 })
-
   //POST request that recieves job description from client side, and sends it to /jobposting backend endpoint.
 
   app.post('/submitJD',(req,res) => {
@@ -204,7 +197,7 @@ function callParsers(res){
               uri: url,
               body: JSON.stringify(req.body)
       };
-           
+
         request(options)
          .then(function (body){
 
@@ -215,23 +208,22 @@ function callParsers(res){
           .catch(function (err) {
                 // Delete failed...
                 console.log("FAIL for POST to job posting ", err);
-               
-               
+
+
             })
             .finally(function () {
                       console.log("done with POST to job posting");
 
               });
 })
-
- // THIS POST endpoint recieves the reusume File from client side, stores it in virtual memory, creates a UUID for it, 
+ // THIS POST endpoint recieves the reusume File from client side, stores it in virtual memory, creates a UUID for it,
   // and makes the PUT call to send the resume to backend server.
-       
+
    app.post('/uploadHandler', upload.any() , function (req, res, next) {
     if (req.files ) {
 
       var resumefile= {
-       
+
       };
 
         var resfile = {
@@ -248,38 +240,38 @@ function callParsers(res){
         var options = {
               method: 'POST',
               uri: 'https://mjtbe.tk/resumeupload',
-              
+
               formData: resumefile,
-            
+
             };
-           
+
         request(options)
         .then(function (body) {
             console.log("POST to resumeupload with success", body);
-           
 
-                   
+
+
                     global_file_put = true;
                     global_resumeID = JSON.parse(body)["Data"];
-                    
+
                  res.send("Success");
-              
-                
-                
+
+
+
 
         })
 
         .catch(function (err) {
             // Delete failed...
             console.log("POST no success for /resumeupload ", err);
-           
-           
+
+
         }).finally(function () {
                       console.log("done with all requests5");
-                       });        
-          
+                       });
+
       }
-       
+
     });
 
 
@@ -289,15 +281,15 @@ function callParsers(res){
     console.log("checking req body", req.body);
     global_formData = req.body;
 
-         
+
     if (req.body) {
-     
+
         formData_POST(global_formData,global_resumeID,res);
-       
+
     }
   });
 
-//this post request recieves the modified/analyzed resume data and sends it to the backend 
+//this post request recieves the modified/analyzed resume data and sends it to the backend
   app.post('/submitResult', (req, res) => {
 
 
@@ -308,26 +300,26 @@ function callParsers(res){
         var autoEmail = req.body.data.Personal.Email;
     global_submit_result_data = req.body;
 
-         
+
     if (req.body) {
 
 
 
-     
+
         var options = {
       method: 'PUT',
       uri:  'https://mjtbe.tk/submitresult',
       body: sendBody
-                  
+
       };
 
       request(options)
         .then(function (body){
 
          if (JSON.parse(body)["Code"] === 200){
-          
+
           console.log("Success to /submitresult");
-         
+
           auto_email(res,autoEmail);
           //  res.send("Success");
 
@@ -341,13 +333,13 @@ function callParsers(res){
          .catch(function (err) {
                 // Delete failed...
       console.log("FAIL for PUT for analyze page ", err);
-               
-               
+
+
       }).finally(function () {
                       console.log("done with ANALYZE PUT");
 
                        });
-    
+
     }
   });
 
@@ -362,13 +354,13 @@ app.get('/getResumeId', (req, res) => {
     console.log("checking linkedIn req body", req.body);
     console.log("checking if first file was recieved and the linkedIN url ", global_file_put, global_resumeID);
 
-    
+
     if (req.body) {
        var options = {
       method: 'POST',
       uri: req.body["ResumeID"] ? 'https://mjtbe.tk/linkedinafterresume/'+req.body["ResumeID"] :'https://mjtbe.tk/linkedin',
       body: JSON.stringify(req.body["Response"])
-                  
+
       };
 
       request(options)
@@ -385,8 +377,8 @@ app.get('/getResumeId', (req, res) => {
           console.log("checking global_resumeID", global_resumeID);
 
 
-         
- 
+
+
           res.status(200).send( global_resumeID);
 
 
@@ -394,8 +386,8 @@ app.get('/getResumeId', (req, res) => {
          .catch(function (err) {
                 // Delete failed...
       console.log("FAIL for POST linkedIn ", err);
-               
-               
+
+
       }).finally(function () {
                       console.log("done with linkedIN POST");
 
