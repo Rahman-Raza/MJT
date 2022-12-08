@@ -17,7 +17,7 @@
     "cors": "^2.8.4",
     "emotion": "^9.2.3",
     "enhanced-resolve": "^4.0.0",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-fileupload": "^0.4.0",
     "express-flash": "0.0.2",
     "express-layout": "^0.1.0",
